@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp_10">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/nameAction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:fontFamily="@font/allerta"
+                android:text="@string/nameAction"
+                android:textSize="@dimen/textSizeNameAction"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/titleGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_8"
+                android:text="Nhóm"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameAction" />
+
+            <TextView
+                android:id="@+id/nameGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nhóm 1"
+                android:textColor="@color/colorBack"
+                android:textStyle="italic"
+                app:layout_constraintLeft_toRightOf="@id/titleGroup"
+                app:layout_constraintStart_toStartOf="@+id/nameCreator"
+                app:layout_constraintTop_toTopOf="@+id/titleGroup" />
+
+            <TextView
+                android:id="@+id/statusActionSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="56dp"
+                android:text="@string/textStatust"
+                android:textSize="@dimen/textSizeTextAction"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/titleGroup"
+                app:layout_constraintTop_toBottomOf="@id/nameGroup" />
+
+            <TextView
+                android:id="@+id/tileStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/marginTopPro"
+                android:text="@string/titleStatus"
+                android:textColor="@color/colorGray"
+                android:textSize="@dimen/textSizeTextAction"
+                app:layout_constraintLeft_toRightOf="@id/statusActionSmall"
+                app:layout_constraintTop_toTopOf="@id/statusActionSmall" />
+
+            <TextView
+                android:id="@+id/statusDelay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp_8"
+                android:text="@string/textStatustDelay"
+                android:textSize="@dimen/textSizeTextAction"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/textView2"
+                app:layout_constraintTop_toTopOf="@+id/tileStatus" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_24"
+                android:layout_marginRight="@dimen/dp_24"
+                android:text="@string/titleStatusDelay"
+                android:textColor="@color/colorGray"
+                android:textSize="@dimen/textSizeTextAction"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tileStatus" />
+
+            <SeekBar
+                android:id="@+id/seekBarStatus"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/progressSize"
+                android:layout_marginLeft="@dimen/marginTop"
+                android:layout_marginTop="@dimen/marginTopPro"
+                android:layout_marginRight="@dimen/marginTop"
+                android:max="200"
+                android:progress="50"
+                android:theme="@style/AppTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/statusActionSmall" />
+
+            <TextView
+                android:id="@+id/titleTimeStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginItemWork"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="@dimen/marginTopAction"
+                android:layout_marginBottom="@dimen/dp_8"
+                android:fontFamily="@font/allerta"
+                android:text="@string/titleTimeStart"
+                android:textSize="@dimen/textSizeTime"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/seekBarStatus"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/timeStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/allerta"
+                android:text="@string/timeStart"
+                android:textSize="@dimen/textSizeTime"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@id/titleTimeStart"
+                app:layout_constraintTop_toTopOf="@id/titleTimeStart" />
+
+            <TextView
+                android:id="@+id/titleTimeEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/allerta"
+                android:text="@string/titleTimeEnd"
+                android:textSize="@dimen/textSizeTime"
+                app:layout_constraintEnd_toStartOf="@+id/timeEnd"
+                app:layout_constraintTop_toTopOf="@+id/timeStart" />
+
+            <TextView
+                android:id="@+id/timeEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp_8"
+                android:fontFamily="@font/allerta"
+                android:text="@string/timeStart"
+                android:textSize="@dimen/textSizeTime"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/titleTimeEnd" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_24"
+                android:layout_marginRight="@dimen/dp_24"
+                android:background="?selectableItemBackground"
+                android:src="@drawable/ic_comment_black_24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/titleLeadel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Nhóm trưởng"
+                app:layout_constraintStart_toStartOf="@+id/titleGroup"
+                app:layout_constraintTop_toBottomOf="@+id/titleGroup" />
+
+            <TextView
+                android:id="@+id/nameCreator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_32"
+                android:layout_marginLeft="@dimen/dp_32"
+                android:textStyle="italic"
+                android:textColor="@color/colorBack"
+                android:text="Nhật Lệ"
+                app:layout_constraintStart_toEndOf="@+id/titleLeadel"
+                app:layout_constraintTop_toTopOf="@+id/titleLeadel" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

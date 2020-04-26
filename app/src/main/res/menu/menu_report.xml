@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/actionDelete"
+        android:icon="@drawable/ic_delete_red_24dp"
+        android:title="Xóa"/>
+    <item
+        android:id="@+id/actionUpdate"
+        android:icon="@drawable/ic_update_red_24dp"
+        android:title="Cập nhật"
+        app:showAsAction="always" />
+</menu>

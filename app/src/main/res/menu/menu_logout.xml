@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/actionUpdateProfile"
+        android:icon="@drawable/update_profile"
+        android:title="Sửa thông tin cá nhân"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/actionlogout"
+        android:icon="@drawable/log_out"
+        android:title="Đăng xuất"
+        app:showAsAction="always" />
+</menu>

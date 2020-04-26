@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/acctionCreateAssignment"
+        android:icon="@drawable/ic_assessment_black_24dp"
+        android:title="Phân công"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/actionCreatereport"
+        android:icon="@drawable/ic_report_black_24dp"
+        android:title="Lập báo cáo"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/actionComment"
+        android:icon="@drawable/ic_comment_black_24dp"
+        android:title="Thảo luận"
+        app:showAsAction="always" />
+</menu>

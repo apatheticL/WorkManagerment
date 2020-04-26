@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/colorWhile200"
+    android:layout_height="match_parent">
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recyclerViewWork"
+    android:layout_width="match_parent"
+    tools:listitem="@layout/item_work"
+    android:layout_margin="@dimen/maginContentItem"
+    tools:itemCount="4"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    android:layout_height="match_parent"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buttonAddWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/marginEnd"
+        android:layout_marginRight="@dimen/marginEnd"
+        android:layout_marginBottom="@dimen/marginBottom"
+        android:clickable="true"
+        android:src="@drawable/add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <TextView
+        android:id="@+id/textError"
+        android:text="@string/textError"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
