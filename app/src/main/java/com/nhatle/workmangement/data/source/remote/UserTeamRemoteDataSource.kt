@@ -14,21 +14,34 @@ import java.lang.Exception
 
 class UserTeamRemoteDataSource private constructor(var userService: UserService):
 UserTeamDataSource.Remote{
-    override fun addMemberOnTeam(userTeam: UserTeam, callback: OnDataLoadedCallback<UserTeam>) {
-        userService.addMemberForGroup(userTeam=userTeam).enqueue(
-            object :Callback<BaseResponse<UserTeam>>{
-                override fun onFailure(call: Call<BaseResponse<UserTeam>>, t: Throwable) {
+
+
+    private fun converUserTeam(body: List<BaseResponse<UserTeam>>): List<UserTeam> {
+        var userTeam:UserTeam? = null
+        val list :MutableList<UserTeam>?=null
+        for (base in body){
+            userTeam = base.data
+            list!!.add(userTeam)
+        }
+        return list!!
+    }
+
+    override fun addMemberOnTeam(
+        list: List<UserTeam>,
+        callback: OnDataLoadedCallback<List<UserTeam>>
+    ) {
+        userService.addMemberForGroup(listUserTeam = list).enqueue(
+            object :Callback<List<BaseResponse<UserTeam>>>{
+                override fun onFailure(call: Call<List<BaseResponse<UserTeam>>>, t: Throwable) {
                     callback.onFailed(exception = t as Exception)
                 }
 
                 override fun onResponse(
-                    call: Call<BaseResponse<UserTeam>>,
-                    response: Response<BaseResponse<UserTeam>>
+                    call: Call<List<BaseResponse<UserTeam>>>,
+                    response: Response<List<BaseResponse<UserTeam>>>
                 ) {
-                   if (response.body()!!.status==0){
-                       callback.onFailedConnect("can not add  member ${response.message()}")
-                   }
-                    callback.onSuccess()
+
+                    callback.onSuccess( converUserTeam(response.body()!!))
                 }
 
             }

@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toTopOf="parent" />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerListActionSmallForUpdate"
+        android:id="@+id/recyclerListActionSmallForAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
@@ -25,20 +25,20 @@
         tools:itemCount="4"
         tools:listitem="@layout/item_action_small" />
     <EditText
-        android:id="@+id/editActionSmallNameOnUpdate"
+        android:id="@+id/editActionSmallNameOnAdd"
         android:layout_width="0dp"
         android:hint="Hoạt động số 1"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_8"
         android:layout_marginLeft="@dimen/dp_16"
         android:layout_marginRight="@dimen/dp_32"
-        app:layout_constraintEnd_toStartOf="@+id/buttonSaveUpdate"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSaveAdd"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recyclerListActionSmallForUpdate" />
+        app:layout_constraintTop_toBottomOf="@id/recyclerListActionSmallForAdd" />
 
     <ImageButton
-        android:id="@+id/buttonSaveUpdate"
+        android:id="@+id/buttonSaveAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/dp_16"
@@ -47,6 +47,17 @@
         app:layout_constraintBottom_toBottomOf="@+id/editActionSmallNameOnUpdate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/editActionSmallNameOnUpdate"
-        app:layout_constraintTop_toTopOf="@+id/editActionSmallNameOnUpdate" />
+        app:layout_constraintStart_toEndOf="@+id/editActionSmallNameOnAdd"
+        app:layout_constraintTop_toTopOf="@+id/editActionSmallNameOnAdd" />
+    <TextView
+        android:id="@+id/textError"
+        android:textColor="@color/colorRed"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/editActionSmallNameOnAdd"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_8"
+        android:textSize="@dimen/sp_14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

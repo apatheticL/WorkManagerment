@@ -7,12 +7,12 @@ import com.nhatle.workmangement.data.reponsitory.remote.UserTeamRepository
 interface UserTeamDataSource {
 
     interface Remote{
-        fun addMemberOnTeam(userTeam:UserTeam,callback: OnDataLoadedCallback<UserTeam>)
+        fun addMemberOnTeam(list: List<UserTeam>,callback: OnDataLoadedCallback<List<UserTeam>>)
         fun deleteMemberOnTeam(userTeam: UserTeam,callback: OnDataLoadedCallback<Boolean>)
 
     }
     interface Local{
-        fun addMemberOnTeam(userTeam:UserTeam)
+        fun addMemberOnTeam(userTeam:List<UserTeam>)
         fun deleteMemberOnTeam(userTeam: UserTeam)
     }
 }

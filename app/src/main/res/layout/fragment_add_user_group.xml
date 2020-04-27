@@ -6,7 +6,26 @@
     android:layout_height="fill_parent"
     android:background="#EFEFEF"
     android:orientation="vertical">
-
+    <TextView
+        android:id="@+id/titleAddGroup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Tạo nhóm thực hiện"
+        android:layout_width="match_parent"
+        android:background="@android:color/holo_blue_dark"
+        android:layout_height="?actionBarSize"
+        />
+    <EditText
+        android:id="@+id/editNameGroup"
+        app:layout_constraintTop_toBottomOf="@id/titleAddGroup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="@dimen/dp_16"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:hint="Tên nhóm (vd: nhóm A)"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerDialog"
         android:layout_width="match_parent"
@@ -16,7 +35,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editNameGroup"
         tools:itemCount="9"
         tools:listitem="@layout/item_dialog" />
 

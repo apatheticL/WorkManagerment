@@ -71,7 +71,7 @@ interface UserService {
     fun addGroup(@Body team: Team):Call<BaseResponse<Team>>
 
     @POST(value="/addMemberForGroup")
-    fun addMemberForGroup(@Body userTeam: UserTeam):Call<BaseResponse<UserTeam>>
+    fun addMemberForGroup(@Body listUserTeam:List<UserTeam>):Call<List<BaseResponse<UserTeam>>>
 
     @POST(value="/deleteMemberOnGroup")
     fun deleteMemberOnGroup(@Body userTeam: UserTeam):Call<Boolean>

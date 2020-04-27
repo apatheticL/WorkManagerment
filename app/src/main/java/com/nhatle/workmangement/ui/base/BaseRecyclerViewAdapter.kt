@@ -14,7 +14,11 @@ abstract class BaseRecyclerViewAdapter<T, V : BaseViewHolder<T>> : RecyclerView.
 
     protected fun getItem(position: Int): T? =
         if (position in 0 until itemCount) items[position] else null
-     fun setData(list: ArrayList<T>){
+
+    fun setData(list: ArrayList<T>) {
         this.items = list
+    }
+    protected fun getData():ArrayList<T>{
+        return items
     }
 }
