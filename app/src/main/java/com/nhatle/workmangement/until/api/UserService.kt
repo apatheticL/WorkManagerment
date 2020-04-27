@@ -36,6 +36,8 @@ interface UserService {
     fun getAllNotFriend(@Query("idUser") idUser: Int):
             Call<ArrayList<UserProfile>>
 
+    @POST(value = "/acceptedFriend")
+    fun acceptedFriend(@Body invitationFriend: InvitationFriend):Call<Boolean>
     @GET(value = "/getAllUserSenderFriend")
     fun getAllUserSenderFriend(@Query("idProfile") idProfile: Int):
             Call<ArrayList<FriendResponse>>

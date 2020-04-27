@@ -7,18 +7,7 @@
     android:padding="@dimen/dp_8"
     android:background="@color/colorWhile">
 
-    <ImageButton
-        android:id="@+id/buttonAddDateEnd"
-        android:layout_width="@dimen/dp_32"
-        android:layout_height="@dimen/dp_32"
-        android:background="?selectableItemBackground"
-        android:scaleType="centerCrop"
 
-        android:src="@drawable/ic_date_range_black_24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/texttimEndAdd"
-        app:layout_constraintEnd_toEndOf="@+id/nameWork"
-        app:layout_constraintStart_toEndOf="@+id/texttimeStartAdd"
-        app:layout_constraintTop_toTopOf="@+id/texttimEndAdd" />
 
     <TextView
         android:id="@+id/toolBar"
@@ -96,7 +85,18 @@
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toTopOf="@+id/textView6"
         app:layout_constraintVertical_bias="0.0" />
+    <ImageButton
+        android:id="@+id/buttonAddDateEnd"
+        android:layout_width="@dimen/dp_32"
+        android:layout_height="@dimen/dp_32"
+        android:background="?selectableItemBackground"
+        android:scaleType="centerCrop"
 
+        android:src="@drawable/ic_date_range_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/texttimEndAdd"
+        app:layout_constraintEnd_toEndOf="@+id/nameWork"
+        app:layout_constraintStart_toEndOf="@+id/texttimeStartAdd"
+        app:layout_constraintTop_toTopOf="@+id/texttimEndAdd" />
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"

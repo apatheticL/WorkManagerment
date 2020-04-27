@@ -10,10 +10,4 @@ interface ActionSmallDataSource {
         fun deleteActionSmall(actionSmallId:Int,callback: OnDataLoadedCallback<Boolean>)
 
     }
-    interface Local{
-        fun getAllActionSmall():List<ActionSmall>
-        fun insertActionSmall(actionSmall: ActionSmall)
-        fun deleteActionSmall(actionSmallId:Int)
-
-    }
 }

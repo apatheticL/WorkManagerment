@@ -11,8 +11,4 @@ interface UserTeamDataSource {
         fun deleteMemberOnTeam(userTeam: UserTeam,callback: OnDataLoadedCallback<Boolean>)
 
     }
-    interface Local{
-        fun addMemberOnTeam(userTeam:List<UserTeam>)
-        fun deleteMemberOnTeam(userTeam: UserTeam)
-    }
 }

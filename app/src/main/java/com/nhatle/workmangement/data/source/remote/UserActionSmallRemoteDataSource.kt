@@ -75,7 +75,10 @@ class UserActionSmallRemoteDataSource private constructor(var userService: UserS
     ) {
         userService.addUserActionSmall(userActionSmall=userActionSmall).enqueue(
             object :Callback<BaseResponse<UserActionSmall>>{
-                override fun onFailure(call: Call<BaseResponse<UserActionSmall>>, t: Throwable) {
+                override fun onFailure(
+                    call: Call<BaseResponse<UserActionSmall>>,
+                    t: Throwable
+                ) {
                     callback.onFailed(exception = t  as Exception)
                 }
 
@@ -83,10 +86,7 @@ class UserActionSmallRemoteDataSource private constructor(var userService: UserS
                     call: Call<BaseResponse<UserActionSmall>>,
                     response: Response<BaseResponse<UserActionSmall>>
                 ) {
-                    if (response.body()!!.status==0){
-                        callback.onFailedConnect("can not insert ${response.body()!!.message}")
-                    }
-                    callback.onSuccess()
+                    callback.onSuccess( response.body()!!.data)
                 }
 
             }

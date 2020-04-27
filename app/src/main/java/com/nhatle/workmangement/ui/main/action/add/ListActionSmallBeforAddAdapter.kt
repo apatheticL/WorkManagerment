@@ -8,17 +8,15 @@ import com.nhatle.workmangement.R
 import com.nhatle.workmangement.ui.base.BaseRecyclerViewAdapter
 import com.nhatle.workmangement.ui.base.BaseViewHolder
 import kotlinx.android.synthetic.main.item_action_small.view.*
-import java.text.FieldPosition
 
 class ListActionSmallBeforAddAdapter:
-    BaseRecyclerViewAdapter<String, ListActionSmallBeforAddAdapter.ActtionBeforAddHolder>() {
+    BaseRecyclerViewAdapter<String, ListActionSmallBeforAddAdapter.ActionBeforeAddHolder>() {
     private var list = getData()
-    class ActtionBeforAddHolder(itemView: View,val call:DeleteItem) : BaseViewHolder<String>(itemView){
+    class ActionBeforeAddHolder(itemView: View, val call:DeleteItem) : BaseViewHolder<String>(itemView){
         override fun onBindData(itemData: String) {
             super.onBindData(itemData)
             itemView.nameActionSmall.text = itemData
             itemView.buttonSave.visibility = View.GONE
-
         }
 
         override fun onBindData(itemPosition: Int, itemData: String) {
@@ -33,10 +31,10 @@ class ListActionSmallBeforAddAdapter:
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActtionBeforAddHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActionBeforeAddHolder {
         val layout = LayoutInflater.from(parent.context).
         inflate(R.layout.item_action_small,parent,false)
-        return ActtionBeforAddHolder(layout,
+        return ActionBeforeAddHolder(layout,
         object :DeleteItem{
             override fun delete(position: Int) {
                 getData().removeAt(position)

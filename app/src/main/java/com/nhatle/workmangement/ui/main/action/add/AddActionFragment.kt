@@ -1,8 +1,8 @@
 package com.nhatle.workmangement.ui.main.action.add
 
 import android.app.DatePickerDialog
+import android.os.Bundle
 import android.view.View
-import android.widget.DatePicker
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -11,12 +11,11 @@ import com.nhatle.workmangement.data.model.Action
 import com.nhatle.workmangement.data.model.ActionSmall
 import com.nhatle.workmangement.data.reponsitory.remote.ActionRemoteRepository
 import com.nhatle.workmangement.data.reponsitory.remote.ActionSmallRemoteRepository
-import com.nhatle.workmangement.data.reponsitory.remote.UserActionSmallRepository
 import com.nhatle.workmangement.data.source.remote.ActionRemoteDataSource
 import com.nhatle.workmangement.data.source.remote.ActionSmallRemoteDataSource
-import com.nhatle.workmangement.data.source.remote.UserActionSmallRemoteDataSource
 import com.nhatle.workmangement.ui.base.BaseFragment
 import com.nhatle.workmangement.ui.main.action.ActionFragment
+import com.nhatle.workmangement.ui.main.action.add.actionSmall.AddUserActionSmallFragment
 import com.nhatle.workmangement.ui.main.team.AddGroupFragment
 import com.nhatle.workmangement.until.Common
 import com.nhatle.workmangement.until.CommonData
@@ -25,8 +24,8 @@ import kotlinx.android.synthetic.main.fragment_add_acion_small.*
 import kotlinx.android.synthetic.main.fragment_add_acion_small.textError
 import kotlinx.android.synthetic.main.fragment_add_work.*
 import kotlinx.android.synthetic.main.fragment_add_work.buttonAddWork
-import kotlinx.android.synthetic.main.fragment_work.*
-import java.text.DateFormat
+import java.io.Serializable
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -35,21 +34,36 @@ class AddActionFragment :BaseFragment(), AddActionContract.View, View.OnClickLis
     private var presenter:AddActionPresenter?=null
     private var listActionSmallName:ArrayList<String> = ArrayList()
     private var action :Action?=null
+    private var groupId = -1
     private var adapter :ListActionSmallBeforAddAdapter?=null
     override fun initData() {
         initPresenter()
     }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("action_name",nameWork.text.toString())
+        outState.putString("time_start",texttimeStartAdd.text.toString())
+        outState.putString("time_end",texttimEndAdd.text.toString())
+        outState.putSerializable("list",listActionSmallName as Serializable)
+    }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        if (savedInstanceState!=null){
+            listActionSmallName = savedInstanceState.getSerializable("list") as ArrayList<String>
+            nameWork.setText( savedInstanceState.getString("action_name"))
+            texttimeStartAdd.text = ( savedInstanceState.getString("time_start"))
+            texttimEndAdd.text = ( savedInstanceState.getString("time_end"))
+        }
+    }
     private fun initPresenter() {
         val userService = Common.getUserService()
         val actionDataSource = ActionRemoteDataSource.getInstance(userService)
         val actionSmallDataSource = ActionSmallRemoteDataSource.getInstance(userService)
-        val userActionSmallRemoteDataSource = UserActionSmallRemoteDataSource.getInstance(userService)
         val actionRepository= ActionRemoteRepository(actionDataSource)
         val actionSmallRepository = ActionSmallRemoteRepository(actionSmallDataSource)
-        val userActionSmallRepository = UserActionSmallRepository(userActionSmallRemoteDataSource)
         presenter = AddActionPresenter(this,actionRepository,
-            actionSmallRepository,userActionSmallRepository)
+            actionSmallRepository)
     }
 
     override fun initComponents() {
@@ -72,18 +86,20 @@ class AddActionFragment :BaseFragment(), AddActionContract.View, View.OnClickLis
 
     override fun insertActionSuccess(action: Action) {
         this.action =action
+        for (i in  0..listActionSmallName.size step 1){
+            val actionSmall = ActionSmall(0,action.actionId,listActionSmallName.get(i))
+            presenter!!.insertActionSmall(actionSmall)
+        }
     }
 
     override fun insetFail(error: String) {
-        TODO("Not yet implemented")
+
     }
 
     override fun insertActionSmallSuccess(actionSmall: ActionSmall) {
-        TODO("Not yet implemented")
-    }
-
-    override fun insertUserActionSmallSuccess() {
-        TODO("Not yet implemented")
+        val fragment  = AddUserActionSmallFragment()
+        fragment.sendActionId(actionSmall.actionId,groupId)
+        addFragment(R.id.frag_main,AddUserActionSmallFragment(),false)
     }
 
     override fun onClick(v: View) {
@@ -98,6 +114,7 @@ class AddActionFragment :BaseFragment(), AddActionContract.View, View.OnClickLis
                 addFragment(R.id.frag_main, AddGroupFragment(),false)
             }
             R.id.buttonSaveAdd->{
+
                 checkAndShowActionSmall()
             }
             R.id.buttonCancelAddWork->{
@@ -107,10 +124,19 @@ class AddActionFragment :BaseFragment(), AddActionContract.View, View.OnClickLis
                 if (nameWork.text.isEmpty()||texttimeStartAdd.text.isEmpty()||texttimEndAdd.text.isEmpty()){
                     Toast.makeText(context,"không hợp lê",Toast.LENGTH_SHORT).show()
                 }
+                insertAction()
 
-//                presenter?.insertAction()
             }
         }
+    }
+
+    private fun insertAction() {
+        val name = nameWork.text.toString()
+        val timeStart = texttimeStartAdd.text.toString()
+        val timeEnd = texttimEndAdd.text.toString()
+        val action = Action(0,name,CommonData.getInstance().profile!!.profileId,
+        groupId,timeStart,timeEnd,null,null)
+        presenter?.insertAction(action)
     }
 
     private fun checkAndShowActionSmall() {
@@ -126,21 +152,24 @@ class AddActionFragment :BaseFragment(), AddActionContract.View, View.OnClickLis
     }
 
     private fun showDatetimeDialog(textView: TextView) {
-        val fmDateAndTime = DateFormat.getDateTimeInstance()
+        val fmDateAndTime = SimpleDateFormat("yyyy-MM-dd")
         val calendar = Calendar.getInstance()
-        val datePickerDialog = object :DatePickerDialog.OnDateSetListener{
-            override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+        val datePickerDialog =
+            DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
                 calendar.set(Calendar.YEAR,year)
                 calendar.set(Calendar.MONTH,month)
                 calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
                 textView.text = fmDateAndTime.format(calendar.time)
             }
-        }
         activity?.let {
             DatePickerDialog(
                 it,datePickerDialog,
                 calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH)
             ,calendar.get(Calendar.DAY_OF_MONTH)).show()
         }
+    }
+
+    fun sendGroupId(groupId: Int) {
+        this.groupId = groupId
     }
 }

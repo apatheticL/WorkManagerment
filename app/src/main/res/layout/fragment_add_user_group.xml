@@ -11,6 +11,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="Tạo nhóm thực hiện"
+        android:textSize="@dimen/sp_24"
+        android:textColor="@color/colorWhile"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:background="@android:color/holo_blue_dark"
         android:layout_height="?actionBarSize"
@@ -47,13 +50,13 @@
         android:background="@drawable/bg_button_add"
         android:text="@string/buttonAdd"
         android:textColor="@color/colorWhile"
-        app:layout_constraintEnd_toStartOf="@+id/buttonCancel"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCancelGroup"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <Button
-        android:id="@+id/buttonCancel"
+        android:id="@+id/buttonCancelGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button_cancle"

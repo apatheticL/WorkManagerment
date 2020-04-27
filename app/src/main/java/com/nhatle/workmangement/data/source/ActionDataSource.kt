@@ -13,13 +13,6 @@ interface ActionDataSource {
         fun updateAction(action: Action,callback: OnDataLoadedCallback<Action>)
         fun getAllMemberOnAction(actionId:Int, idTeam:Int,callback: OnDataLoadedCallback<List<UserTeamResponse>>)
     }
-    interface Local{
-        fun getAllActionUserCreate(profileId:Int):List<Action>
-        fun getAllActionUserMember(profileId:Int):List<Action>
-        fun insertAction(action:Action)
-        fun deleteAction(action: Action)
-        fun updateAction(action: Action)
-        fun getAllMemberOnAction(actionId:Int, idTeam:Int):List<UserTeamResponse>
-    }
+
 
 }
