@@ -21,7 +21,6 @@ open class BaseViewHolder<T>(itemView: View) : RecyclerView.ViewHolder(itemView)
         this.itemPosition = itemPosition
         this.itemData = itemData
     }
-
     open fun onHandleItemClick(mainItem: T) {
     }
 }

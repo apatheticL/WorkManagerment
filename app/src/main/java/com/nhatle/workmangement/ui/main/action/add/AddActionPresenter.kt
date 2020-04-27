@@ -12,8 +12,7 @@ import java.lang.Exception
 class AddActionPresenter(
     val view: AddActionContract.View,
     val actionRepository: ActionRemoteRepository,
-    val actionSmallRepository: ActionSmallRemoteRepository,
-    val userActionSmallRepository: UserActionSmallRepository
+    val actionSmallRepository: ActionSmallRemoteRepository
 ):AddActionContract.Presenter {
     override fun insertAction(action: Action) {
         actionRepository.insertAction(action,object :OnDataLoadedCallback<Action>{
@@ -56,25 +55,6 @@ class AddActionPresenter(
         })
     }
 
-    override fun insertUserActionSmall(userActionSmall: UserActionSmall) {
-        userActionSmallRepository.addUserActionSmall(userActionSmall,
-        object :OnDataLoadedCallback<UserActionSmall>{
-            override fun onSuccess(data: UserActionSmall) {
-                view.insertUserActionSmallSuccess()
-            }
 
-            override fun onSuccess() {
-            }
-
-            override fun onFailedConnect(string: String) {
-                view.insetFail(string)
-            }
-
-            override fun onFailed(exception: Exception) {
-                view.insetFail(error = exception.message.toString())
-            }
-
-        })
-    }
 
 }

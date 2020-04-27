@@ -11,10 +11,5 @@ interface UserActionReportDataSource {
         fun updateReport(userActionReport: UserActionReport,callback: OnDataLoadedCallback<UserActionReport>)
         fun deleteReport(reportId:Int,callback: OnDataLoadedCallback<Boolean>)
     }
-    interface Local{
-        fun getAllReport(actionId:Int):List<UserActionReportResponse>
-        fun insertReport(userActionReport: UserActionReport)
-        fun updateReport(userActionReport: UserActionReport)
-        fun deleteReport(reportId:Int)
-    }
+
 }

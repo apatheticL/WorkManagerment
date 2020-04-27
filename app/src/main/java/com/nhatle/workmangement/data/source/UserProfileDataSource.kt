@@ -10,9 +10,4 @@ interface UserProfileDataSource {
         fun registerAccount(registerResponse: RegisterResponse,callback: OnDataLoadedCallback<UserProfile>)
         fun updateProfile(userProfile: UserProfile,callback: OnDataLoadedCallback<UserProfile>)
     }
-    interface Local{
-        fun getInfoUserProfile():UserProfile
-        fun updateUserProfile(userProfile: UserProfile)
-        fun deleteUserProfile(userProfile: UserProfile)
-    }
 }

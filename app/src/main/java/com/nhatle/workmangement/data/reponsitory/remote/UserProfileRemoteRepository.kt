@@ -18,4 +18,5 @@ class UserProfileRemoteRepository(private val dataSource: UserProfileRemoteDataS
     override fun updateProfile(userProfile: UserProfile,callback: OnDataLoadedCallback<UserProfile>) {
         dataSource.updateProfile(userProfile,callback)
     }
+
 }

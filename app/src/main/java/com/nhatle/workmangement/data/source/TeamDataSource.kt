@@ -8,9 +8,5 @@ interface TeamDataSource {
         fun deleteTeam(temId:Int,callback: OnDataLoadedCallback<Boolean>)
         fun addTeam(team: Team,callback: OnDataLoadedCallback<Team>)
     }
-    interface Local{
-        fun deleteTeam(temId:Int)
-        fun addTeam(team: Team)
-        fun getAllMemberOnTeam(temId: Int)
-    }
+
 }

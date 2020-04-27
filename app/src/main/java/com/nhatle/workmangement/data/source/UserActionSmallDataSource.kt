@@ -15,10 +15,5 @@ interface UserActionSmallDataSource {
         fun updateUserActionSmall(userActionSmall: UserActionSmall,callback: OnDataLoadedCallback<UserActionSmall>)
         fun getAllMemberOnActionInGroup(groupId: Int,actionId: Int,callback: OnDataLoadedCallback<List<UserTeamResponse>>)
     }
-    interface Local{
-        fun getALlUserActionSmall(actionId:Int):List<UserActionSmallResponse>
-        fun addUserActionSmall(userActionSmall: UserActionSmall)
-        fun deleteUserActionSmall(groupId:Int,profileId:Int,actionSmallId:Int)
-        fun updateUserActionSmall(userActionSmall: UserActionSmall)
-    }
+
 }

@@ -9,11 +9,10 @@ interface AddActionContract {
         fun insertActionSuccess(action:Action)
         fun insetFail(error:String)
         fun insertActionSmallSuccess(actionSmall: ActionSmall)
-        fun insertUserActionSmallSuccess()
+
     }
     interface Presenter{
         fun insertAction(action:Action)
         fun insertActionSmall(actionSmall: ActionSmall)
-        fun insertUserActionSmall(userActionSmall: UserActionSmall)
     }
 }
