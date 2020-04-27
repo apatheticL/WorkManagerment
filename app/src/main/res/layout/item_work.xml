@@ -164,13 +164,14 @@
                 app:layout_constraintTop_toTopOf="@+id/titleTimeEnd" />
 
             <ImageButton
+                android:id="@+id/buttonManager"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_16"
                 android:layout_marginEnd="@dimen/dp_24"
                 android:layout_marginRight="@dimen/dp_24"
                 android:background="?selectableItemBackground"
-                android:src="@drawable/ic_comment_black_24dp"
+                android:src="@drawable/ic_more_horiz_black_24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

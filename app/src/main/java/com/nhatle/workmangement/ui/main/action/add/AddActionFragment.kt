@@ -135,7 +135,7 @@ class AddActionFragment :BaseFragment(), AddActionContract.View, View.OnClickLis
         val timeStart = texttimeStartAdd.text.toString()
         val timeEnd = texttimEndAdd.text.toString()
         val action = Action(0,name,CommonData.getInstance().profile!!.profileId,
-        groupId,timeStart,timeEnd,null,null)
+        groupId,timeStart,timeEnd,null,"Chua hoan thanh",null)
         presenter?.insertAction(action)
     }
 

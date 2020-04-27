@@ -37,7 +37,8 @@ interface UserService {
             Call<ArrayList<UserProfile>>
 
     @POST(value = "/acceptedFriend")
-    fun acceptedFriend(@Body invitationFriend: InvitationFriend):Call<Boolean>
+    fun acceptedFriend(@Body invitationFriend: InvitationFriend): Call<Boolean>
+
     @GET(value = "/getAllUserSenderFriend")
     fun getAllUserSenderFriend(@Query("idProfile") idProfile: Int):
             Call<ArrayList<FriendResponse>>
@@ -57,7 +58,7 @@ interface UserService {
     fun updateWork(@Body action: Action): Call<BaseResponse<Action>>
 
     @POST(value = "/deleteWork")
-    fun deleteWork(@Query("idW") idW: Int): Call<Boolean>
+    fun deleteWork(@Query("idW") idW: Int,@Query("profileId")profileId: Int): Call<Boolean>
 
     @GET(value = "/getAllMemberOnActionInGroup")
     fun getAllMemberOnActionInGroup(
@@ -66,42 +67,44 @@ interface UserService {
     ):
             Call<ArrayList<UserTeamResponse>>
 
-    @POST(value="/deleteGroup")
-    fun deleteGroup(@Query("groupId")groupId:Int):Call<Boolean>
+    @POST(value = "/deleteGroup")
+    fun deleteGroup(@Query("groupId") groupId: Int): Call<Boolean>
 
-    @POST(value="/addGroup")
-    fun addGroup(@Body team: Team):Call<BaseResponse<Team>>
+    @POST(value = "/addGroup")
+    fun addGroup(@Body team: Team): Call<BaseResponse<Team>>
 
-    @POST(value="/addMemberForGroup")
-    fun addMemberForGroup(@Body listUserTeam:List<UserTeam>):Call<List<BaseResponse<UserTeam>>>
+    @POST(value = "/addMemberForGroup")
+    fun addMemberForGroup(@Body listUserTeam: List<UserTeam>): Call<List<BaseResponse<UserTeam>>>
 
-    @POST(value="/deleteMemberOnGroup")
-    fun deleteMemberOnGroup(@Body userTeam: UserTeam):Call<Boolean>
+    @POST(value = "/deleteMemberOnGroup")
+    fun deleteMemberOnGroup(@Body userTeam: UserTeam): Call<Boolean>
 
     @GET(value = "/getAllActionSmallByAction")
     fun getAllActionSmallByAction(@Query("actionId") actionId: Int):
             Call<ArrayList<ActionSmall>>
 
-    @POST(value="/addActionSmall")
+    @POST(value = "/addActionSmall")
     fun addActionSmall(@Body actionSmall: ActionSmall):
             Call<BaseResponse<ActionSmall>>
 
-    @POST(value="/deleteActionSmall")
-    fun deleteActionSmall(@Query("actionSmallId") actionSmallId:Int):
+    @POST(value = "/deleteActionSmall")
+    fun deleteActionSmall(@Query("actionSmallId") actionSmallId: Int):
             Call<Boolean>
 
     @GET(value = "/getAllUserMakeActionSmall")
     fun getAllUserMakeActionSmall(@Query("actionId") actionId: Int):
             Call<ArrayList<UserActionSmallResponse>>
 
-    @POST(value="/addUserActionSmall")
+    @POST(value = "/addUserActionSmall")
     fun addUserActionSmall(@Body userActionSmall: UserActionSmall):
             Call<BaseResponse<UserActionSmall>>
 
-    @POST(value="/deleteUserActionSmall")
-    fun deleteUserActionSmall(@Query("groupId") groupId:Int,
-                              @Query("profileId") profileId:Int,
-                              @Query("actionSmallId") actionSmallId:Int):
+    @POST(value = "/deleteUserActionSmall")
+    fun deleteUserActionSmall(
+        @Query("groupId") groupId: Int,
+        @Query("profileId") profileId: Int,
+        @Query("actionSmallId") actionSmallId: Int
+    ):
             Call<Boolean>
 
     @POST(value = "/updateUserActionSmall")
@@ -112,7 +115,7 @@ interface UserService {
     fun getAllReportOnAction(@Query("actionId") actionId: Int):
             Call<ArrayList<UserActionReportResponse>>
 
-    @POST(value="/addReportOnAction")
+    @POST(value = "/addReportOnAction")
     fun addReportOnAction(@Body userActionReport: UserActionReport):
             Call<BaseResponse<UserActionReport>>
 
@@ -120,20 +123,31 @@ interface UserService {
     fun updateReportOnAction(@Body userActionReport: UserActionReport):
             Call<BaseResponse<UserActionReport>>
 
-    @POST(value="/deleteReportOnAction")
-    fun deleteReportOnAction(@Query("reportId") reportId:Int):
+    @POST(value = "/deleteReportOnAction")
+    fun deleteReportOnAction(@Query("reportId") reportId: Int):
             Call<Boolean>
 
-    @POST(value="/sendComment")
+    @POST(value = "/sendComment")
     fun sendComment(@Body comment: Comment):
             Call<BaseResponse<Comment>>
 
-    @POST(value="/deleteCommentOnAction")
-    fun deleteCommentOnAction(@Query("commentId") commentId:Int,@Query("profileId") profileId: Int):
+    @POST(value = "/updateStatusWork")
+    fun updateStatusWork(@Query("id") id: Int
+                         , @Query("status") status: String):Call<Boolean>
+
+    @POST(value = "/deleteCommentOnAction")
+    fun deleteCommentOnAction(
+        @Query("commentId") commentId: Int,
+        @Query("profileId") profileId: Int
+    ):
             Call<Boolean>
+
     @GET(value = "/getAllCommentOnAction")
-    fun getAllCommentOnAction(@Query("actionId") actionId:Int):Call<ArrayList<CommentResponse>>
+    fun getAllCommentOnAction(@Query("actionId") actionId: Int): Call<ArrayList<CommentResponse>>
+
     @GET(value = "/getAllActionSmallOfUser")
-    fun getAllActionSmallOfUser(@Query("actionId") actionId: Int,
-                                @Query("profileId") profileId: Int):Call<ArrayList<UserActionSmallResponse>>
+    fun getAllActionSmallOfUser(
+        @Query("actionId") actionId: Int,
+        @Query("profileId") profileId: Int
+    ): Call<ArrayList<UserActionSmallResponse>>
 }

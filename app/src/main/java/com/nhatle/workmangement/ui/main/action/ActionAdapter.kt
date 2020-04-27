@@ -3,6 +3,7 @@ package com.nhatle.workmangement.ui.main.action
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.SeekBar
 import com.nhatle.workmangement.R
 import com.nhatle.workmangement.data.model.response.ActionResponse
@@ -27,6 +28,14 @@ class ActionAdapter(private val call: SendData) :
             val current = itemData.numberFinish
             val all = itemData.numberActionMaked
             showSeekBar(itemView.seekBarStatus,current,all)
+            listenerButton(itemView.buttonManager,itemData)
+        }
+
+        private fun listenerButton(
+            buttonManager: ImageButton?,
+            itemData: ActionResponse
+        ) {
+            call.showMenu(buttonManager,itemData)
         }
 
         private fun showSeekBar(
@@ -61,6 +70,7 @@ class ActionAdapter(private val call: SendData) :
 
     interface SendData {
         fun sendData(actionResponse: ActionResponse, position: Int)
+        fun showMenu(buttonManager: ImageButton?,data:ActionResponse)
     }
 
 }

@@ -55,8 +55,12 @@ class ActionRemoteDataSource private constructor(var userService: UserService) :
         })
     }
 
-    override fun deleteAction(action: Action, callback: OnDataLoadedCallback<Boolean>) {
-        userService.deleteWork(action.actionId).enqueue(object : Callback<Boolean> {
+    override fun deleteAction(
+        actionId: Int,
+        profileId: Int,
+        callback: OnDataLoadedCallback<Boolean>
+    ) {
+        userService.deleteWork(actionId,profileId).enqueue(object : Callback<Boolean> {
             override fun onFailure(call: Call<Boolean>, t: Throwable) {
                 callback.onFailed(t as Exception)
             }

@@ -10,6 +10,7 @@ data class ActionResponse (
     var timeStart:String,
     var timeEnd:String,
     var description:String,
+    var actionStatus:String,
     var createdTime:String,
     var numberDelay:Int,
     var numberActionMaked:Int,
