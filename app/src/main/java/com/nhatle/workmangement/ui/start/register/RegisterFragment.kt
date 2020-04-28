@@ -4,20 +4,22 @@ import android.view.View
 import android.widget.Toast
 import com.nhatle.workmangement.R
 import com.nhatle.workmangement.data.model.UserProfile
+import com.nhatle.workmangement.data.model.response.RegisterResponse
 import com.nhatle.workmangement.data.reponsitory.remote.UserProfileRemoteRepository
 import com.nhatle.workmangement.data.source.remote.UserProfileRemoteDataSource
 import com.nhatle.workmangement.ui.base.BaseFragment
+import com.nhatle.workmangement.ui.start.login.LoginFragment
 import com.nhatle.workmangement.until.Common
-import com.nhatle.workmangement.until.api.UserService
 import kotlinx.android.synthetic.main.fragment_register.*
+import kotlinx.android.synthetic.main.fragment_update_profile.*
 
 class RegisterFragment:BaseFragment(), RegisterContract.View, View.OnClickListener {
     override val layoutResource: Int =R.layout.fragment_register
     private var presenter:RegisterPresenter?=null
-    private var userService:UserService?=null
+
     override fun initData() {
         initPresenter()
-        userService = Common.getUserService()
+
     }
     override fun initComponents() {
         registerListener()
@@ -29,7 +31,8 @@ class RegisterFragment:BaseFragment(), RegisterContract.View, View.OnClickListen
     }
 
     private fun initPresenter() {
-        val dataSource = UserProfileRemoteDataSource.getInstance(userService!!)
+        val userService = Common.getUserService()
+        val dataSource = UserProfileRemoteDataSource.getInstance(userService)
         val repository= UserProfileRemoteRepository(dataSource)
         presenter = RegisterPresenter(this,repository)
     }
@@ -42,7 +45,40 @@ class RegisterFragment:BaseFragment(), RegisterContract.View, View.OnClickListen
 
     }
 
+    override fun onRegisteSuccess() {
+        addFragment(R.id.frag_start,LoginFragment(),false)
+    }
+
     override fun onClick(v: View?) {
-        TODO("Not yet implemented")
+        when(v?.id){
+            R.id.buttonRegister->{
+                updateProfile()
+            }
+            R.id.imageButtonLogin->{
+                addFragment(R.id.frag_start,LoginFragment(),false)
+            }
+        }
+    }
+
+    private fun updateProfile() {
+        if (editUsername.text.isNotEmpty()
+            &&editConfirmPass.text.isNotEmpty()
+            && editPass.text.isNotEmpty()
+            && editAddress.text.isNotEmpty()
+            && editEmal.text.isNotEmpty()
+            && editFullname.text.isNotEmpty()
+            && editPhoneNumber.text.isNotEmpty()){
+            if (editPass.text.toString().equals(editConfirmPass.text.toString())){
+                val username = editUsername.text.toString()
+                val pass = editPass.text.toString()
+                val fullName = editFullname.text.toString()
+                val address = editAddress.text.toString()
+                val email = editEmal.text.toString()
+                val phone = editEmal.text.toString()
+                val registerResponse = RegisterResponse(username,pass,null,fullName,
+                    address,email,phone,null)
+                presenter!!.handleRegister(registerResponse)
+            }
+        }
     }
 }

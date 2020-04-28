@@ -36,8 +36,9 @@ class AddUserActionSmallFragment : BaseFragment(), AddUserActionSmallContract.Vi
     private var userTeam: UserTeam? = null
     private var presenter: AddUserActionSmallPresenter? = null
     override fun initData() {
-        addPresenter()
-        getAllActionSmall()
+        configView()
+        registerListener()
+
     }
 
     private fun getAllActionSmall() {
@@ -62,8 +63,8 @@ class AddUserActionSmallFragment : BaseFragment(), AddUserActionSmallContract.Vi
     }
 
     override fun initComponents() {
-        configView()
-        registerListener()
+        addPresenter()
+        getAllActionSmall()
     }
 
     private fun registerListener() {
@@ -109,7 +110,6 @@ class AddUserActionSmallFragment : BaseFragment(), AddUserActionSmallContract.Vi
     }
 
     override fun onClick(v: View?) {
-        var userTeam: UserTeam? = null
         when (v?.id) {
             R.id.buttonAddStartDate -> {
                 showDatetimeDialog(texttimeStartAdd)
@@ -142,18 +142,19 @@ class AddUserActionSmallFragment : BaseFragment(), AddUserActionSmallContract.Vi
                 texttimeStartAdd.text.toString(),
                 texttimEndAdd.text.toString()
             )
+            presenter!!.insertUserActionSmall(userActionSmall =userActionSmall )
         }
+
     }
 
     private fun showGetMemberDialog() {
-        var customDialog: CustomDialog? = null
         presenter?.getAllMemberOnAction(actionId, groupId)
         adapterDialog = MemberAdapter(object : MemberAdapter.SendData {
             override fun sendUserTeam(data: UserTeamResponse) {
                 userTeam = UserTeam(data.groupId, data.profileId)
             }
         })
-        customDialog = CustomDialog(context!!, adapterDialog!!)
+        val customDialog: CustomDialog = CustomDialog(context!!, adapterDialog!!)
         customDialog.show()
         customDialog.setCanceledOnTouchOutside(false)
     }
@@ -162,7 +163,7 @@ class AddUserActionSmallFragment : BaseFragment(), AddUserActionSmallContract.Vi
         val fmDateAndTime = SimpleDateFormat("yyyy-MM-dd")
         val calendar = Calendar.getInstance()
         val datePickerDialog: DatePickerDialog.OnDateSetListener =
-            DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+            DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
                 calendar.set(Calendar.YEAR, year)
                 calendar.set(Calendar.MONTH, month)
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)

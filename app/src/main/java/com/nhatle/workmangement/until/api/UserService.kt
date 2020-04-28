@@ -114,6 +114,12 @@ interface UserService {
     @POST(value = "/deleteInvitationFriend")
     fun deleteInvitationFriend(@Query("friendId") friendId: Int): Call<Boolean>
 
+    @POST(value = "/cancelInvitationFriend")
+    fun cancelInvitationFriend(
+        @Query("senderId") senderId: Int,
+        @Query("receiverId") receiverId: Int
+    ): Call<Boolean>
+
     @GET(value = "/getAllReportOnAction")
     fun getAllReportOnAction(@Query("actionId") actionId: Int):
             Call<ArrayList<UserActionReportResponse>>

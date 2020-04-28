@@ -43,6 +43,11 @@
     <string name="nameReport">Báo Cáo </string>
     <string name="nameAssignment">Phân công</string>
     <string name="report">Báo Cáo</string>
+    <string name="contentComment">Khoảng thời gian</string>
+    <string name="email">Emal</string>
+    <string name="phone">Phone Number</string>
+    <string name="address">Address</string>
+    <string name="fullName">Full Name</string>
 
     <string-array name="planets_array">
         <item>Member</item>

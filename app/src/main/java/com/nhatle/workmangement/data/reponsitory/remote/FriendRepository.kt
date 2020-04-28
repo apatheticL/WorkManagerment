@@ -43,4 +43,16 @@ class FriendRepository(val dataSource: FriendRemoteDataSource):FriendDataSource{
         dataSource.getAllUserSenderFriend(profileId, callback)
     }
 
+    override fun deleteInvitationFriend(friendId: Int, callback: OnDataLoadedCallback<Boolean>) {
+        dataSource.deleteInvitationFriend(friendId,callback)
+    }
+
+    override fun cancelInvitationFriend(
+        senderId: Int,
+        receiverId: Int,
+        callback: OnDataLoadedCallback<Boolean>
+    ) {
+        dataSource.cancelInvitationFriend(senderId,receiverId,callback)
+    }
+
 }

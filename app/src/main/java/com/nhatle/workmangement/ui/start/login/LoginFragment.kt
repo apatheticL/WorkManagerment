@@ -16,11 +16,8 @@ import kotlinx.android.synthetic.main.fragment_login.*
 class LoginFragment:BaseFragment(), LoginContract.View, View.OnClickListener {
     override val layoutResource: Int = R.layout.fragment_login
     private var presenter:LoginPresenter?=null
-    private var userService:UserService?=null
-
 
     override fun initData() {
-        userService = Common.getUserService()
         registerListeners()
     }
 
@@ -34,7 +31,8 @@ class LoginFragment:BaseFragment(), LoginContract.View, View.OnClickListener {
     }
 
     private fun initPresenter() {
-        val dataSource = UserProfileRemoteDataSource.getInstance(userService!!)
+        val userService = Common.getUserService()
+        val dataSource = UserProfileRemoteDataSource.getInstance(userService)
         val userProfileRemoteRepository = UserProfileRemoteRepository(dataSource)
         presenter = LoginPresenter(this,userProfileRemoteRepository)
     }

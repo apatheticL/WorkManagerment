@@ -1,8 +1,10 @@
 package com.nhatle.workmangement.ui.base
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class BaseRecyclerViewAdapter<T, V : BaseViewHolder<T>> : RecyclerView.Adapter<V>() {
+abstract class BaseRecyclerViewAdapter<T, V : BaseViewHolder<T>> :
+    RecyclerView.Adapter<V>() {
 
     private var items = ArrayList<T>()
 
@@ -10,6 +12,12 @@ abstract class BaseRecyclerViewAdapter<T, V : BaseViewHolder<T>> : RecyclerView.
 
     override fun onBindViewHolder(viewHolder: V, position: Int) {
         getItem(position)?.let { viewHolder.onBindData(it) }
+        setOnClick(viewHolder, viewHolder.itemView, viewHolder.adapterPosition)
+    }
+    private fun setOnClick(holder: V, itemView: View, position: Int) {
+        itemView.setOnClickListener {
+            getItem(position)?.let { holder.onBindData(position, it) }
+        }
     }
 
     protected fun getItem(position: Int): T? =

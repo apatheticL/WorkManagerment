@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#E4E1E1">
@@ -29,39 +28,51 @@
                 app:layout_constraintVertical_bias="0.384" />
 
 
-                <TextView
-                    android:id="@+id/textNameFriend"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Nguyen Van An"
-                    android:textSize="@dimen/sp_24"
-                    android:textStyle="bold|italic"
-                    app:layout_constraintLeft_toRightOf="@id/imageAvatarFriend"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textNameFriend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:text="Nguyen Van An"
+                android:textSize="@dimen/sp_24"
+                android:textStyle="bold|italic"
+                app:layout_constraintLeft_toRightOf="@id/imageAvatarFriend"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textAddressByUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_32"
+                android:text="Thanh Hoa"
+                android:layout_marginTop="@dimen/dp_8"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="italic"
+                app:layout_constraintLeft_toRightOf="@id/imageAvatarFriend"
+                app:layout_constraintTop_toBottomOf="@id/textNameFriend" />
 
             <Button
                 android:id="@+id/buttonAddFriend"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="@dimen/dp_32"
                 android:layout_marginLeft="@dimen/dp_10"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginRight="@dimen/dp_32"
                 android:background="@drawable/button_add"
                 android:text="Thêm bạn bè"
                 android:textColor="@color/colorWhile"
-                android:layout_marginRight="@dimen/dp_32"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textNameFriend"
-                app:layout_constraintTop_toBottomOf="@+id/textNameFriend" />
+                app:layout_constraintTop_toBottomOf="@+id/textAddressByUser" />
 
             <Button
                 android:id="@+id/buttonCancelFriend"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="@dimen/dp_32"
+                android:layout_height="@dimen/dp_32"
                 android:layout_marginTop="14dp"
+                android:layout_marginRight="@dimen/dp_32"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/bg_button"
                 android:text="Hủy bỏ"
@@ -71,7 +82,6 @@
                 app:layout_constraintStart_toStartOf="@+id/buttonAddFriend"
                 app:layout_constraintTop_toBottomOf="@+id/buttonAddFriend"
                 app:layout_constraintVertical_bias="0.434" />
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

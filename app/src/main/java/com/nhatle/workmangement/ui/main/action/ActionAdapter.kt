@@ -16,12 +16,11 @@ class ActionAdapter(private val call: SendData) :
     BaseRecyclerViewAdapter<ActionResponse, ActionAdapter.ActionHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActionHolder {
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.item_work, parent, false)
-        return ActionHolder(layout, call, parent)
+        return ActionHolder(layout, call)
     }
 
-    class ActionHolder(itemView: View,val call: SendData,val container:ViewGroup) :
+    class ActionHolder(itemView: View,val call: SendData) :
         BaseViewHolder<ActionResponse>(itemView) {
-        private val format = SimpleDateFormat("dd/MM/yyyy")
         override fun onBindData(itemData: ActionResponse) {
             super.onBindData(itemData)
             initDataHolder(itemView, itemData)
@@ -54,8 +53,8 @@ class ActionAdapter(private val call: SendData) :
             itemData1.nameAction.text = itemData.actionName
             itemData1.statusActionSmall.text =
                 (itemData.numberFinish).toString() + "/" + itemData.numberActionMaked
-            itemData1.timeStart.text = format.format(itemData.timeStart)
-            itemData1.timeEnd.text = format.format(itemData.timeEnd)
+            itemData1.timeStart.text = itemData.timeStart
+            itemData1.timeEnd.text = itemData.timeEnd
             itemData1.statusDelay.text = itemData.numberDelay.toString()
             itemData1.nameGroup.text = itemData.groupName
             itemData1.nameCreator.text = itemData.nameCreator

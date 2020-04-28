@@ -5,16 +5,15 @@ import com.nhatle.workmangement.data.model.UserActionSmall
 import com.nhatle.workmangement.data.model.response.UserActionSmallResponse
 import com.nhatle.workmangement.data.model.response.UserTeamResponse
 import com.nhatle.workmangement.data.source.UserActionSmallDataSource
-import com.nhatle.workmangement.data.source.remote.ActionSmallRemoteDataSource
 import com.nhatle.workmangement.data.source.remote.UserActionSmallRemoteDataSource
 
-class UserActionSmallRepository(private val dataSource: UserActionSmallRemoteDataSource):
-UserActionSmallDataSource.Remote{
+class UserActionSmallRepository(private val dataSource: UserActionSmallRemoteDataSource) :
+    UserActionSmallDataSource.Remote {
     override fun getALlUserActionSmall(
         actionId: Int,
         callback: OnDataLoadedCallback<List<UserActionSmallResponse>>
     ) {
-        dataSource.getALlUserActionSmall(actionId = actionId,callback = callback)
+        dataSource.getALlUserActionSmall(actionId = actionId, callback = callback)
     }
 
     override fun getAllActionSmallByUser(
@@ -22,14 +21,18 @@ UserActionSmallDataSource.Remote{
         profileId: Int,
         callback: OnDataLoadedCallback<List<UserActionSmallResponse>>
     ) {
-        dataSource.getAllActionSmallByUser(actionId =actionId,profileId = profileId,callback = callback)
+        dataSource.getAllActionSmallByUser(
+            actionId = actionId,
+            profileId = profileId,
+            callback = callback
+        )
     }
 
     override fun addUserActionSmall(
         userActionSmall: UserActionSmall,
         callback: OnDataLoadedCallback<UserActionSmall>
     ) {
-       dataSource.addUserActionSmall(userActionSmall = userActionSmall,callback = callback)
+        dataSource.addUserActionSmall(userActionSmall = userActionSmall, callback = callback)
     }
 
     override fun deleteUserActionSmall(
@@ -38,15 +41,17 @@ UserActionSmallDataSource.Remote{
         actionSmallId: Int,
         callback: OnDataLoadedCallback<Boolean>
     ) {
-        dataSource.deleteUserActionSmall(groupId = groupId,profileId = profileId,
-            actionSmallId = actionSmallId,callback = callback)
+        dataSource.deleteUserActionSmall(
+            groupId = groupId, profileId = profileId,
+            actionSmallId = actionSmallId, callback = callback
+        )
     }
 
     override fun updateUserActionSmall(
         userActionSmall: UserActionSmall,
         callback: OnDataLoadedCallback<UserActionSmall>
     ) {
-        dataSource.updateUserActionSmall(userActionSmall = userActionSmall,callback = callback)
+        dataSource.updateUserActionSmall(userActionSmall = userActionSmall, callback = callback)
     }
 
     override fun getAllMemberOnActionInGroup(

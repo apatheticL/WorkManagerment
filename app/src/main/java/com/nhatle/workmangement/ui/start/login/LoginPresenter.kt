@@ -12,10 +12,6 @@ class LoginPresenter(var loginView:LoginContract.View ,
     override fun handleLogin(username: String, password: String) {
         remoteRepository.login(username,password,object :
             OnDataLoadedCallback<UserProfile> {
-            override fun onSuccess(data: ArrayList<UserTeamResponse>?) {
-                loginView.loginSuccess(user =data )
-            }
-
             override fun onFailedConnect(string: String) {
                 loginView.onLoginFailure(string)
             }
@@ -26,6 +22,10 @@ class LoginPresenter(var loginView:LoginContract.View ,
 
             override fun onSuccess() {
 
+            }
+
+            override fun onSuccess(data: UserProfile) {
+                loginView.loginSuccess(data)
             }
 
         })

@@ -12,4 +12,5 @@ interface FriendDataSource {
     fun senderFriend(invitationFriend: InvitationFriend,callback: OnDataLoadedCallback<InvitationFriend>)
     fun getAllUserSenderFriend(profileId: Int,callback: OnDataLoadedCallback<List<FriendResponse>>)
     fun deleteInvitationFriend(friendId: Int,callback: OnDataLoadedCallback<Boolean>)
+    fun cancelInvitationFriend(senderId: Int,receiverId:Int,callback: OnDataLoadedCallback<Boolean>)
 }

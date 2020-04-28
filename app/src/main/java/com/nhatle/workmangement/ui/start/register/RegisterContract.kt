@@ -7,6 +7,7 @@ interface RegisterContract {
     interface View {
         fun registerSuccess(user: UserProfile)
         fun onRegisterFailure(error: String)
+        fun onRegisteSuccess()
     }
 
     interface Presenter {

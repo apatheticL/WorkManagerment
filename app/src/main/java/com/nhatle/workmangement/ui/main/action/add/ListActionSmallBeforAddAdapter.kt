@@ -5,21 +5,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import com.nhatle.workmangement.R
+import com.nhatle.workmangement.data.until.ActionSmallBefor
 import com.nhatle.workmangement.ui.base.BaseRecyclerViewAdapter
 import com.nhatle.workmangement.ui.base.BaseViewHolder
 import kotlinx.android.synthetic.main.item_action_small.view.*
 
 class ListActionSmallBeforAddAdapter:
-    BaseRecyclerViewAdapter<String, ListActionSmallBeforAddAdapter.ActionBeforeAddHolder>() {
+    BaseRecyclerViewAdapter<ActionSmallBefor, ListActionSmallBeforAddAdapter.ActionBeforeAddHolder>() {
     private var list = getData()
-    class ActionBeforeAddHolder(itemView: View, val call:DeleteItem) : BaseViewHolder<String>(itemView){
-        override fun onBindData(itemData: String) {
+    class ActionBeforeAddHolder(itemView: View, val call:DeleteItem) : BaseViewHolder<ActionSmallBefor>(itemView){
+        override fun onBindData(itemData: ActionSmallBefor) {
             super.onBindData(itemData)
-            itemView.nameActionSmall.text = itemData
+            itemView.nameActionSmall.text = itemData.actionSmallName
             itemView.buttonSave.visibility = View.GONE
         }
 
-        override fun onBindData(itemPosition: Int, itemData: String) {
+        override fun onBindData(itemPosition: Int, itemData: ActionSmallBefor) {
             super.onBindData(itemPosition, itemData)
             registerOnclick(itemView.buttonDelete,itemPosition)
         }

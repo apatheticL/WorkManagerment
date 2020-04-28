@@ -12,9 +12,6 @@ class RegisterPresenter(var registerView: RegisterContract.View,
     override fun handleRegister(registerResponse: RegisterResponse) {
         repository.registerAccount(registerResponse,object :
             OnDataLoadedCallback<UserProfile> {
-            override fun onSuccess(data: ArrayList<UserTeamResponse>?) {
-                registerView.registerSuccess(user = data)
-            }
 
             override fun onFailedConnect(string: String) {
                 registerView.onRegisterFailure(string)
@@ -22,6 +19,14 @@ class RegisterPresenter(var registerView: RegisterContract.View,
 
             override fun onFailed(exception: Exception) {
                 exception.message?.let { registerView.onRegisterFailure(it) }
+            }
+
+            override fun onSuccess(data: UserProfile) {
+                registerView.registerSuccess(user = data)
+            }
+
+            override fun onSuccess() {
+                registerView.onRegisteSuccess()
             }
 
         })

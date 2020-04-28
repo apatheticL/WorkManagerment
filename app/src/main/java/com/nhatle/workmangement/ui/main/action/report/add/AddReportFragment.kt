@@ -21,10 +21,6 @@ class AddReportFragment : BaseFragment(), View.OnClickListener, AddActionReportC
     private var userActionSmallId = 0
     private var actionId = 0
     override fun initData() {
-        configPresenter()
-    }
-
-    override fun initComponents() {
         Glide.with(circleAvatarUserRe).load(CommonData.getInstance().profile!!.avatar)
             .placeholder(R.drawable.bavarian).into(circleAvatarUserRe)
         textFullnameCreateRe.text = CommonData.getInstance().profile!!.fullName
@@ -32,6 +28,11 @@ class AddReportFragment : BaseFragment(), View.OnClickListener, AddActionReportC
         val format = SimpleDateFormat("yyyy-MM-dd")
         textDateCreateReport.text = format.format(date)
         registerListener()
+    }
+
+    override fun initComponents() {
+        configPresenter()
+
     }
 
     private fun registerListener() {

@@ -6,7 +6,7 @@ import com.nhatle.workmangement.data.model.response.UserActionReportResponse
 import com.nhatle.workmangement.data.source.UserActionReportDataSource
 import com.nhatle.workmangement.data.source.remote.UserActionReportRemoteDataSource
 
-class UserActionReportRepository( val dataSource: UserActionReportRemoteDataSource) :
+class UserActionReportRepository(val dataSource: UserActionReportRemoteDataSource) :
     UserActionReportDataSource.Remote {
     override fun getAllReport(
         actionId: Int,
