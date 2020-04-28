@@ -9,5 +9,6 @@ interface UserProfileDataSource {
         fun login(userName:String,password:String,callback: OnDataLoadedCallback<UserProfile>)
         fun registerAccount(registerResponse: RegisterResponse,callback: OnDataLoadedCallback<UserProfile>)
         fun updateProfile(userProfile: UserProfile,callback: OnDataLoadedCallback<UserProfile>)
+        fun getInfoProfile(profileId: Int,callback: OnDataLoadedCallback<UserProfile>)
     }
 }

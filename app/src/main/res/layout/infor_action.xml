@@ -63,7 +63,7 @@
         android:layout_marginRight="@dimen/dp_16"
         android:text="@string/titleTimeEnd"
         app:layout_constraintEnd_toStartOf="@+id/timeEndAction"
-        tools:layout_editor_absoluteY="134dp" />
+        />
 
     <TextView
         android:id="@+id/textView8"
@@ -101,5 +101,5 @@
         android:layout_marginRight="@dimen/dp_16"
         android:textColor="@color/colorBack"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="134dp" />
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

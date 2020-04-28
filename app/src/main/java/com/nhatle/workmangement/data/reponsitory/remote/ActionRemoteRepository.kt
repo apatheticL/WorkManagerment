@@ -22,8 +22,12 @@ class ActionRemoteRepository(private val dataSource: ActionRemoteDataSource) :
         dataSource.insertAction(action = action, callback = callback)
     }
 
-    override fun deleteAction(actionId: Int,profileId: Int, callback: OnDataLoadedCallback<Boolean>) {
-        dataSource.deleteAction(actionId = actionId,profileId = profileId, callback = callback)
+    override fun deleteAction(
+        actionId: Int,
+        profileId: Int,
+        callback: OnDataLoadedCallback<Boolean>
+    ) {
+        dataSource.deleteAction(actionId = actionId, profileId = profileId, callback = callback)
     }
 
     override fun updateAction(action: Action, callback: OnDataLoadedCallback<Action>) {

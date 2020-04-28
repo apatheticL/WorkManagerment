@@ -10,13 +10,14 @@ import com.nhatle.workmangement.data.source.remote.UserActionReportRemoteDataSou
 import com.nhatle.workmangement.ui.base.BaseFragment
 import com.nhatle.workmangement.ui.main.action.report.update.UpdateActionUserReportFragment
 import com.nhatle.workmangement.until.Common
+import kotlinx.android.synthetic.main.fragment_report.*
 
 class UserActionReportFragment(val actionId: Int) : BaseFragment(), UserActionReportContract.View {
     override val layoutResource: Int = R.layout.fragment_report
     private var presenter: UserActionReportPresenter? = null
     private var adapter: ActionReportAdapter? = null
     override fun initData() {
-        initPresenter()
+        initRecyclerView()
     }
 
     private fun initPresenter() {
@@ -28,7 +29,8 @@ class UserActionReportFragment(val actionId: Int) : BaseFragment(), UserActionRe
     }
 
     override fun initComponents() {
-        initRecyclerView()
+        initPresenter()
+
     }
 
     private fun initRecyclerView() {
@@ -41,6 +43,7 @@ class UserActionReportFragment(val actionId: Int) : BaseFragment(), UserActionRe
             }
 
         })
+        recyclerReport.adapter = adapter
     }
 
     private fun configMenu(itemData: UserActionReportResponse, buttonMenu: ImageButton) {

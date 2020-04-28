@@ -24,7 +24,9 @@ class UpdateActionFragment : BaseFragment(), UpdateActionContract.View, View.OnC
     private var actionResponse: ActionResponse? = null
     private var presenter: UpdateActionPresenter? = null
     override fun initData() {
-        initPresenter()
+        //loadData()
+        regisListener()
+
     }
 
     private fun initPresenter() {
@@ -35,8 +37,8 @@ class UpdateActionFragment : BaseFragment(), UpdateActionContract.View, View.OnC
     }
 
     override fun initComponents() {
+        initPresenter()
         loadData()
-        regisListener()
     }
 
     private fun regisListener() {
@@ -85,7 +87,7 @@ class UpdateActionFragment : BaseFragment(), UpdateActionContract.View, View.OnC
         val fmDateAndTime = SimpleDateFormat("yyyy-MM-dd")
         val calendar = Calendar.getInstance()
         val datePickerDialog =
-            DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+            DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
                 calendar.set(Calendar.YEAR,year)
                 calendar.set(Calendar.MONTH,month)
                 calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)

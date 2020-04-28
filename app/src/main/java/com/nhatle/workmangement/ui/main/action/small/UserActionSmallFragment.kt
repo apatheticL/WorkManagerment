@@ -18,8 +18,8 @@ class UserActionSmallFragment(val actionId:Int) : BaseFragment(),
     private var myUserActionSmallAdapter: MyUserActionSmallAdapter? = null
 
     override fun initData() {
-        initPresenter()
-        initShowListUserActionSmall()
+        recycleListUserAactionSmall()
+        recyclerMyActionSmall()
     }
 
     private fun initShowListUserActionSmall() {
@@ -39,8 +39,8 @@ class UserActionSmallFragment(val actionId:Int) : BaseFragment(),
     }
 
     override fun initComponents() {
-        recycleListUserAactionSmall()
-        recyclerMyActionSmall()
+        initPresenter()
+        initShowListUserActionSmall()
     }
 
     private fun recyclerMyActionSmall() {
@@ -53,6 +53,8 @@ class UserActionSmallFragment(val actionId:Int) : BaseFragment(),
                 fragment.sendData(id,actionId)
             }
         })
+        recycleMyActionSmall.adapter = myUserActionSmallAdapter
+
     }
 
     private fun recycleListUserAactionSmall() {

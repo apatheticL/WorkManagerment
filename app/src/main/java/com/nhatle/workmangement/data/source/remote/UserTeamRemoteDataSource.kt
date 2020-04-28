@@ -17,10 +17,10 @@ UserTeamDataSource.Remote{
 
 
     private fun converUserTeam(body: List<BaseResponse<UserTeam>>): List<UserTeam> {
-        var userTeam:UserTeam? = null
+
         val list :MutableList<UserTeam>?=null
         for (base in body){
-            userTeam = base.data
+            var userTeam = base.data
             list!!.add(userTeam)
         }
         return list!!

@@ -14,8 +14,7 @@ object Common {
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        var userService: UserService = retrofit.create(UserService::class.java)
-        return userService
+        return retrofit.create(UserService::class.java)
 
     }
     fun hideKeyBoard(activity: Activity){

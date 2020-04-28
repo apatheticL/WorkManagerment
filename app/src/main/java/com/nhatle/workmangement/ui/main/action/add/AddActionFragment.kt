@@ -13,6 +13,7 @@ import com.nhatle.workmangement.data.reponsitory.remote.ActionRemoteRepository
 import com.nhatle.workmangement.data.reponsitory.remote.ActionSmallRemoteRepository
 import com.nhatle.workmangement.data.source.remote.ActionRemoteDataSource
 import com.nhatle.workmangement.data.source.remote.ActionSmallRemoteDataSource
+import com.nhatle.workmangement.data.until.ActionSmallBefor
 import com.nhatle.workmangement.ui.base.BaseFragment
 import com.nhatle.workmangement.ui.main.action.ActionFragment
 import com.nhatle.workmangement.ui.main.action.add.actionSmall.AddUserActionSmallFragment
@@ -32,25 +33,31 @@ import kotlin.collections.ArrayList
 class AddActionFragment :BaseFragment(), AddActionContract.View, View.OnClickListener {
     override val layoutResource: Int = R.layout.fragment_add_work
     private var presenter:AddActionPresenter?=null
-    private var listActionSmallName:ArrayList<String> = ArrayList()
+    private  var listActionSmallName:ArrayList<ActionSmallBefor> = ArrayList()
     private var action :Action?=null
     private var groupId = -1
     private var adapter :ListActionSmallBeforAddAdapter?=null
     override fun initData() {
-        initPresenter()
+        Glide.with(image_avatar)
+            .load(CommonData.getInstance().profile!!.avatar)
+            .placeholder(R.drawable.bavarian)
+            .into(image_avatar)
+        textNameUserCreate.text = CommonData.getInstance().profile!!.fullName
+        registerListener()
     }
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString("action_name",nameWork.text.toString())
         outState.putString("time_start",texttimeStartAdd.text.toString())
         outState.putString("time_end",texttimEndAdd.text.toString())
-        outState.putSerializable("list",listActionSmallName as Serializable)
+        outState.putParcelableArrayList("list",listActionSmallName)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         if (savedInstanceState!=null){
-            listActionSmallName = savedInstanceState.getSerializable("list") as ArrayList<String>
+            @SuppressWarnings("unchecked")
+            listActionSmallName = savedInstanceState.getParcelableArrayList<ActionSmallBefor>("list")!!
             nameWork.setText( savedInstanceState.getString("action_name"))
             texttimeStartAdd.text = ( savedInstanceState.getString("time_start"))
             texttimEndAdd.text = ( savedInstanceState.getString("time_end"))
@@ -67,12 +74,8 @@ class AddActionFragment :BaseFragment(), AddActionContract.View, View.OnClickLis
     }
 
     override fun initComponents() {
-        Glide.with(image_avatar)
-            .load(CommonData.getInstance().profile!!.avatar)
-            .placeholder(R.drawable.bavarian)
-            .into(image_avatar)
-        textNameUserCreate.text = CommonData.getInstance().profile!!.fullName
-        registerListener()
+        initPresenter()
+
     }
 
     private fun registerListener() {
@@ -87,7 +90,7 @@ class AddActionFragment :BaseFragment(), AddActionContract.View, View.OnClickLis
     override fun insertActionSuccess(action: Action) {
         this.action =action
         for (i in  0..listActionSmallName.size step 1){
-            val actionSmall = ActionSmall(0,action.actionId,listActionSmallName.get(i))
+            val actionSmall = ActionSmall(0,action.actionId,listActionSmallName.get(i).actionSmallName)
             presenter!!.insertActionSmall(actionSmall)
         }
     }
@@ -144,7 +147,7 @@ class AddActionFragment :BaseFragment(), AddActionContract.View, View.OnClickLis
             textError.visibility = View.VISIBLE
             textError.text = "Trường này chưa có thông tin"
         }
-        listActionSmallName.add(editActionSmallNameOnAdd.text.toString())
+        listActionSmallName.add(ActionSmallBefor(editActionSmallNameOnAdd.text.toString()))
         recyclerListActionSmallForAdd.visibility = View.VISIBLE
         adapter = ListActionSmallBeforAddAdapter()
         adapter!!.setData(listActionSmallName)
@@ -155,7 +158,7 @@ class AddActionFragment :BaseFragment(), AddActionContract.View, View.OnClickLis
         val fmDateAndTime = SimpleDateFormat("yyyy-MM-dd")
         val calendar = Calendar.getInstance()
         val datePickerDialog =
-            DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+            DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
                 calendar.set(Calendar.YEAR,year)
                 calendar.set(Calendar.MONTH,month)
                 calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)

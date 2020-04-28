@@ -21,27 +21,20 @@ import kotlinx.android.synthetic.main.fragment_work.*
 class ActionFragment : BaseFragment(), ActionContract.View, ActionAdapter.SendData {
     override val layoutResource: Int = R.layout.fragment_work
     private var presenter: ActionPresenter? = null
-    private var userService: UserService? = null
     private var adapter: ActionAdapter? = null
-    private var listActionResponse: List<ActionResponse>? = null
     override fun initData() {
-        userService = Common.getUserService()
-        initPresenter()
-        handlerGetAllAction()
-        handlerGetAllMembeOnAction()
+
+        registerListener()
     }
 
-    private fun handlerGetAllMembeOnAction() {
-
-    }
 
     private fun handlerGetAllAction() {
         presenter!!.getAllActionIsMember(CommonData.getInstance().profile!!.profileId)
     }
 
     override fun initComponents() {
-        initAdapter()
-        registerListener()
+        initPresenter()
+        handlerGetAllAction()
     }
 
     private fun registerListener() {
@@ -51,19 +44,23 @@ class ActionFragment : BaseFragment(), ActionContract.View, ActionAdapter.SendDa
     }
 
     private fun initAdapter() {
-        adapter = ActionAdapter(this)
+
+        recyclerViewWork.adapter = adapter
     }
 
     private fun initPresenter() {
-        val dataSource = ActionRemoteDataSource.getInstance(userService!!)
+        val userService =Common.getUserService()
+        val dataSource = ActionRemoteDataSource.getInstance(userService)
         val repository = ActionRemoteRepository(dataSource = dataSource)
         presenter = ActionPresenter(this, repository = repository)
     }
 
     override fun loadAllActionByUserMember(listAction: ArrayList<ActionResponse>) {
-        this.listActionResponse = listAction
+        textError.text = ""
         textError.visibility = View.GONE
+        adapter = ActionAdapter(this)
         adapter?.setData(listAction)
+        initAdapter()
     }
 
     override fun loadFailed(error: String) {

@@ -12,6 +12,7 @@
     tools:listitem="@layout/item_work"
     android:layout_margin="@dimen/maginContentItem"
     tools:itemCount="4"
+    android:orientation="vertical"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     android:layout_height="match_parent"/>
 

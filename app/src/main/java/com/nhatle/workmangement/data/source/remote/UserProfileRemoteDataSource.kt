@@ -86,6 +86,19 @@ class UserProfileRemoteDataSource private constructor(
 
             })
     }
+
+    override fun getInfoProfile(profileId: Int, callback: OnDataLoadedCallback<UserProfile>) {
+        userService.getInfoProfile(profileId).enqueue(object :Callback<UserProfile>{
+            override fun onFailure(call: Call<UserProfile>, t: Throwable) {
+                callback.onFailed(t as java.lang.Exception)
+            }
+
+            override fun onResponse(call: Call<UserProfile>, response: Response<UserProfile>) {
+                response.body()?.let { callback.onSuccess(it) }
+            }
+        })
+    }
+
     companion object{
         private var instance :UserProfileRemoteDataSource?=null
 

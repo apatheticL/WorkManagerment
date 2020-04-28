@@ -124,6 +124,42 @@ class FriendRemoteDataSource private constructor(val userService: UserService):F
             }
         )
     }
+
+    override fun deleteInvitationFriend(friendId: Int, callback: OnDataLoadedCallback<Boolean>) {
+        userService.deleteInvitationFriend(friendId).enqueue(object :Callback<Boolean>{
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                callback.onFailed( t as Exception)
+            }
+
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                if (response.body()==false){
+                    callback.onFailedConnect("can not delete")
+                }
+                callback.onSuccess()
+            }
+
+        })
+    }
+
+    override fun cancelInvitationFriend(
+        senderId: Int,
+        receiverId: Int,
+        callback: OnDataLoadedCallback<Boolean>
+    ) {
+        userService.cancelInvitationFriend(senderId,receiverId).enqueue(object :Callback<Boolean>{
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                callback.onFailed(t as Exception)
+            }
+
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                if (response.body()==false){
+                    callback.onFailedConnect("can not delete invitation")
+                }
+                callback.onSuccess()
+            }
+        })
+    }
+
     companion object{
         private var instance:FriendRemoteDataSource?=null
         @JvmStatic

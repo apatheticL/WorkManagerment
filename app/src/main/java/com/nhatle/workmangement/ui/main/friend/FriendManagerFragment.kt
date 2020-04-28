@@ -1,16 +1,53 @@
 package com.nhatle.workmangement.ui.main.friend
 
+import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayout
+import com.nhatle.workmangement.R
 import com.nhatle.workmangement.ui.base.BaseFragment
+import com.nhatle.workmangement.ui.main.friend.add.ReceiverFragment
+import com.nhatle.workmangement.ui.main.friend.receiver.FriendSuggestionsFragment
+import kotlinx.android.synthetic.main.fragment_friend_manager.*
 
 class FriendManagerFragment:BaseFragment() {
     override val layoutResource: Int
-        get() = TODO("Not yet implemented")
+        get() = R.layout.fragment_friend_manager
 
     override fun initData() {
-        TODO("Not yet implemented")
+        configTab()
+    }
+
+    private fun configTab() {
+        var tabLayout = tabFriend as TabLayout
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(p0: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabUnselected(p0: TabLayout.Tab?) {
+            }
+
+            override fun onTabSelected(p0: TabLayout.Tab?) {
+                var fragment: Fragment? = null
+                when (p0!!.position) {
+                    0 -> {
+                        fragment = FriendFragment()
+                    }
+                    1 -> {
+                        fragment =
+                            FriendSuggestionsFragment()
+                    }
+                    2 -> {
+                        fragment = ReceiverFragment()
+                    }
+                }
+                if (fragment != null) {
+                    addFragment(R.id.frag_main,fragment,false)
+                }
+            }
+        })
     }
 
     override fun initComponents() {
-        TODO("Not yet implemented")
+        addFragment(R.id.frag_main,FriendFragment(),false)
     }
 }
