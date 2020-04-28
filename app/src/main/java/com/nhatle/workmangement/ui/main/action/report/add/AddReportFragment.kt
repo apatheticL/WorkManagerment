@@ -86,7 +86,7 @@ class AddReportFragment : BaseFragment(), View.OnClickListener, AddActionReportC
     override fun insertFail(error: String) {
         Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
     }
-    fun openFragmentReport(){
+    private fun openFragmentReport(){
         addFragment(R.id.frag_main, UserActionReportFragment(actionId = actionId), false)
 
     }

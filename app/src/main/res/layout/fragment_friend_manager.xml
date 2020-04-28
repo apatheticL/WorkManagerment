@@ -10,7 +10,10 @@
         android:id="@+id/tabFriend"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="#78F3F3"
+        android:background="@android:color/holo_blue_light"
+        app:tabSelectedTextColor="@color/colorWhile"
+        app:tabIndicatorColor="@color/colorWhile"
+        app:tabTextColor="#E2E2ED"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

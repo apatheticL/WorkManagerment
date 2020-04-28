@@ -58,7 +58,7 @@ interface UserService {
     fun updateWork(@Body action: Action): Call<BaseResponse<Action>>
 
     @POST(value = "/deleteWork")
-    fun deleteWork(@Query("idW") idW: Int,@Query("profileId")profileId: Int): Call<Boolean>
+    fun deleteWork(@Query("idW") idW: Int, @Query("profileId") profileId: Int): Call<Boolean>
 
     @GET(value = "/getAllMemberOnActionInGroup")
     fun getAllMemberOnActionInGroup(
@@ -111,6 +111,9 @@ interface UserService {
     fun updateUserActionSmall(@Body userActionSmall: UserActionSmall):
             Call<BaseResponse<UserActionSmall>>
 
+    @POST(value = "/deleteInvitationFriend")
+    fun deleteInvitationFriend(@Query("friendId") friendId: Int): Call<Boolean>
+
     @GET(value = "/getAllReportOnAction")
     fun getAllReportOnAction(@Query("actionId") actionId: Int):
             Call<ArrayList<UserActionReportResponse>>
@@ -132,8 +135,10 @@ interface UserService {
             Call<BaseResponse<Comment>>
 
     @POST(value = "/updateStatusWork")
-    fun updateStatusWork(@Query("id") id: Int
-                         , @Query("status") status: String):Call<Boolean>
+    fun updateStatusWork(
+        @Query("id") id: Int
+        , @Query("status") status: String
+    ): Call<Boolean>
 
     @POST(value = "/deleteCommentOnAction")
     fun deleteCommentOnAction(
