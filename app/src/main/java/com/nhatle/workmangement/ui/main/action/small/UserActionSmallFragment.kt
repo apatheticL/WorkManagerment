@@ -10,12 +10,23 @@ import com.nhatle.workmangement.until.Common
 import com.nhatle.workmangement.until.CommonData
 import kotlinx.android.synthetic.main.fragment_user_action_small.*
 
-class UserActionSmallFragment(val actionId:Int) : BaseFragment(),
+class UserActionSmallFragment(val actionId: Int) : BaseFragment(),
     UserActionSmallContract.View {
     override val layoutResource: Int = R.layout.fragment_user_action_small
     private var presenter: UserActionSmallPresenter? = null
-    private var userActionSmallAdapter: UserActionSmallAdapter? = null
-    private var myUserActionSmallAdapter: MyUserActionSmallAdapter? = null
+    private val userActionSmallAdapter: UserActionSmallAdapter  = UserActionSmallAdapter()
+
+    private val myUserActionSmallAdapter: MyUserActionSmallAdapter by lazy {
+        MyUserActionSmallAdapter(object : MyUserActionSmallAdapter.AddReport {
+            override fun getUserActionSmallId(id: Int) {
+                // open fragment add report
+                val fragment =
+                    AddReportFragment()
+                replaceFragment(R.id.frag_main, fragment, false)
+                fragment.sendData(id, actionId)
+            }
+        })
+    }
 
     override fun initData() {
         recycleListUserAactionSmall()
@@ -44,33 +55,24 @@ class UserActionSmallFragment(val actionId:Int) : BaseFragment(),
     }
 
     private fun recyclerMyActionSmall() {
-        myUserActionSmallAdapter = MyUserActionSmallAdapter(object :MyUserActionSmallAdapter.AddReport{
-            override fun getUserActionSmallId(id: Int) {
-                // open fragment add report
-                val fragment =
-                    AddReportFragment()
-                addFragment(R.id.frag_main, fragment,false)
-                fragment.sendData(id,actionId)
-            }
-        })
+
         recycleMyActionSmall.adapter = myUserActionSmallAdapter
 
     }
 
     private fun recycleListUserAactionSmall() {
-        userActionSmallAdapter = UserActionSmallAdapter()
         recyclerListUserMakeActionSmall.adapter = userActionSmallAdapter
     }
 
     override fun loadAllActionSmall(listAction: List<UserActionSmallResponse>) {
-        userActionSmallAdapter?.setData(list = listAction as ArrayList<UserActionSmallResponse>)
+        userActionSmallAdapter.setData(list = listAction as ArrayList<UserActionSmallResponse>)
     }
 
     override fun loadFailed(error: String) {
     }
 
     override fun loadAllActionSmallByUser(listUserActionSmall: List<UserActionSmallResponse>) {
-        myUserActionSmallAdapter!!.setData(list = listUserActionSmall as ArrayList<UserActionSmallResponse>)
+        myUserActionSmallAdapter.setData(list = listUserActionSmall as ArrayList<UserActionSmallResponse>)
     }
 
     override fun loadMyActionFailed(error: String) {

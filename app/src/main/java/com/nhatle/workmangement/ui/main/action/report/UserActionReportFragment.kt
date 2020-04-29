@@ -15,7 +15,17 @@ import kotlinx.android.synthetic.main.fragment_report.*
 class UserActionReportFragment(val actionId: Int) : BaseFragment(), UserActionReportContract.View {
     override val layoutResource: Int = R.layout.fragment_report
     private var presenter: UserActionReportPresenter? = null
-    private var adapter: ActionReportAdapter? = null
+    private val adapter: ActionReportAdapter by lazy {
+         ActionReportAdapter(object : ActionReportAdapter.ReportManager {
+            override fun sendDataToButton(
+                itemData: UserActionReportResponse,
+                buttonMenu: ImageButton
+            ) {
+                configMenu(itemData, buttonMenu)
+            }
+
+        })
+    }
     override fun initData() {
         initRecyclerView()
     }
@@ -34,15 +44,7 @@ class UserActionReportFragment(val actionId: Int) : BaseFragment(), UserActionRe
     }
 
     private fun initRecyclerView() {
-        adapter = ActionReportAdapter(object : ActionReportAdapter.ReportManager {
-            override fun sendDataToButton(
-                itemData: UserActionReportResponse,
-                buttonMenu: ImageButton
-            ) {
-                configMenu(itemData, buttonMenu)
-            }
 
-        })
         recyclerReport.adapter = adapter
     }
 
@@ -54,7 +56,7 @@ class UserActionReportFragment(val actionId: Int) : BaseFragment(), UserActionRe
                 presenter!!.deleteUserActionReport(itemData.reportId)
             }
             if (it.itemId == R.id.actionUpdate){
-                addFragment(R.id.frag_main,
+                replaceFragment(R.id.frag_main,
                     UpdateActionUserReportFragment(
                         itemData
                     ),false)
@@ -64,13 +66,13 @@ class UserActionReportFragment(val actionId: Int) : BaseFragment(), UserActionRe
     }
 
     override fun loadAllActionReport(listAction: List<UserActionReportResponse>) {
-        adapter?.setData(listAction as ArrayList<UserActionReportResponse>)
+        adapter.setData(listAction as ArrayList<UserActionReportResponse>)
     }
 
     override fun reloadData(boolean: Boolean) {
-        if (boolean == true) {
+        if (boolean) {
             presenter!!.getAllUserActionRemoteByAction(actionId)
-            adapter!!.notifyDataSetChanged()
+            adapter.notifyDataSetChanged()
         }
     }
 

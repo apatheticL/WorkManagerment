@@ -28,7 +28,7 @@ class ActionSmallAdapter(val call :DataActionSmall) :
 
         }
 
-        private fun registerListener(
+         fun registerListener(
             itemView: View,
             itemData: ActionSmall,
             itemPosition: Int
@@ -39,15 +39,13 @@ class ActionSmallAdapter(val call :DataActionSmall) :
            }
         }
 
-        override fun onBindData(itemPosition: Int, itemData: ActionSmall) {
-            super.onBindData(itemPosition, itemData)
-            registerListener(itemView,itemData,itemPosition)
-        }
-
-
-
     }
     interface DataActionSmall{
         fun sendData(actionSmall: ActionSmall)
+    }
+
+    override fun onBindViewHolder(holder: ActionSmallHolder, position: Int) {
+        holder.onBindData(getData()[position])
+        holder.registerListener(holder.itemView,getData()[position],position)
     }
 }

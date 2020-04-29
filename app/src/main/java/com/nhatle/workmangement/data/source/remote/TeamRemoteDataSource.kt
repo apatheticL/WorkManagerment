@@ -43,6 +43,7 @@ class TeamRemoteDataSource private constructor(var userService: UserService):Tea
                     callback.onFailedConnect(response.message())
                 }
                 callback.onSuccess(response.body()!!.data)
+                print(response.body()!!.data)
             }
 
         })

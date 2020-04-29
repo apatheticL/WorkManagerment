@@ -6,6 +6,6 @@ data class Comment(
     var actionId: Int,
     var groupId: Int,
     var content: String,
-    var typeContent:Int,
+    var type:Int,
     var createdTime: String?
 )

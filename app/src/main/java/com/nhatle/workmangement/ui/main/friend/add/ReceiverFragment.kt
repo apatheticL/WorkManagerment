@@ -10,31 +10,14 @@ import com.nhatle.workmangement.ui.base.BaseFragment
 import com.nhatle.workmangement.ui.main.friend.SendDataProfile
 import com.nhatle.workmangement.until.Common
 import com.nhatle.workmangement.until.CommonData
+import kotlinx.android.synthetic.main.fragment_add_friend.*
 
 class ReceiverFragment : BaseFragment(), ReceiverContract.View {
     override val layoutResource: Int
         get() = R.layout.fragment_add_friend
     private var presenter :ReceiverPresenter?=null
-    private var adapter :ListUserNotFriendAdapter?=null
-    override fun initData() {
-       initPresenter()
-        presenter!!.getAllUserNotFriend(CommonData.getInstance().profile!!.profileId)
-    }
-
-    private fun initPresenter() {
-        val userService = Common.getUserService()
-        val dataSource = FriendRemoteDataSource.getInStance(userService)
-        val repository = FriendRepository(dataSource)
-        presenter = ReceiverPresenter(this,repository)
-
-    }
-
-    override fun initComponents() {
-        initRecyclerView()
-    }
-
-    private fun initRecyclerView() {
-        adapter = ListUserNotFriendAdapter(object :SendDataProfile.FriendAdd{
+    private val adapter :ListUserNotFriendAdapter by lazy {
+        ListUserNotFriendAdapter(object :SendDataProfile.FriendAdd{
             override fun sendDataToAdd(data: UserProfile) {
                 val invitationFriend =
                     InvitationFriend(0,CommonData.getInstance().profile!!.profileId,
@@ -45,18 +28,42 @@ class ReceiverFragment : BaseFragment(), ReceiverContract.View {
             override fun sendDataToDeleteAdd(position: Int, data: UserProfile) {
                 presenter!!.deleteReceiver(CommonData.getInstance().profile!!.profileId,
                     data.profileId)
-                deleteItem(position)
+                removeDataOnRecyclerView(position)
             }
 
             override fun deleteItem(position: Int) {
-                deleteItem(position)
+                removeDataOnRecyclerView(position)
             }
-
         })
+    }
+    override fun initData() {
+        registerListener()
+    }
+
+    private fun registerListener() {
+        buttonSearch.setOnClickListener{
+            Toast.makeText(context,"dsfsfsd",Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun initPresenter() {
+        val userService = Common.getUserService()
+        val dataSource = FriendRemoteDataSource.getInStance(userService)
+        val repository = FriendRepository(dataSource)
+        presenter = ReceiverPresenter(this,repository)
+    }
+    override fun initComponents() {
+        initPresenter()
+        presenter!!.getAllUserNotFriend(CommonData.getInstance().profile!!.profileId)
+    }
+
+    private fun initRecyclerView() {
+        recyclerAddFriend.adapter = adapter
     }
 
     override fun showAllUserNotFriend(listUser: List<UserProfile>) {
-        adapter!!.setData(list = listUser as ArrayList<UserProfile>)
+        adapter.setData(list = listUser as ArrayList<UserProfile>)
+        initRecyclerView()
     }
 
     override fun onFailLoad(string: String) {
@@ -72,7 +79,7 @@ class ReceiverFragment : BaseFragment(), ReceiverContract.View {
     }
 
     private fun removeDataOnRecyclerView(position: Int) {
-        adapter!!.deleteItem(position)
+        adapter.deleteItem(position)
     }
 
 }

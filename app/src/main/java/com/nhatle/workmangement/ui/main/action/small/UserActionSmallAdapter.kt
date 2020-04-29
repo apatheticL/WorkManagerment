@@ -39,4 +39,8 @@ class UserActionSmallAdapter :
             itemView.timeEnd.text = format.format(itemData.timeEnd)
         }
     }
+
+    override fun onBindViewHolder(holder: UserActionSmallHolder, position: Int) {
+        holder.onBindData(getData()[position])
+    }
 }

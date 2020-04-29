@@ -7,12 +7,12 @@
         android:title="Thảo luận"
         app:showAsAction="always" />
     <item
-        android:id="@+id/acctionDelete"
+        android:id="@+id/actionDeleteAction"
         android:icon="@drawable/ic_assessment_black_24dp"
         android:title="Xóa"
         app:showAsAction="always" />
     <item
-        android:id="@+id/actionUpdate"
+        android:id="@+id/actionUpdateAction"
         android:icon="@drawable/ic_report_black_24dp"
         android:title="Cập nhật"
         app:showAsAction="always" />

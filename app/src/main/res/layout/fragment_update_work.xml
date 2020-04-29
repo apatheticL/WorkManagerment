@@ -1,163 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhile">
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/infor_action"
-        android:layout_width="match_parent"
-        app:layout_constraintTop_toBottomOf="@id/toolBar"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/titleThree"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Sửa thông tin"
-        android:layout_marginTop="@dimen/dp_16"
-        android:textSize="@dimen/sp_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/include" />
-    <ImageButton
-        android:id="@+id/buttonAddDateEnd"
-        android:layout_width="@dimen/dp_32"
-        android:layout_height="@dimen/dp_32"
-        android:background="?selectableItemBackground"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_date_range_black_24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/texttimEndUpdate"
-        app:layout_constraintEnd_toEndOf="@+id/nameWork"
-        app:layout_constraintStart_toEndOf="@id/texttimEndUpdate"
-        app:layout_constraintTop_toTopOf="@+id/texttimEndUpdate" />
-
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_32"
-        android:text="Mô tả: "
-        android:layout_marginTop="@dimen/dp_16"
-        android:textColor="@color/colorBack"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameWork" />
-    <EditText
-        android:layout_width="0dp"
-        android:id="@+id/editDescription"
-        android:hint="Mô tả"
-        android:layout_marginLeft="@dimen/dp_24"
-        android:layout_marginRight="@dimen/dp_24"
-        android:layout_marginTop="@dimen/dp_16"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/toolBar"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="@android:color/holo_blue_dark"
-        android:gravity="center"
-        android:text="Cập nhập công việc"
-        android:textColor="@color/colorWhile"
-        android:textSize="@dimen/sp_24"
-        android:textStyle="bold|italic"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:titleMarginStart="144dp" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/image_avatar"
-        android:layout_width="@dimen/dp_50"
-        android:layout_height="@dimen/dp_50"
-        android:layout_marginStart="@dimen/dp_56"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="@dimen/dp_32"
-        android:src="@drawable/bavarian"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleThree" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/nameCreatorAction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="@dimen/dp_16"
-        android:layout_marginLeft="32dp"
-        android:text="Nguyen Văn An"
-        app:fontFamily="@font/archivo_narrow_bold"
-        app:layout_constraintStart_toEndOf="@+id/image_avatar"
-        app:layout_constraintTop_toTopOf="@+id/image_avatar" />
+            <include
+                android:id="@+id/include"
+                layout="@layout/infor_action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolBar" />
 
-    <EditText
-        android:id="@+id/nameWork"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="@dimen/dp_16"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:hint=" Nhập tên công việc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_avatar" />
+            <TextView
+                android:id="@+id/titleThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:gravity="center"
+                android:text="Sửa thông tin"
+                android:textSize="@dimen/sp_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/include" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ngày kết thúc"
-        android:textColor="@color/colorBack"
-        android:layout_marginTop="@dimen/dp_16"
-        app:layout_constraintStart_toStartOf="@+id/editDescription"
-        app:layout_constraintTop_toBottomOf="@+id/editDescription" />
+            <ImageButton
+                android:id="@+id/buttonAddDateEnd"
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="@dimen/dp_32"
+                android:background="?selectableItemBackground"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_date_range_black_24dp"
+                app:layout_constraintBottom_toBottomOf="@+id/texttimEndUpdate"
+                app:layout_constraintEnd_toEndOf="@+id/nameWork"
+                app:layout_constraintStart_toEndOf="@id/texttimEndUpdate"
+                app:layout_constraintTop_toTopOf="@+id/texttimEndUpdate" />
 
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_32"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="Mô tả: "
+                android:textColor="@color/colorBack"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameWork" />
 
-    <TextView
-        android:id="@+id/texttimEndUpdate"
-        android:layout_width="@dimen/dp_100"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_32"
-        android:background="@drawable/bg_text_view"
-        app:layout_constraintBottom_toBottomOf="@+id/textView13"
-        app:layout_constraintTop_toTopOf="@+id/textView13"
-        app:layout_constraintLeft_toRightOf="@id/textView13"
-        app:layout_constraintVertical_bias="0.0" />
+            <EditText
+                android:id="@+id/editDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_24"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginRight="@dimen/dp_24"
+                android:hint="Mô tả"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text" />
 
-    <Button
-        android:id="@+id/buttonUpdateWork"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_save"
-        android:text="Lưu lại"
-        android:textColor="@color/colorWhile"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonCancelUpdateWork"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+            <TextView
+                android:id="@+id/toolBar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:background="@android:color/holo_blue_dark"
+                android:gravity="center"
+                android:text="Cập nhập công việc"
+                android:textColor="@color/colorWhile"
+                android:textSize="@dimen/sp_24"
+                android:textStyle="bold|italic"
+                android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:titleMarginStart="144dp" />
 
-    <Button
-        android:id="@+id/buttonCancelUpdateWork"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/cancel"
-        android:text="Hủy "
-        android:textColor="@color/colorWhile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/buttonUpdateWork"
-        app:layout_constraintTop_toTopOf="@+id/buttonUpdateWork" />
+            <ImageView
+                android:id="@+id/image_avatar"
+                android:layout_width="@dimen/dp_50"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginStart="@dimen/dp_56"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="@dimen/dp_32"
+                android:src="@drawable/bavarian"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleThree" />
+
+            <TextView
+                android:id="@+id/nameCreatorAction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="Nguyen Văn An"
+                app:fontFamily="@font/archivo_narrow_bold"
+                app:layout_constraintStart_toEndOf="@+id/image_avatar"
+                app:layout_constraintTop_toTopOf="@+id/image_avatar" />
+
+            <EditText
+                android:id="@+id/nameWork"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:hint=" Nhập tên công việc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_avatar" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="Ngày kết thúc"
+                android:textColor="@color/colorBack"
+                app:layout_constraintStart_toStartOf="@+id/editDescription"
+                app:layout_constraintTop_toBottomOf="@+id/editDescription" />
+
+            <TextView
+                android:id="@+id/texttimEndUpdate"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_32"
+                android:background="@drawable/bg_text_view"
+                app:layout_constraintBottom_toBottomOf="@+id/textView13"
+                app:layout_constraintLeft_toRightOf="@id/textView13"
+                app:layout_constraintTop_toTopOf="@+id/textView13"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/buttonUpdateWork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_save"
+                android:text="Lưu lại"
+                android:layout_marginTop="@dimen/dp_32"
+                android:textColor="@color/colorWhile"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/buttonCancelUpdateWork"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+            <Button
+                android:id="@+id/buttonCancelUpdateWork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cancel"
+                android:text="Hủy "
+                android:textColor="@color/colorWhile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/buttonUpdateWork"
+                app:layout_constraintTop_toTopOf="@+id/buttonUpdateWork" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

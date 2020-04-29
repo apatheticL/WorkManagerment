@@ -15,17 +15,6 @@ import java.lang.Exception
 class UserTeamRemoteDataSource private constructor(var userService: UserService):
 UserTeamDataSource.Remote{
 
-
-    private fun converUserTeam(body: List<BaseResponse<UserTeam>>): List<UserTeam> {
-
-        val list :MutableList<UserTeam>?=null
-        for (base in body){
-            var userTeam = base.data
-            list!!.add(userTeam)
-        }
-        return list!!
-    }
-
     override fun addMemberOnTeam(
         list: List<UserTeam>,
         callback: OnDataLoadedCallback<List<UserTeam>>
@@ -40,8 +29,7 @@ UserTeamDataSource.Remote{
                     call: Call<List<BaseResponse<UserTeam>>>,
                     response: Response<List<BaseResponse<UserTeam>>>
                 ) {
-
-                    callback.onSuccess( converUserTeam(response.body()!!))
+                    callback.onSuccess()
                 }
 
             }

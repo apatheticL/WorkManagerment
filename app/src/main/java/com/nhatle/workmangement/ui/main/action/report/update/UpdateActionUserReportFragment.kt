@@ -72,7 +72,7 @@ class UpdateActionUserReportFragment( val itemData: UserActionReportResponse) : 
     }
 
     override fun updateSuccess() {
-        addFragment(R.layout.fragment_report,UserActionReportFragment(itemData.actionId),false)
+        replaceFragment(R.layout.fragment_report,UserActionReportFragment(itemData.actionId),false)
     }
 
     override fun updateFail(error: String) {
@@ -85,7 +85,7 @@ class UpdateActionUserReportFragment( val itemData: UserActionReportResponse) : 
                 presenter!!.updateReport(onUpdate())
             }
             R.id.buttonCancelUpdate->{
-                addFragment(R.layout.fragment_report,UserActionReportFragment(itemData.actionId),false)
+                replaceFragment(R.layout.fragment_report,UserActionReportFragment(itemData.actionId),false)
             }
         }
     }

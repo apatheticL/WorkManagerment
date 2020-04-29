@@ -48,19 +48,18 @@ class UpdateActionFragment : BaseFragment(), UpdateActionContract.View, View.OnC
     }
 
     private fun loadData() {
-        val format = SimpleDateFormat("yyyy/MM/dd")
         Glide.with(image_avatar).load(CommonData.getInstance().profile!!.avatar)
             .into(image_avatar)
         nameCreatorAction.text = CommonData.getInstance().profile!!.fullName
         textNameAction.text = actionResponse!!.actionName
         textDescription.text = actionResponse!!.description
         nameCreator.text = actionResponse!!.nameCreator
-        timeStartAction.text = format.format(actionResponse!!.timeStart)
-        timeEndAction.text = format.format(actionResponse!!.timeStart)
+        timeStartAction.text = actionResponse!!.timeStart
+        timeEndAction.text = actionResponse!!.timeStart
     }
 
     override fun updateSuccess() {
-        addFragment(R.id.frag_main, ActionFragment(), false)
+        replaceFragment(R.id.frag_main, ActionFragment(), true)
     }
 
     override fun onFail(string: String) {
@@ -76,7 +75,7 @@ class UpdateActionFragment : BaseFragment(), UpdateActionContract.View, View.OnC
                 updateWork()
             }
             R.id.buttonCancelUpdateWork -> {
-                addFragment(R.id.frag_main,ActionFragment(),false)
+                replaceFragment(R.id.frag_main,ActionFragment(),true)
             }
             R.id.buttonAddDateEnd->{
                 showDatetimeDialog(texttimEndUpdate)

@@ -2,31 +2,49 @@ package com.nhatle.workmangement.ui.main.comment
 
 import android.widget.Toast
 import com.nhatle.workmangement.R
+import com.nhatle.workmangement.data.model.Comment
 import com.nhatle.workmangement.data.model.response.CommentResponse
 import com.nhatle.workmangement.data.reponsitory.remote.CommentRemoteRepository
 import com.nhatle.workmangement.data.source.remote.CommentRemoteDataSource
 import com.nhatle.workmangement.ui.base.BaseFragment
 import com.nhatle.workmangement.until.Common
+import com.nhatle.workmangement.until.CommonData
+import kotlinx.android.synthetic.main.fragment_comment.*
 
 class CommentFragment(val actionId: Int,val  groupId: Int) : BaseFragment(), CommentContract.View {
     override val layoutResource: Int
         get() = R.layout.fragment_comment
     private lateinit var presenter:CommentPresenter
-    private lateinit var adapter: CommentAdapter
-    override fun initData() {
-      configRecyclerview()
-    }
-
-    private fun configRecyclerview() {
-        adapter = CommentAdapter(object :SendComment{
+    private  val adapter: CommentAdapter by lazy {
+          CommentAdapter(object :SendComment{
             override fun sendData(data: CommentResponse, position: Int) {
                 deleteComment(data,position)
             }
         })
     }
+    override fun initData() {
+
+        registerListener()
+    }
+
+    private fun registerListener() {
+        buttonAddComment.setOnClickListener{
+            if (contentComment.text.isNotEmpty()){
+                presenter.addComment(comment = Comment(0,
+                CommonData.getInstance().profile!!.profileId,
+                    actionId,groupId,contentComment.text.toString(),
+                    1,null))
+            }
+        }
+    }
+
+    private fun configRecyclerview() {
+        recyclerComment.adapter = adapter
+    }
 
     private fun deleteComment(data: CommentResponse, position: Int) {
-
+        presenter.deleteComment(data.commentId,CommonData.getInstance().profile!!.profileId)
+        adapter.deleteMember(position)
     }
 
     private fun initPresenter() {
@@ -43,6 +61,7 @@ class CommentFragment(val actionId: Int,val  groupId: Int) : BaseFragment(), Com
 
     override fun getAllComment(list: List<CommentResponse>) {
         adapter.setData(list = list as ArrayList<CommentResponse>)
+        configRecyclerview()
     }
 
     override fun deleteSuccess() {
@@ -50,11 +69,11 @@ class CommentFragment(val actionId: Int,val  groupId: Int) : BaseFragment(), Com
     }
 
     override fun onFail(string: String) {
-
     }
 
     override fun insertSuccess() {
-
+        presenter.getAllComment(actionId)
+        contentComment.setText("")
     }
 
 }

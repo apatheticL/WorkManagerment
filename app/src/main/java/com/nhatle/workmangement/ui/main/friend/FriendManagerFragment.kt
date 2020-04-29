@@ -41,13 +41,13 @@ class FriendManagerFragment:BaseFragment() {
                     }
                 }
                 if (fragment != null) {
-                    addFragment(R.id.frag_main,fragment,false)
+                    replaceFragment(R.id.frag_friend,fragment,false)
                 }
             }
         })
     }
 
     override fun initComponents() {
-        addFragment(R.id.frag_main,FriendFragment(),false)
+        addFragment(R.id.frag_friend,FriendFragment(),false)
     }
 }

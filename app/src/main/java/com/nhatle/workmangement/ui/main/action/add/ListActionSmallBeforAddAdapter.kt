@@ -20,12 +20,7 @@ class ListActionSmallBeforAddAdapter:
             itemView.buttonSave.visibility = View.GONE
         }
 
-        override fun onBindData(itemPosition: Int, itemData: ActionSmallBefor) {
-            super.onBindData(itemPosition, itemData)
-            registerOnclick(itemView.buttonDelete,itemPosition)
-        }
-
-        private fun registerOnclick(buttonDelete: ImageButton, itemPosition: Int) {
+         fun registerOnclick(buttonDelete: ImageButton, itemPosition: Int) {
             buttonDelete.setOnClickListener{
                 call.delete(position = itemPosition)
             }
@@ -46,6 +41,11 @@ class ListActionSmallBeforAddAdapter:
     }
     interface DeleteItem{
         fun delete(position: Int)
+    }
+
+    override fun onBindViewHolder(holder: ActionBeforeAddHolder, position: Int) {
+        holder.onBindData(getData()[position])
+        holder.registerOnclick(holder.itemView.buttonDelete,position)
     }
 
 }

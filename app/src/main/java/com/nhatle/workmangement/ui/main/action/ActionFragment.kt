@@ -8,6 +8,7 @@ import com.nhatle.workmangement.R
 import com.nhatle.workmangement.data.model.response.ActionResponse
 import com.nhatle.workmangement.data.reponsitory.remote.ActionRemoteRepository
 import com.nhatle.workmangement.data.source.remote.ActionRemoteDataSource
+import com.nhatle.workmangement.ui.MainActivity
 import com.nhatle.workmangement.ui.base.BaseFragment
 import com.nhatle.workmangement.ui.main.action.add.AddActionFragment
 import com.nhatle.workmangement.ui.main.action.detail.ActionDetailFragment
@@ -15,13 +16,24 @@ import com.nhatle.workmangement.ui.main.action.update.UpdateActionFragment
 import com.nhatle.workmangement.ui.main.comment.CommentFragment
 import com.nhatle.workmangement.until.Common
 import com.nhatle.workmangement.until.CommonData
-import com.nhatle.workmangement.until.api.UserService
 import kotlinx.android.synthetic.main.fragment_work.*
 
-class ActionFragment : BaseFragment(), ActionContract.View, ActionAdapter.SendData {
+class ActionFragment : BaseFragment(), ActionContract.View {
     override val layoutResource: Int = R.layout.fragment_work
-    private var presenter: ActionPresenter? = null
-    private var adapter: ActionAdapter? = null
+    private var presenter: ActionPresenter?=null
+    private val adapter: ActionAdapter by lazy {
+        ActionAdapter(object : ActionAdapter.SendData{
+            override fun sendData(actionResponse: ActionResponse, position: Int) {
+               sendDataType(actionResponse)
+
+            }
+
+            override fun showMenu(buttonManager: ImageButton, data: ActionResponse) {
+               showMenuPopu(buttonManager,data)
+            }
+
+        })
+    }
     override fun initData() {
 
         registerListener()
@@ -39,12 +51,11 @@ class ActionFragment : BaseFragment(), ActionContract.View, ActionAdapter.SendDa
 
     private fun registerListener() {
         buttonAddWork.setOnClickListener {
-            addFragment(R.id.frag_main, AddActionFragment(), false)
+            replaceFragment(R.id.frag_main, AddActionFragment(), false)
         }
     }
 
     private fun initAdapter() {
-
         recyclerViewWork.adapter = adapter
     }
 
@@ -56,41 +67,39 @@ class ActionFragment : BaseFragment(), ActionContract.View, ActionAdapter.SendDa
     }
 
     override fun loadAllActionByUserMember(listAction: ArrayList<ActionResponse>) {
-        textError.text = ""
-        textError.visibility = View.GONE
-        adapter = ActionAdapter(this)
-        adapter?.setData(listAction)
+        adapter.setData(listAction)
         initAdapter()
     }
 
     override fun loadFailed(error: String) {
-        textError.visibility = View.VISIBLE
-        textError.text = error
+
     }
 
     override fun loadData() {
 
     }
 
-
-    override fun sendData(actionResponse: ActionResponse, position: Int) {
+    fun sendDataType(actionResponse:ActionResponse){
+        (activity as MainActivity).hindNavigation(true)
         val fragment = ActionDetailFragment()
-        addFragment(
-            R.id.frag_main,
-            ActionDetailFragment(), false
-        )
         fragment.sendData(actionResponse)
-    }
 
-    override fun showMenu(buttonManager: ImageButton?, data: ActionResponse) {
+        replaceFragment(
+            R.id.frag_image,
+            fragment, false
+        )
+    }
+     fun showMenuPopu(buttonManager: ImageButton?, data: ActionResponse) {
         val popupMenu = PopupMenu(activity, buttonManager)
         popupMenu.inflate(R.menu.menu_mode)
-        popupMenu.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
+        popupMenu.setOnMenuItemClickListener {
+            when (it.itemId) {
                 R.id.actionComment -> {
-                    addFragment(R.id.frag_main, CommentFragment(data.actionId, data.groupId), false)
+                    (activity as MainActivity).hindNavigation(true)
+                    replaceFragment(R.id.frag_image,
+                        CommentFragment(data.actionId, data.groupId),true)
                 }
-                R.id.actionDelete -> {
+                R.id.actionDeleteAction -> {
                     if (CommonData.getInstance().profile!!.profileId == data.creatorId) {
                         presenter!!.deleteAction(data.actionId, data.creatorId)
                     }
@@ -100,11 +109,12 @@ class ActionFragment : BaseFragment(), ActionContract.View, ActionAdapter.SendDa
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                R.id.actionUpdate->{
+                R.id.actionUpdateAction->{
                     if (CommonData.getInstance().profile!!.profileId == data.creatorId) {
+                        (activity as MainActivity).hindNavigation(true)
                         val fragment = UpdateActionFragment()
                         fragment.sendData(data)
-                        addFragment(R.id.frag_main,fragment,false)
+                        replaceFragment(R.id.frag_image,fragment,true)
                     }
                     Toast.makeText(
                         context,
@@ -115,7 +125,7 @@ class ActionFragment : BaseFragment(), ActionContract.View, ActionAdapter.SendDa
             }
             true
         }
-
+         popupMenu.show()
     }
 
 

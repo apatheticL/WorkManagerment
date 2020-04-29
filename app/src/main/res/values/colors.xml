@@ -13,4 +13,5 @@
     <color name="colorBack">#000000</color>
     <color name="colorWhile200">#F1EEEE</color>
     <color name="colorGray100">#C8C5C5</color>
+    <color name="colorItem">#B9F1B5</color>
 </resources>

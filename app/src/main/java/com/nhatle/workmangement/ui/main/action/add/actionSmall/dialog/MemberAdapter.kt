@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.nhatle.workmangement.R
-import com.nhatle.workmangement.data.model.response.FriendResponse
 import com.nhatle.workmangement.data.model.response.UserTeamResponse
 import com.nhatle.workmangement.ui.base.BaseRecyclerViewAdapter
 import com.nhatle.workmangement.ui.base.BaseViewHolder
@@ -17,10 +16,9 @@ class MemberAdapter(val call: SendData):
         override fun onBindData(itemData: UserTeamResponse) {
             super.onBindData(itemData)
             cofigView(itemData,itemView)
-            registerClick(itemView,itemData)
         }
 
-        private fun registerClick(itemView: View, itemData: UserTeamResponse) {
+         fun registerClick(itemView: View, itemData: UserTeamResponse) {
             itemView.setOnClickListener{
                 call.sendUserTeam(itemData)
             }
@@ -39,5 +37,10 @@ class MemberAdapter(val call: SendData):
         val la =
             LayoutInflater.from(parent.context).inflate(R.layout.item_avatar,parent,false)
         return UserteamHolder(la,call)
+    }
+
+    override fun onBindViewHolder(holder: UserteamHolder, position: Int) {
+        holder.onBindData(getData()[position])
+        holder.registerClick(holder.itemView,getData()[position])
     }
 }

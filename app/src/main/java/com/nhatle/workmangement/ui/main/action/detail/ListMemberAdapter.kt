@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.nhatle.workmangement.R
-import com.nhatle.workmangement.data.OnDataLoadedCallback
 import com.nhatle.workmangement.data.model.response.UserTeamResponse
 import com.nhatle.workmangement.ui.base.BaseRecyclerViewAdapter
 import com.nhatle.workmangement.ui.base.BaseViewHolder
@@ -14,7 +13,7 @@ import kotlinx.android.synthetic.main.item_avatar.view.*
 class ListMemberAdapter(val callback: SendProfile) :
     BaseRecyclerViewAdapter<UserTeamResponse, ListMemberAdapter.UserTeamHolder>() {
 
-    class UserTeamHolder(itemView: View,val callback: SendProfile) : BaseViewHolder<UserTeamResponse>(itemView) {
+    class UserTeamHolder(itemView: View) : BaseViewHolder<UserTeamResponse>(itemView) {
         override fun onBindData(itemData: UserTeamResponse) {
             super.onBindData(itemData)
             configView(itemView, itemData)
@@ -27,20 +26,25 @@ class ListMemberAdapter(val callback: SendProfile) :
                 .into(itemView.imageAvatar)
             itemView.nameUser.text = itemData.fullName
         }
-
-        override fun onBindData(itemPosition: Int, itemData: UserTeamResponse) {
-            super.onBindData(itemPosition, itemData)
-            callback.sendProfileId(itemData.profileId)
-
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserTeamHolder {
         val layout =
             LayoutInflater.from(parent.context).inflate(R.layout.item_avatar, parent, false)
-        return UserTeamHolder(layout,callback)
+        return UserTeamHolder(layout)
     }
     interface SendProfile{
         fun sendProfileId(profileId:Int)
+    }
+
+    override fun onBindViewHolder(holder: UserTeamHolder, position: Int) {
+        holder.onBindData(getData()[position])
+        setOnclickItem(holder.itemView,getData()[position].profileId)
+    }
+
+    private fun setOnclickItem(itemView: View, profileId: Int) {
+        itemView.setOnClickListener {
+            callback.sendProfileId(profileId)
+        }
     }
 }

@@ -50,7 +50,7 @@ class UserProfileFragment : BaseFragment(), UserProfileContract.View, View.OnCli
         fullnamepro.text = profile.fullName
         textAddressByUser.text = profile.address
         textemailByUser.text = profile.email
-        textphoneByUser.text = profile.phoneMumber
+        textphoneByUser.text = profile.phoneNumber
     }
 
     private fun checkUser(id: Int, idUser: Int): Boolean {
@@ -88,7 +88,7 @@ class UserProfileFragment : BaseFragment(), UserProfileContract.View, View.OnCli
 
             } else {
                 val fragment = UpdateProfileFragment()
-                addFragment(R.id.frag_main, fragment, false)
+                replaceFragment(R.id.frag_main, fragment, false)
             }
             true
         }

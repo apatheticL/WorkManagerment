@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import com.bumptech.glide.Glide
 import com.nhatle.workmangement.R
-import com.nhatle.workmangement.data.OnDataLoadedCallback
 import com.nhatle.workmangement.data.model.response.UserActionSmallResponse
 import com.nhatle.workmangement.ui.base.BaseRecyclerViewAdapter
 import com.nhatle.workmangement.ui.base.BaseViewHolder
@@ -14,26 +13,22 @@ import kotlinx.android.synthetic.main.item_my_action_small.view.*
 import java.text.SimpleDateFormat
 
 class MyUserActionSmallAdapter(val callback: AddReport):
-    BaseRecyclerViewAdapter<UserActionSmallResponse,MyUserActionSmallAdapter.MyActionSmallHolder> (){
+    BaseRecyclerViewAdapter<UserActionSmallResponse, MyUserActionSmallAdapter.MyActionSmallHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyActionSmallHolder {
         val layout = LayoutInflater.from(parent.context).
         inflate(R.layout.item_my_action_small,parent,false)
-        return MyActionSmallHolder(layout,callback)
+        return MyActionSmallHolder(layout)
     }
-    class MyActionSmallHolder(itemView: View,val callback: AddReport) :BaseViewHolder<UserActionSmallResponse>(itemView){
+    class MyActionSmallHolder(itemView: View) :BaseViewHolder<UserActionSmallResponse>(itemView){
        val format =SimpleDateFormat("dd/MM/yyyy")
         override fun onBindData(itemData: UserActionSmallResponse) {
             super.onBindData(itemData)
             configView(itemView,itemData)
-            registerListener(itemView.buttonGoReport,itemData.userActionSmallId)
+
         }
 
-        private fun registerListener(buttonGoReport: Button, userActionSmallId: Int) {
-            buttonGoReport.setOnClickListener{
-                callback.getUserActionSmallId(userActionSmallId)
-            }
-        }
+
         private fun configView(itemView: View, itemData: UserActionSmallResponse) {
             Glide.with(itemView.imageAvatarMember)
             Glide.with(itemView.imageAvatarMember)
@@ -50,5 +45,13 @@ class MyUserActionSmallAdapter(val callback: AddReport):
         fun getUserActionSmallId(id: Int)
 
     }
-
+    override fun onBindViewHolder(holder: MyActionSmallHolder, position: Int) {
+       holder.onBindData(getData().get(position))
+        registerListener(holder.itemView.buttonGoReport,getData()[position].userActionSmallId)
+    }
+    private fun registerListener(buttonGoReport: Button, userActionSmallId: Int) {
+        buttonGoReport.setOnClickListener{
+            callback.getUserActionSmallId(userActionSmallId)
+        }
+    }
 }

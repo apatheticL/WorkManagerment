@@ -21,15 +21,19 @@ class FriendAdapter(val call: SendDataProfile.Friend) :
         return FriendHolder(layout, call)
     }
 
+    override fun onBindViewHolder(holder: FriendHolder, position: Int) {
+        holder.onBindData(getData()[position])
+        holder.registerListener(holder.itemView.imageAvatarFriend,getData()[position])
+    }
+
     class FriendHolder(itemView: View, val call: SendDataProfile.Friend) :
         BaseViewHolder<FriendResponse>(itemView) {
         override fun onBindData(itemData: FriendResponse) {
             super.onBindData(itemData)
             configView(itemData, itemView)
-            registerListener(itemView.imageAvatarFriend,itemData)
         }
 
-        private fun registerListener(friendAvatar: CircleImageView, friendId: FriendResponse) {
+         fun registerListener(friendAvatar: CircleImageView, friendId: FriendResponse) {
             friendAvatar.setOnClickListener{
                 call.sendData(friendId)
             }

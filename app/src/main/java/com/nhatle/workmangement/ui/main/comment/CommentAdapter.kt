@@ -4,12 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.nhatle.workmangement.R
 import com.nhatle.workmangement.data.model.response.CommentResponse
 import com.nhatle.workmangement.ui.base.BaseRecyclerViewAdapter
 import com.nhatle.workmangement.ui.base.BaseViewHolder
 import com.nhatle.workmangement.until.CommonData
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.item_comment.view.*
 
 class CommentAdapter(val call: SendComment) :
@@ -27,6 +29,22 @@ class CommentAdapter(val call: SendComment) :
             super.onBindData(itemData)
             if (itemData.profileId != CommonData.getInstance().profile!!.profileId){
                 itemView.buttonDelete.visibility = View.GONE
+                itemView.setBackgroundResource(R.color.colorWhile)
+            }
+            itemView.setBackgroundResource(R.color.colorItem)
+            if (itemData.type == 1) {
+                itemView.imageContent.visibility = View.GONE
+                itemView.content.visibility = View.VISIBLE
+                itemView.content.text = itemData.content
+
+            }
+            if (itemData.type == 2) {
+                itemView.content.visibility = View.GONE
+                itemView.imageContent.visibility = View.VISIBLE
+                Glide.with(itemView.imageContent)
+                    .load(itemData.content)
+                    .placeholder(R.drawable.background)
+                    .into(itemView.imageContent)
             }
             configData(itemView, itemData)
         }
@@ -38,33 +56,8 @@ class CommentAdapter(val call: SendComment) :
                 .into(itemView.avatarComment)
             itemView.nameComment.text = itemData.fullName
 
-            if (itemData.typeContent == 1) {
-                itemView.content.text = itemData.content
-                itemView.imageContent.visibility = View.GONE
-            }
-            if (itemData.typeContent == 2) {
-                itemView.content.visibility = View.GONE
-                Glide.with(itemView.imageContent)
-                    .load(itemData.avatar)
-                    .placeholder(R.drawable.background)
-                    .into(itemView.imageContent)
-            }
 
-        }
 
-        override fun onBindData(itemPosition: Int, itemData: CommentResponse) {
-            super.onBindData(itemPosition, itemData)
-            registerItem(itemView.buttonDelete, itemData,itemPosition)
-        }
-
-        private fun registerItem(
-            buttonDelete: ImageButton,
-            itemData: CommentResponse,
-            itemPosition: Int
-        ) {
-            buttonDelete.setOnClickListener{
-                call.sendData(itemData, itemPosition)
-            }
         }
     }
     fun deleteMember(position:Int){
@@ -73,5 +66,18 @@ class CommentAdapter(val call: SendComment) :
         notifyItemRangeChanged(position,getData().size)
     }
 
+    override fun onBindViewHolder(holder: CommentHolder, position: Int) {
+        holder.onBindData(getData()[position])
+        registerItem(holder.itemView.buttonDelete,getData()[position],position)
+    }
 
+    private fun registerItem(
+        buttonDelete: ImageButton,
+        commentResponse: CommentResponse,
+        position: Int
+    ) {
+        buttonDelete.setOnClickListener{
+            call.sendData(commentResponse, position)
+        }
+    }
 }

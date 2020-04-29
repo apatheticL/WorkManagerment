@@ -30,8 +30,20 @@ class AddUserActionSmallFragment : BaseFragment(), AddUserActionSmallContract.Vi
         get() = R.layout.fragment_add_user_action_small
     private var actionId = -1
     private var groupId = -1
-    private var adapter: ActionSmallAdapter? = null
-    private var adapterDialog: MemberAdapter? = null
+    private val adapter: ActionSmallAdapter by lazy {
+          ActionSmallAdapter(object : ActionSmallAdapter.DataActionSmall {
+            override fun sendData(actionSmall: ActionSmall) {
+                sendDataToInsert(actionSmall)
+            }
+        })
+    }
+    private val adapterDialog: MemberAdapter by lazy {
+          MemberAdapter(object : MemberAdapter.SendData {
+            override fun sendUserTeam(data: UserTeamResponse) {
+                userTeam = UserTeam(data.groupId, data.profileId)
+            }
+        })
+    }
     private lateinit var actionSmall: ActionSmall
     private var userTeam: UserTeam? = null
     private var presenter: AddUserActionSmallPresenter? = null
@@ -77,11 +89,7 @@ class AddUserActionSmallFragment : BaseFragment(), AddUserActionSmallContract.Vi
     }
 
     private fun configView() {
-        adapter = ActionSmallAdapter(object : ActionSmallAdapter.DataActionSmall {
-            override fun sendData(actionSmall: ActionSmall) {
-                sendDataToInsert(actionSmall)
-            }
-        })
+        recyclerActionSmall.adapter = adapter
     }
 
     private fun sendDataToInsert(actionSmall: ActionSmall) {
@@ -106,7 +114,7 @@ class AddUserActionSmallFragment : BaseFragment(), AddUserActionSmallContract.Vi
     }
 
     override fun getAllMemberOnAction(list: List<UserTeamResponse>) {
-        adapterDialog?.setData(list = list as ArrayList<UserTeamResponse>)
+        adapterDialog.setData(list = list as ArrayList<UserTeamResponse>)
     }
 
     override fun onClick(v: View?) {
@@ -149,12 +157,7 @@ class AddUserActionSmallFragment : BaseFragment(), AddUserActionSmallContract.Vi
 
     private fun showGetMemberDialog() {
         presenter?.getAllMemberOnAction(actionId, groupId)
-        adapterDialog = MemberAdapter(object : MemberAdapter.SendData {
-            override fun sendUserTeam(data: UserTeamResponse) {
-                userTeam = UserTeam(data.groupId, data.profileId)
-            }
-        })
-        val customDialog: CustomDialog = CustomDialog(context!!, adapterDialog!!)
+        val customDialog: CustomDialog = CustomDialog(context!!, adapterDialog)
         customDialog.show()
         customDialog.setCanceledOnTouchOutside(false)
     }

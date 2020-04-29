@@ -46,7 +46,7 @@ class RegisterFragment:BaseFragment(), RegisterContract.View, View.OnClickListen
     }
 
     override fun onRegisteSuccess() {
-        addFragment(R.id.frag_start,LoginFragment(),false)
+        replaceFragment(R.id.frag_start,LoginFragment(),false)
     }
 
     override fun onClick(v: View?) {
@@ -55,7 +55,7 @@ class RegisterFragment:BaseFragment(), RegisterContract.View, View.OnClickListen
                 updateProfile()
             }
             R.id.imageButtonLogin->{
-                addFragment(R.id.frag_start,LoginFragment(),false)
+                replaceFragment(R.id.frag_start,LoginFragment(),false)
             }
         }
     }

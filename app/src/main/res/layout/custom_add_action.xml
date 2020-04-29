@@ -34,7 +34,17 @@
         android:src="@drawable/bavarian"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolBar" />
-
+    <TextView
+        android:id="@id/titleGroup"
+        android:text="Tạo nhóm thực hiện"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:textSize="@dimen/sp_18"
+        android:layout_width="wrap_content"
+        android:textColor="@color/colorBack"
+        android:layout_marginTop="@dimen/dp_16"
+        app:layout_constraintTop_toBottomOf="@id/image_avatar"
+        android:layout_height="wrap_content"/>
     <TextView
         android:id="@+id/textNameUserCreate"
         android:layout_width="wrap_content"
@@ -51,40 +61,44 @@
         android:id="@+id/nameWork"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginStart="@dimen/dp_24"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginEnd="@dimen/dp_24"
+        android:layout_marginRight="@dimen/dp_24"
         android:hint=" Nhập tên công việc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_avatar" />
+        android:layout_marginTop="@dimen/dp_16"
+        app:layout_constraintTop_toBottomOf="@+id/nameGroup" />
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="110dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="@dimen/dp_16"
-        android:text="Chọn thành viên"
+        android:id="@+id/nameGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nhóm 2"
         android:textColor="@color/colorBack"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        android:layout_marginLeft="@dimen/dp_16"
+        app:layout_constraintBottom_toBottomOf="@+id/titleGroup"
+        app:layout_constraintStart_toEndOf="@+id/titleGroup"
+        app:layout_constraintTop_toTopOf="@+id/titleGroup" />
 
     <ImageButton
         android:id="@+id/buttonAddMember"
         android:layout_width="@dimen/dp_32"
         android:layout_height="@dimen/dp_32"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
         android:background="?selectableItemBackground"
         android:scaleType="centerCrop"
         android:src="@drawable/search"
-        app:layout_constraintBottom_toBottomOf="@+id/textView6"
-        app:layout_constraintEnd_toStartOf="@+id/buttonAddDateEnd"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toTopOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/nameGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nameGroup"
+        app:layout_constraintTop_toTopOf="@+id/nameGroup"
+        app:layout_constraintVertical_bias="0.545" />
+
     <ImageButton
         android:id="@+id/buttonAddDateEnd"
         android:layout_width="@dimen/dp_32"

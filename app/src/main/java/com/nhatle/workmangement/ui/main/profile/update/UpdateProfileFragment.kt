@@ -39,7 +39,7 @@ class UpdateProfileFragment : BaseFragment(), UpdateUserProfileContract.View, Vi
         editAddressUp.setText(profile.address)
         editEmailUp.setText(profile.email)
         editFullnameUp.setText(profile.fullName)
-        editPhoneUp.setText(profile.phoneMumber)
+        editPhoneUp.setText(profile.phoneNumber)
     }
 
     override fun initComponents() {
@@ -54,7 +54,7 @@ class UpdateProfileFragment : BaseFragment(), UpdateUserProfileContract.View, Vi
 
     override fun updateSuccess(userProfile: UserProfile) {
         CommonData.getInstance().profile = userProfile
-        addFragment(R.id.frag_main, UserProfileFragment(), false)
+        replaceFragment(R.id.frag_main, UserProfileFragment(), false)
     }
 
     override fun loadFail(string: String) {
@@ -65,13 +65,13 @@ class UpdateProfileFragment : BaseFragment(), UpdateUserProfileContract.View, Vi
         when (v?.id) {
             R.id.buttonUpAvatar -> {
                 (activity as MainActivity).hindNavigation(true)
-                addFragment(R.id.frag_image,ImageFragment(),false)
+                replaceFragment(R.id.frag_image,ImageFragment(),true)
             }
             R.id.buttonUpdatePr -> {
                 updateProfile()
             }
             R.id.buttoncancle -> {
-                addFragment(R.id.frag_main, UserProfileFragment(), false)
+                replaceFragment(R.id.frag_main, UserProfileFragment(), false)
             }
         }
     }

@@ -20,11 +20,11 @@
     <string name="myActionCreated">My Action</string>
     <string name="statusAction">Hoàn thành</string>
     <string name="nameAction">Bài tập lớn Android</string>
-    <string name="titleTimeStart">"Ngày tạo: "</string>
+    <string name="titleTimeStart">"Ngày BD: "</string>
     <string name="textStatust">2/3</string>
     <string name="titleStatus">Hoàn thành</string>
     <string name="timeStart">20/12/2020</string>
-    <string name="titleTimeEnd">Ngày kết thúc</string>
+    <string name="titleTimeEnd">Ngày KT</string>
     <string name="textStatustDelay">12</string>
     <string name="titleStatusDelay">Quá hạn</string>
     <string name="textError">can not connect</string>

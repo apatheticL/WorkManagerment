@@ -8,6 +8,6 @@ data class CommentResponse(
     var avatar: String,
     var actionId: Int,
     var content: String,
-    var typeContent: Int,
+    var type: Int,
     var createdTime: String?
 )

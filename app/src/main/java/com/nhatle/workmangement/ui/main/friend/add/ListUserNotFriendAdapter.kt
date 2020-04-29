@@ -3,6 +3,7 @@ package com.nhatle.workmangement.ui.main.friend.add
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.bumptech.glide.Glide
 import com.nhatle.workmangement.R
 import com.nhatle.workmangement.data.model.UserProfile
@@ -11,27 +12,38 @@ import com.nhatle.workmangement.ui.base.BaseViewHolder
 import com.nhatle.workmangement.ui.main.friend.SendDataProfile
 import kotlinx.android.synthetic.main.item_add_friend.view.*
 
-class ListUserNotFriendAdapter(val call:SendDataProfile.FriendAdd)
-    : BaseRecyclerViewAdapter<UserProfile, ListUserNotFriendAdapter.UserNotFriendHolder>() {
+class ListUserNotFriendAdapter(val call: SendDataProfile.FriendAdd) :
+    BaseRecyclerViewAdapter<UserProfile, ListUserNotFriendAdapter.UserNotFriendHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserNotFriendHolder {
         val layout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_add_friend,parent,false)
-        return UserNotFriendHolder(layout,call)
+            .inflate(R.layout.item_add_friend, parent, false)
+        return UserNotFriendHolder(layout, call)
+    }
+
+    override fun onBindViewHolder(holder: UserNotFriendHolder, position: Int) {
+        holder.onBindData(getData()[position])
+        holder.registerAddClick(holder.itemView.buttonAddFriend, getData()[position])
+        holder.registerCancelClick(
+            holder.itemView.buttonCancelFriend,
+            getData()[position],
+            position
+        )
     }
 
     fun deleteItem(position: Int) {
         getData().removeAt(position)
         notifyItemRemoved(position)
-        notifyItemRangeChanged(position,getData().size)
+        notifyItemRangeChanged(position, getData().size)
     }
 
-    class UserNotFriendHolder(itemView: View,val call: SendDataProfile.FriendAdd) : BaseViewHolder<UserProfile>(itemView){
-        private var checkAddClick :Boolean = false
+    class UserNotFriendHolder(itemView: View, val call: SendDataProfile.FriendAdd) :
+        BaseViewHolder<UserProfile>(itemView) {
+        private var checkAddClick: Boolean = false
         override fun onBindData(itemData: UserProfile) {
             super.onBindData(itemData)
-            configView(itemView,itemData)
+            configView(itemView, itemData)
         }
 
         private fun configView(itemView: View, itemData: UserProfile) {
@@ -43,26 +55,34 @@ class ListUserNotFriendAdapter(val call:SendDataProfile.FriendAdd)
             itemView.textAddressByUser.text = itemData.address
         }
 
-        override fun onBindData(itemPosition: Int, itemData: UserProfile) {
-            super.onBindData(itemPosition, itemData)
-            registerListener(itemData,itemView,itemPosition)
-        }
-
-        private fun registerListener(itemData: UserProfile, itemView: View, itemPosition: Int) {
-            itemView.buttonAddFriend.setOnClickListener{
-                call.sendDataToAdd(itemData)
-                it.visibility = View.INVISIBLE
-                checkAddClick =true
-            }
-            itemView.buttonCancelFriend.setOnClickListener{
-                if (checkAddClick){
-                    call.sendDataToDeleteAdd(itemPosition,itemData)
+        fun registerCancelClick(
+            buttonCancelFriend: Button,
+            itemData: UserProfile,
+            itemPosition: Int
+        ) {
+            buttonCancelFriend.setOnClickListener {
+                if (checkAddClick) {
+                    call.sendDataToDeleteAdd(this.itemPosition, itemData)
+                    it.setBackgroundResource(R.drawable.bg_add_done)
                     itemView.buttonAddFriend.visibility = View.VISIBLE
                 }
-                if (!checkAddClick){
+                if (!checkAddClick) {
                     call.deleteItem(itemPosition)
+                    it.setBackgroundResource(R.drawable.bg_button)
                 }
             }
         }
+
+        fun registerAddClick(buttonAddFriend: Button, itemData: UserProfile) {
+            buttonAddFriend.setOnClickListener {
+                call.sendDataToAdd(itemData)
+                it.setBackgroundResource(R.drawable.bg_add_done)
+                checkAddClick = true
+            }
+        }
+
+
     }
+
+
 }

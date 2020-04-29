@@ -10,29 +10,14 @@ import com.nhatle.workmangement.ui.base.BaseFragment
 import com.nhatle.workmangement.ui.main.friend.SendDataProfile
 import com.nhatle.workmangement.until.Common
 import com.nhatle.workmangement.until.CommonData
+import kotlinx.android.synthetic.main.fragment_friend_suggestions.*
 
 class FriendSuggestionsFragment : BaseFragment(), FriendSuggestionsContract.View {
     override val layoutResource: Int
         get() = R.layout.fragment_friend_suggestions
     private var presenter:FriendSuggestionsPresenter?=null
-    private var adapter :FriendSuggestionsAdapter?=null
-    override fun initData() {
-        initPresenter()
-    }
-
-    private fun initPresenter() {
-        val userService = Common.getUserService()
-        val dataSource = FriendRemoteDataSource.getInStance(userService)
-        val repository= FriendRepository(dataSource)
-        presenter = FriendSuggestionsPresenter(this,repository)
-    }
-
-    override fun initComponents() {
-        configRecyclerView()
-    }
-
-    private fun configRecyclerView() {
-        adapter = FriendSuggestionsAdapter(object :SendDataProfile.ReceiverFriend{
+    private val adapter :FriendSuggestionsAdapter by lazy {
+         FriendSuggestionsAdapter(object :SendDataProfile.ReceiverFriend{
             override fun sendDataToAccept(position: Int, data: FriendResponse) {
                 removeDataOnRecyclerView(position)
                 insertAccept(data)
@@ -43,6 +28,25 @@ class FriendSuggestionsFragment : BaseFragment(), FriendSuggestionsContract.View
                 deleteInvitation(data)
             }
         })
+    }
+    override fun initData() {
+
+    }
+
+    private fun initPresenter() {
+        val userService = Common.getUserService()
+        val dataSource = FriendRemoteDataSource.getInStance(userService)
+        val repository= FriendRepository(dataSource)
+        presenter = FriendSuggestionsPresenter(this,repository)
+    }
+
+    override fun initComponents() {
+        initPresenter()
+
+    }
+
+    private fun configRecyclerView() {
+        recyclerListSuggestion.adapter = adapter
     }
 
     private fun deleteInvitation(data: FriendResponse) {
@@ -56,11 +60,12 @@ class FriendSuggestionsFragment : BaseFragment(), FriendSuggestionsContract.View
     }
 
     private fun removeDataOnRecyclerView(position: Int) {
-        adapter!!.deleteItem(position)
+        adapter.deleteItem(position)
     }
 
     override fun showListReceiver(listFriend: List<FriendResponse>) {
-        adapter!!.setData(listFriend as ArrayList<FriendResponse>)
+        adapter.setData(listFriend as ArrayList<FriendResponse>)
+        configRecyclerView()
     }
 
     override fun acceptSuccess() {

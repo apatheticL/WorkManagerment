@@ -19,21 +19,15 @@ class ActionReportAdapter(val call: ReportManager) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActionReportHolder {
         val layout =
             LayoutInflater.from(parent.context).inflate(R.layout.item_report, parent, false)
-        return ActionReportHolder(layout, call)
+        return ActionReportHolder(layout)
     }
 
-    class ActionReportHolder(itemView: View, val call: ReportManager) :
+    class ActionReportHolder(itemView: View) :
         BaseViewHolder<UserActionReportResponse>(itemView) {
         private val format = SimpleDateFormat("dd/MM/yyyy")
         override fun onBindData(itemData: UserActionReportResponse) {
             super.onBindData(itemData)
             initView(itemView, itemData)
-
-        }
-
-        override fun onBindData(itemPosition: Int, itemData: UserActionReportResponse) {
-            super.onBindData(itemPosition, itemData)
-            registerListener(itemView.buttonMenu, itemData)
             checkHindButtonMenu(itemView,itemData)
         }
 
@@ -41,10 +35,6 @@ class ActionReportAdapter(val call: ReportManager) :
             if (itemData.profileId!=CommonData.getInstance().profile!!.profileId){
                 itemView.buttonMenu.visibility  =View.GONE
             }
-        }
-
-        private fun registerListener(buttonMenu: ImageButton, itemData: UserActionReportResponse) {
-            call.sendDataToButton(itemData, buttonMenu)
         }
 
         private fun initView(itemView: View, itemData: UserActionReportResponse) {
@@ -62,5 +52,16 @@ class ActionReportAdapter(val call: ReportManager) :
 
     interface ReportManager {
         fun sendDataToButton(itemData: UserActionReportResponse, buttonMenu: ImageButton)
+    }
+
+    override fun onBindViewHolder(holder: ActionReportHolder, position: Int) {
+        holder.onBindData(getData()[position])
+        registerListener(holder.itemView.buttonMenu,getData()[position])
+    }
+    private fun registerListener(buttonMenu: ImageButton, itemData: UserActionReportResponse) {
+       buttonMenu.setOnClickListener{
+           call.sendDataToButton(itemData, buttonMenu)
+       }
+
     }
 }

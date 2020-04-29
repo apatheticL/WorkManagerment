@@ -15,28 +15,29 @@ class FriendFragment : BaseFragment(), FriendContract.View {
     override val layoutResource: Int
         get() = R.layout.fragment_friend
     private var presenter:FriendPresenter?=null
-    private var adapter:FriendAdapter? = null
-    override fun initData() {
-        initPresenter()
-        getAllData()
-    }
-
-    override fun initComponents() {
-        configRecyclerView()
-    }
-
-    private fun configRecyclerView() {
-        adapter = FriendAdapter(object :SendDataProfile.Friend{
+    private val adapter:FriendAdapter by lazy{
+        FriendAdapter(object :SendDataProfile.Friend{
             override fun sendData(data: FriendResponse) {
                 val fragment = UserProfileFragment()
                 fragment.setData(data)
             }
         })
+    }
+    override fun initData() {
+
+    }
+
+    override fun initComponents() {
+        initPresenter()
+        getAllData()
+    }
+
+    private fun configRecyclerView() {
         recyclerListFriend.adapter = adapter
     }
 
     private fun initPresenter() {
-        var userService = Common.getUserService()
+        val userService = Common.getUserService()
         val dataSource = FriendRemoteDataSource.getInStance(userService)
         val repository = FriendRepository(dataSource)
         presenter = FriendPresenter(this,repository)
@@ -46,7 +47,8 @@ class FriendFragment : BaseFragment(), FriendContract.View {
     }
 
     override fun showAllFriendOfUser(listFriend: List<FriendResponse>) {
-        adapter!!.setData(listFriend as ArrayList<FriendResponse>)
+        adapter.setData(listFriend as ArrayList<FriendResponse>)
+        configRecyclerView()
     }
 
     override fun loadFail(string: String) {

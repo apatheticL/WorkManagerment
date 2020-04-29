@@ -3,6 +3,7 @@ package com.nhatle.workmangement.ui.main.friend.receiver
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.bumptech.glide.Glide
 import com.nhatle.workmangement.R
 import com.nhatle.workmangement.data.model.response.FriendResponse
@@ -13,6 +14,11 @@ import kotlinx.android.synthetic.main.item_receiver.view.*
 
 class FriendSuggestionsAdapter(val call: SendDataProfile.ReceiverFriend):
     BaseRecyclerViewAdapter<FriendResponse, FriendSuggestionsAdapter.ReceiverFriendHolder>() {
+    override fun onBindViewHolder(holder: ReceiverFriendHolder, position: Int) {
+        holder.onBindData(getData()[position])
+        holder.registerButtonAccept(holder.itemView.buttonAccept,getData()[position],position)
+        holder.registerButtonDelete(holder.itemView.buttonRmAdd,getData()[position],position)
+    }
      class ReceiverFriendHolder(itemView: View,val call:SendDataProfile.ReceiverFriend)
          : BaseViewHolder<FriendResponse>(itemView){
         override fun onBindData(itemData: FriendResponse) {
@@ -20,20 +26,24 @@ class FriendSuggestionsAdapter(val call: SendDataProfile.ReceiverFriend):
             configData(itemView,itemData)
         }
 
-         override fun onBindData(itemPosition: Int, itemData: FriendResponse) {
-             super.onBindData(itemPosition, itemData)
-             registerListener(itemView,itemData,itemPosition)
-         }
 
-         private fun registerListener(
-             itemView: View,
+
+          fun registerButtonAccept(
+              buttonAccept: Button,
              itemData: FriendResponse,
              itemPosition: Int
          ) {
-             itemView.buttonAccept.setOnClickListener{
+             buttonAccept.setOnClickListener{
                  call.sendDataToAccept(itemPosition,itemData)
              }
-             itemView.buttonRmAdd.setOnClickListener{
+
+         }
+         fun registerButtonDelete(
+             buttonDelte: Button,
+             itemData: FriendResponse,
+             itemPosition: Int
+         ) {
+             buttonDelte.setOnClickListener{
                  call.sendDataToDeleteInvitation(itemPosition,itemData)
              }
          }

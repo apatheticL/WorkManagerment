@@ -10,13 +10,23 @@ import com.nhatle.workmangement.ui.base.BaseViewHolder
 
 
 class ImageAdapter(val call:SendImage) : BaseRecyclerViewAdapter<ItemImage, ImageAdapter.ImageHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageHolder {
+        val layoutInflater =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_image, parent, false)
+        return ImageHolder(layoutInflater,call)
+    }
+
+    override fun onBindViewHolder(holder: ImageHolder, position: Int) {
+        holder.onBindData(getData()[position])
+        holder.itemCick(holder.itemView,getData()[position])
+    }
     class ImageHolder(itemView: View,val call:SendImage) : BaseViewHolder<ItemImage>(itemView) {
         override fun onBindData(itemData: ItemImage) {
             super.onBindData(itemData)
-            itemCick(itemView,itemData)
+
         }
 
-        private fun itemCick(
+         fun itemCick(
             itemView: View,
             itemData: ItemImage
         ) {
@@ -26,9 +36,5 @@ class ImageAdapter(val call:SendImage) : BaseRecyclerViewAdapter<ItemImage, Imag
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageHolder {
-        val layoutInflater =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_image, parent, false)
-        return ImageHolder(layoutInflater,call)
-    }
+
 }

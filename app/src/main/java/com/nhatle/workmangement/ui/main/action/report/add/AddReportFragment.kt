@@ -88,7 +88,7 @@ class AddReportFragment : BaseFragment(), View.OnClickListener, AddActionReportC
         Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
     }
     private fun openFragmentReport(){
-        addFragment(R.id.frag_main, UserActionReportFragment(actionId = actionId), false)
+        replaceFragment(R.id.frag_main, UserActionReportFragment(actionId = actionId), false)
 
     }
 }
