@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:background="@drawable/background"
     android:layout_height="match_parent">
 
@@ -33,7 +34,7 @@
                 android:layout_marginTop="32dp"
                 android:text="@string/login_title"
                 android:textColor="@color/colorRed"
-                android:textSize="@dimen/sp_50"
+                android:textSize="@dimen/sp_45"
                 app:fontFamily="@font/audiowide"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -75,25 +76,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/userName" />
 
-            <CheckBox
-                android:id="@+id/boxRemember"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="Remember me"
-                android:textColor="@color/colorGray50"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/passWord"
-                app:layout_constraintTop_toBottomOf="@+id/passWord" />
-
             <Button
                 android:id="@+id/buttonLogin"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="@dimen/dp_32"
                 android:layout_marginEnd="32dp"
                 android:layout_marginRight="32dp"
                 android:background="@drawable/bg_button"
@@ -101,9 +90,9 @@
                 android:text="@string/login_title"
                 android:textColor="@color/colorWhile"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.37"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/boxRemember" />
+                app:layout_constraintTop_toBottomOf="@+id/passWord" />
 
             <TextView
                 android:id="@+id/create"
@@ -115,7 +104,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="48dp"
-                android:text="Create new account."
+                android:text="Tạo tài khoản mới."
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/textRegister"
                 app:layout_constraintHorizontal_bias="0.22"

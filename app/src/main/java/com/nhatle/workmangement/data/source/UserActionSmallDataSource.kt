@@ -11,7 +11,7 @@ interface UserActionSmallDataSource {
         fun getAllActionSmallByUser(actionId: Int,profileId: Int,
                                     callback: OnDataLoadedCallback<List<UserActionSmallResponse>>)
         fun addUserActionSmall(userActionSmall: UserActionSmall,callback: OnDataLoadedCallback<UserActionSmall>)
-        fun deleteUserActionSmall(groupId:Int,profileId:Int,actionSmallId:Int,callback: OnDataLoadedCallback<Boolean>)
+        fun deleteUserActionSmall(userActionSmallId:Int,callback: OnDataLoadedCallback<Boolean>)
         fun updateUserActionSmall(userActionSmall: UserActionSmall,callback: OnDataLoadedCallback<UserActionSmall>)
         fun getAllMemberOnActionInGroup(groupId: Int,actionId: Int,callback: OnDataLoadedCallback<List<UserTeamResponse>>)
     }

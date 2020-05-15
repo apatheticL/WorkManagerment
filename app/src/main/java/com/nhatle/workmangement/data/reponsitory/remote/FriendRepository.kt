@@ -26,14 +26,14 @@ class FriendRepository(val dataSource: FriendRemoteDataSource):FriendDataSource{
         invitationFriend: InvitationFriend,
         callback: OnDataLoadedCallback<Boolean>
     ) {
-        acceptedFriend(invitationFriend, callback)
+        dataSource.acceptedFriend(invitationFriend, callback)
     }
 
     override fun senderFriend(
         invitationFriend: InvitationFriend,
         callback: OnDataLoadedCallback<InvitationFriend>
     ) {
-        senderFriend(invitationFriend,callback)
+        dataSource.senderFriend(invitationFriend,callback)
     }
 
     override fun getAllUserSenderFriend(

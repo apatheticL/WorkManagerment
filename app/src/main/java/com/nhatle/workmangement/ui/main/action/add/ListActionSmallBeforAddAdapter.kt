@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.item_action_small.view.*
 
 class ListActionSmallBeforAddAdapter:
     BaseRecyclerViewAdapter<ActionSmallBefor, ListActionSmallBeforAddAdapter.ActionBeforeAddHolder>() {
-    private var list = getData()
     class ActionBeforeAddHolder(itemView: View, val call:DeleteItem) : BaseViewHolder<ActionSmallBefor>(itemView){
         override fun onBindData(itemData: ActionSmallBefor) {
             super.onBindData(itemData)

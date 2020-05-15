@@ -36,14 +36,11 @@ class UserActionSmallRepository(private val dataSource: UserActionSmallRemoteDat
     }
 
     override fun deleteUserActionSmall(
-        groupId: Int,
-        profileId: Int,
-        actionSmallId: Int,
+        userActionSmallId: Int,
         callback: OnDataLoadedCallback<Boolean>
     ) {
         dataSource.deleteUserActionSmall(
-            groupId = groupId, profileId = profileId,
-            actionSmallId = actionSmallId, callback = callback
+          userActionSmallId = userActionSmallId, callback = callback
         )
     }
 

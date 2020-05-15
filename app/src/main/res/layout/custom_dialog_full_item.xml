@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image"
+        android:src="@drawable/ic_notifications_none_black_24dp"
+        android:scaleType="centerCrop"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_48"/>
+    <TextView
+        android:id="@+id/showMessenger"
+        android:layout_marginTop="@dimen/dp_16"
+        android:text="Cac nhiem vu da duoc phan cong het"
+        android:textColor="@color/colorBack"
+        android:layout_toRightOf="@id/image"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:textSize="@dimen/sp_18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/title"
+        android:textColor="@color/colorBack"
+        android:textSize="@dimen/sp_14"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_below="@id/showMessenger"
+        android:text="Nhấn ok để thoát"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_below="@id/title"
+        android:layout_marginTop="@dimen/dp_24"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/buttonOk"
+            android:textColor="@color/colorWhile"
+            android:textSize="@dimen/sp_18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_cancle"
+            android:text="OK" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -14,7 +14,6 @@
         app:layout_constraintTop_toTopOf="parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="#F4F4F4"
         android:layout_height="wrap_content">
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatarComment"
@@ -23,42 +22,52 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_width="@dimen/sizeAvatarComment"
             android:layout_height="@dimen/sizeAvatarComment"/>
-        <TextView
-            android:id="@+id/nameComment"
-            android:text="@string/nameCreator"
-            android:padding="4dp"
-            android:background="@drawable/bg_item_comment"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:padding="@dimen/dp_4"
             app:layout_constraintLeft_toRightOf="@id/avatarComment"
-            android:layout_marginLeft="@dimen/dp_24"
             app:layout_constraintTop_toTopOf="parent"
-            android:textStyle="bold"
-            android:textSize="@dimen/sp_18"
-            android:layout_marginTop="@dimen/dp_8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/content"
-            android:text="@string/contentComment"
-            android:textSize="@dimen/sp_14"
+            android:layout_marginLeft="@dimen/dp_32"
             android:background="@drawable/bg_item_comment"
-            app:layout_constraintTop_toBottomOf="@id/nameComment"
-            app:layout_constraintStart_toStartOf="@id/nameComment"
-            android:layout_marginTop="@dimen/dp_8"
-            android:padding="4dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imageContent"
-            android:layout_width="@dimen/dp_150"
-            android:layout_height="@dimen/dp_150"
-            android:layout_marginBottom="@dimen/dp_16"
-            android:visibility="gone"
-            android:src="@drawable/background"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/nameComment"
-            app:layout_constraintTop_toBottomOf="@id/nameComment" />
+            <TextView
+                android:id="@+id/nameComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:padding="4dp"
+                android:text="@string/nameCreator"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/content"
+                android:text="@string/contentComment"
+                android:textSize="@dimen/sp_14"
+
+                app:layout_constraintTop_toBottomOf="@id/nameComment"
+                app:layout_constraintStart_toStartOf="@id/nameComment"
+                android:layout_marginTop="@dimen/dp_8"
+                android:padding="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <ImageView
+                android:id="@+id/imageContent"
+                android:layout_width="@dimen/dp_150"
+                android:layout_height="@dimen/dp_150"
+                android:layout_marginBottom="@dimen/dp_16"
+                android:visibility="gone"
+                android:src="@drawable/background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/nameComment"
+                app:layout_constraintTop_toBottomOf="@id/nameComment" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
         <ImageButton
             android:id="@+id/buttonDelete"
             app:layout_constraintEnd_toEndOf="parent"

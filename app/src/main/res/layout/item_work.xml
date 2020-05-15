@@ -27,7 +27,16 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
+            <TextView
+                android:id="@+id/descriptionAction"
+                android:textColor="#DD8271"
+                android:text="Mô tả"
+                android:layout_marginLeft="@dimen/dp_4"
+                android:layout_marginTop="@dimen/dp_4"
+                app:layout_constraintTop_toBottomOf="@+id/nameAction"
+                app:layout_constraintStart_toStartOf="@id/nameAction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/titleGroup"
                 android:layout_width="wrap_content"
@@ -36,7 +45,7 @@
                 android:layout_marginTop="@dimen/dp_8"
                 android:text="Nhóm"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nameAction" />
+                app:layout_constraintTop_toBottomOf="@+id/descriptionAction" />
 
             <TextView
                 android:id="@+id/nameGroup"
@@ -166,13 +175,17 @@
                 android:id="@+id/buttonManager"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="@dimen/dp_24"
+                android:layout_marginLeft="@dimen/dp_4"
                 android:layout_marginRight="@dimen/dp_24"
                 android:background="?selectableItemBackground"
                 android:src="@drawable/ic_more_horiz_black_24dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/nameAction"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/dp_4" />
 
             <TextView
                 android:id="@+id/titleLeadel"

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhile">
@@ -16,24 +17,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <include
-                android:id="@+id/include"
-                layout="@layout/infor_action"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolBar" />
 
             <TextView
-                android:id="@+id/titleThree"
-                android:layout_width="match_parent"
+                android:id="@+id/titleStart"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorBack"
                 android:layout_marginTop="@dimen/dp_16"
-                android:gravity="center"
-                android:text="Sửa thông tin"
-                android:textSize="@dimen/sp_24"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/include" />
+                android:text="@string/titleTimeStart"
+                app:layout_constraintStart_toStartOf="@id/editDescription"
+                app:layout_constraintTop_toBottomOf="@id/editDescription" />
+
+            <TextView
+                android:id="@+id/timeStartAction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/timeStart"
+                android:textColor="@color/colorBack"
+                app:layout_constraintStart_toStartOf="@+id/texttimEndUpdate"
+                app:layout_constraintTop_toTopOf="@+id/titleStart" />
 
             <ImageButton
                 android:id="@+id/buttonAddDateEnd"
@@ -63,7 +65,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_24"
-                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_4"
                 android:layout_marginRight="@dimen/dp_24"
                 android:hint="Mô tả"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +75,7 @@
             <TextView
                 android:id="@+id/toolBar"
                 android:layout_width="match_parent"
-                android:layout_height="?actionBarSize"
+                android:layout_height="@dimen/dp_32"
                 android:background="@android:color/holo_blue_dark"
                 android:gravity="center"
                 android:text="Cập nhập công việc"
@@ -92,11 +94,11 @@
                 android:layout_width="@dimen/dp_50"
                 android:layout_height="@dimen/dp_50"
                 android:layout_marginStart="@dimen/dp_56"
+                android:layout_marginTop="@dimen/dp_8"
                 android:layout_marginLeft="48dp"
-                android:layout_marginTop="@dimen/dp_32"
                 android:src="@drawable/bavarian"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleThree" />
+                app:layout_constraintTop_toBottomOf="@+id/toolBar" />
 
             <TextView
                 android:id="@+id/nameCreatorAction"
@@ -116,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginLeft="24dp"
-                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_8"
                 android:layout_marginEnd="24dp"
                 android:layout_marginRight="24dp"
                 android:hint=" Nhập tên công việc"
@@ -132,8 +134,8 @@
                 android:layout_marginTop="@dimen/dp_16"
                 android:text="Ngày kết thúc"
                 android:textColor="@color/colorBack"
-                app:layout_constraintStart_toStartOf="@+id/editDescription"
-                app:layout_constraintTop_toBottomOf="@+id/editDescription" />
+                app:layout_constraintStart_toStartOf="@+id/titleStart"
+                app:layout_constraintTop_toBottomOf="@+id/titleStart" />
 
             <TextView
                 android:id="@+id/texttimEndUpdate"
@@ -146,19 +148,31 @@
                 app:layout_constraintTop_toTopOf="@+id/textView13"
                 app:layout_constraintVertical_bias="0.0" />
 
+            <include
+                android:id="@+id/includeUpdateActionSmall"
+                layout="@layout/fragment_update_action_small"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/texttimEndUpdate" />
+
+
             <Button
                 android:id="@+id/buttonUpdateWork"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_save"
                 android:text="Lưu lại"
-                android:layout_marginTop="@dimen/dp_32"
                 android:textColor="@color/colorWhile"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/buttonCancelUpdateWork"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+                app:layout_constraintTop_toBottomOf="@+id/includeUpdateActionSmall" />
 
             <Button
                 android:id="@+id/buttonCancelUpdateWork"

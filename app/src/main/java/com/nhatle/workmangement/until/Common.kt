@@ -9,6 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object Common {
     fun getUserService(): UserService {
+
         GsonBuilder().setLenient().create()
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -17,11 +18,22 @@ object Common {
         return retrofit.create(UserService::class.java)
 
     }
-    fun hideKeyBoard(activity: Activity){
-        var inputMethodManager : InputMethodManager = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        var view  = activity.currentFocus;
-        if(view!=null){
-            inputMethodManager.hideSoftInputFromWindow(view.windowToken,0)
+
+    fun hideKeyBoard(activity: Activity) {
+        var inputMethodManager: InputMethodManager =
+            activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        var view = activity.currentFocus;
+        if (view != null) {
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+    }
+
+    fun showKeyBoard(activity: Activity) {
+        val imm: InputMethodManager =
+            activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        val view = activity.currentFocus
+        if (view != null) {
+            imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
         }
     }
 }

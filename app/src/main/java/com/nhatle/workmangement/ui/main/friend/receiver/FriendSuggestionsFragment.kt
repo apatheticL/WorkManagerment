@@ -15,9 +15,9 @@ import kotlinx.android.synthetic.main.fragment_friend_suggestions.*
 class FriendSuggestionsFragment : BaseFragment(), FriendSuggestionsContract.View {
     override val layoutResource: Int
         get() = R.layout.fragment_friend_suggestions
-    private var presenter:FriendSuggestionsPresenter?=null
-    private val adapter :FriendSuggestionsAdapter by lazy {
-         FriendSuggestionsAdapter(object :SendDataProfile.ReceiverFriend{
+    private var presenter: FriendSuggestionsPresenter? = null
+    private val adapter: FriendSuggestionsAdapter by lazy {
+        FriendSuggestionsAdapter(object : SendDataProfile.ReceiverFriend {
             override fun sendDataToAccept(position: Int, data: FriendResponse) {
                 removeDataOnRecyclerView(position)
                 insertAccept(data)
@@ -29,6 +29,7 @@ class FriendSuggestionsFragment : BaseFragment(), FriendSuggestionsContract.View
             }
         })
     }
+
     override fun initData() {
 
     }
@@ -36,13 +37,17 @@ class FriendSuggestionsFragment : BaseFragment(), FriendSuggestionsContract.View
     private fun initPresenter() {
         val userService = Common.getUserService()
         val dataSource = FriendRemoteDataSource.getInStance(userService)
-        val repository= FriendRepository(dataSource)
-        presenter = FriendSuggestionsPresenter(this,repository)
+        val repository = FriendRepository(dataSource)
+        presenter = FriendSuggestionsPresenter(this, repository)
     }
 
     override fun initComponents() {
         initPresenter()
+        getAllData()
+    }
 
+    private fun getAllData() {
+        presenter!!.getAllReceiver(CommonData.getInstance().profile!!.profileId)
     }
 
     private fun configRecyclerView() {
@@ -50,12 +55,14 @@ class FriendSuggestionsFragment : BaseFragment(), FriendSuggestionsContract.View
     }
 
     private fun deleteInvitation(data: FriendResponse) {
-        presenter!!.deleteReceiver(data.friendId)
+        presenter!!.deleteReceiver(data.id)
     }
 
     private fun insertAccept(data: FriendResponse) {
-        val invitationFriend = InvitationFriend(0,data.friendId,
-            CommonData.getInstance().profile!!.profileId,1,null)
+        val invitationFriend = InvitationFriend(
+            data.id, data.friendId,
+            CommonData.getInstance().profile!!.profileId, 1, null
+        )
         presenter!!.sendAcceptInvitationFriend(invitationFriend)
     }
 
@@ -64,20 +71,22 @@ class FriendSuggestionsFragment : BaseFragment(), FriendSuggestionsContract.View
     }
 
     override fun showListReceiver(listFriend: List<FriendResponse>) {
-        adapter.setData(listFriend as ArrayList<FriendResponse>)
-        configRecyclerView()
+        if (listFriend.isNotEmpty()) {
+            adapter.setData(listFriend as ArrayList<FriendResponse>)
+            configRecyclerView()
+        }
     }
 
     override fun acceptSuccess() {
-        Toast.makeText(context,"is success",Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "is success", Toast.LENGTH_SHORT).show()
     }
 
     override fun deleteSuccess() {
-        Toast.makeText(context,"is success",Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "is success", Toast.LENGTH_SHORT).show()
     }
 
     override fun onFail(string: String) {
-        Toast.makeText(context,string,Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, string, Toast.LENGTH_SHORT).show()
     }
 
 }

@@ -33,9 +33,14 @@ class ListUserNotFriendAdapter(val call: SendDataProfile.FriendAdd) :
     }
 
     fun deleteItem(position: Int) {
-        getData().removeAt(position)
-        notifyItemRemoved(position)
-        notifyItemRangeChanged(position, getData().size)
+        if (getData().size!=0){
+            getData().removeAt(position)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position, getData().size)
+        }
+        else{
+            call.showNotification("not data")
+        }
     }
 
     class UserNotFriendHolder(itemView: View, val call: SendDataProfile.FriendAdd) :

@@ -10,12 +10,12 @@ interface AddUserActionSmallContract {
         fun insertUserActionSmallSuccess()
         fun showAllActionSmall(actionSmallResponse: List<ActionSmall>)
         fun onFail(string: String)
-        fun getAllMemberOnAction(list: List<UserTeamResponse>)
+
     }
     interface Presenter{
         fun getAllActionSmall(actionId:Int)
         fun insertUserActionSmall(userActionSmall: UserActionSmall)
-        fun getAllMemberOnAction(actionId: Int,groupId:Int)
+
     }
 
 }

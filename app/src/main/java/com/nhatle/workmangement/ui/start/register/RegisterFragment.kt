@@ -46,7 +46,7 @@ class RegisterFragment:BaseFragment(), RegisterContract.View, View.OnClickListen
     }
 
     override fun onRegisteSuccess() {
-        replaceFragment(R.id.frag_start,LoginFragment(),false)
+        replaceFragment(R.id.frag_start,LoginFragment(),true)
     }
 
     override fun onClick(v: View?) {
@@ -55,7 +55,7 @@ class RegisterFragment:BaseFragment(), RegisterContract.View, View.OnClickListen
                 updateProfile()
             }
             R.id.imageButtonLogin->{
-                replaceFragment(R.id.frag_start,LoginFragment(),false)
+                replaceFragment(R.id.frag_start,LoginFragment(),true)
             }
         }
     }
@@ -74,7 +74,7 @@ class RegisterFragment:BaseFragment(), RegisterContract.View, View.OnClickListen
                 val fullName = editFullname.text.toString()
                 val address = editAddress.text.toString()
                 val email = editEmal.text.toString()
-                val phone = editEmal.text.toString()
+                val phone = editPhoneNumber.text.toString()
                 val registerResponse = RegisterResponse(username,pass,null,fullName,
                     address,email,phone,null)
                 presenter!!.handleRegister(registerResponse)

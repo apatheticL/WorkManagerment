@@ -6,23 +6,66 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.nhatle.workmangement.R
 import com.nhatle.workmangement.data.model.Action
+import com.nhatle.workmangement.data.model.ActionSmall
 import com.nhatle.workmangement.data.model.response.ActionResponse
 import com.nhatle.workmangement.data.reponsitory.remote.ActionRemoteRepository
+import com.nhatle.workmangement.data.reponsitory.remote.ActionSmallRemoteRepository
 import com.nhatle.workmangement.data.source.remote.ActionRemoteDataSource
+import com.nhatle.workmangement.data.source.remote.ActionSmallRemoteDataSource
+import com.nhatle.workmangement.data.until.ActionSmallBefor
+import com.nhatle.workmangement.ui.MainActivity
 import com.nhatle.workmangement.ui.base.BaseFragment
 import com.nhatle.workmangement.ui.main.action.ActionFragment
+import com.nhatle.workmangement.ui.main.action.add.ListActionSmallBeforAddAdapter
 import com.nhatle.workmangement.until.Common
+import com.nhatle.workmangement.until.CommonAction
 import com.nhatle.workmangement.until.CommonData
+import kotlinx.android.synthetic.main.fragment_add_acion_small.*
+import kotlinx.android.synthetic.main.fragment_update_action_small.*
 import kotlinx.android.synthetic.main.fragment_update_work.*
-import kotlinx.android.synthetic.main.infor_action.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class UpdateActionFragment : BaseFragment(), UpdateActionContract.View, View.OnClickListener {
     override val layoutResource: Int
         get() = R.layout.fragment_update_work
     private var actionResponse: ActionResponse? = null
+    private var checkItemClick = false
     private var presenter: UpdateActionPresenter? = null
+    private var listActionSmallName: ArrayList<ActionSmallBefor> = ArrayList()
+    private var listUpdate: ArrayList<ActionSmall> = ArrayList()
+    private var lisDeleteActionSmall: ArrayList<ActionSmall> = ArrayList()
+    private val adapter: ActionSmallForUpdateAdapter by lazy {
+        ActionSmallForUpdateAdapter(object : ActionSmallForUpdateAdapter.SendActionSmall {
+            override fun sendActionSmall(data: ActionSmall) {
+                sendActionSmallForUpdate(data)
+                checkItemClick = true
+            }
+
+            override fun sendActionIsDelete(actionSmall: ActionSmall, position: Int) {
+                sendDataDeleteActionSmall(actionSmall, position)
+            }
+
+        })
+    }
+    private val adapterInsert: ListActionSmallBeforAddAdapter = ListActionSmallBeforAddAdapter()
+
+    private fun sendDataDeleteActionSmall(
+        actionSmall: ActionSmall,
+        position: Int
+    ) {
+        lisDeleteActionSmall.add(actionSmall)
+        adapter.deleteMember(position)
+    }
+
+    private fun sendActionSmallForUpdate(data: ActionSmall) {
+        editActionSmallNameOnUpdate.setText(data.description)
+        buttonSaveUpdate.setOnClickListener {
+            listUpdate.add(data)
+        }
+    }
+
     override fun initData() {
         //loadData()
         regisListener()
@@ -32,8 +75,11 @@ class UpdateActionFragment : BaseFragment(), UpdateActionContract.View, View.OnC
     private fun initPresenter() {
         val userService = Common.getUserService()
         val dataSource = ActionRemoteDataSource.getInstance(userService)
+        val smallDataSource = ActionSmallRemoteDataSource.getInstance(userService)
+        val smallRepository = ActionSmallRemoteRepository(smallDataSource)
         val repository = ActionRemoteRepository(dataSource)
-        presenter = UpdateActionPresenter(this, repository)
+        presenter = UpdateActionPresenter(this, repository, smallRepository)
+        presenter!!.getAllActionSmall(CommonAction.getInstance().action!!.actionId)
     }
 
     override fun initComponents() {
@@ -45,21 +91,36 @@ class UpdateActionFragment : BaseFragment(), UpdateActionContract.View, View.OnC
         buttonUpdateWork.setOnClickListener(this)
         buttonCancelUpdateWork.setOnClickListener(this)
         buttonAddDateEnd.setOnClickListener(this)
+        buttonSaveUpdate.setOnClickListener(this)
     }
 
     private fun loadData() {
         Glide.with(image_avatar).load(CommonData.getInstance().profile!!.avatar)
             .into(image_avatar)
         nameCreatorAction.text = CommonData.getInstance().profile!!.fullName
-        textNameAction.text = actionResponse!!.actionName
-        textDescription.text = actionResponse!!.description
-        nameCreator.text = actionResponse!!.nameCreator
-        timeStartAction.text = actionResponse!!.timeStart
-        timeEndAction.text = actionResponse!!.timeStart
+        editDescription.setText(actionResponse!!.description)
+        nameWork.setText(actionResponse!!.actionName)
+        texttimEndUpdate.text = actionResponse!!.timeEnd
     }
 
+    override fun getAllActionSmall(list: List<ActionSmall>) {
+            adapter.setData(list as ArrayList<ActionSmall>)
+            recyclerListActionSmallForUpdate.adapter = adapter
+    }
     override fun updateSuccess() {
+        (activity as MainActivity).hindNavigation(false)
         replaceFragment(R.id.frag_main, ActionFragment(), true)
+    }
+    override fun updateActionSmallSuccess() {
+        openFragmentAction()
+    }
+
+    override fun insertActionSmallSuccess() {
+        openFragmentAction()
+    }
+
+    override fun deleteActionSmallSuccess() {
+        openFragmentAction()
     }
 
     override fun onFail(string: String) {
@@ -75,28 +136,35 @@ class UpdateActionFragment : BaseFragment(), UpdateActionContract.View, View.OnC
                 updateWork()
             }
             R.id.buttonCancelUpdateWork -> {
-                replaceFragment(R.id.frag_main,ActionFragment(),true)
+                openFragmentAction()
             }
-            R.id.buttonAddDateEnd->{
+            R.id.buttonAddDateEnd -> {
                 showDatetimeDialog(texttimEndUpdate)
+            }
+            R.id.buttonSaveUpdate -> {
+                if (!checkItemClick) {
+                    checkAndShowActionSmall()
+                }
             }
         }
     }
+
     private fun showDatetimeDialog(textView: TextView) {
         val fmDateAndTime = SimpleDateFormat("yyyy-MM-dd")
         val calendar = Calendar.getInstance()
         val datePickerDialog =
             DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
-                calendar.set(Calendar.YEAR,year)
-                calendar.set(Calendar.MONTH,month)
-                calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth)
+                calendar.set(Calendar.YEAR, year)
+                calendar.set(Calendar.MONTH, month)
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
                 textView.text = fmDateAndTime.format(calendar.time)
             }
         activity?.let {
             DatePickerDialog(
-                it,datePickerDialog,
-                calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH)
-                ,calendar.get(Calendar.DAY_OF_MONTH)).show()
+                it, datePickerDialog,
+                calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)
+                , calendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
         }
     }
 
@@ -116,6 +184,52 @@ class UpdateActionFragment : BaseFragment(), UpdateActionContract.View, View.OnC
                 editDescription.text.toString()
             )
             presenter!!.updateAction(action)
+            if (listUpdate.isNotEmpty()) {
+                presenter!!.updateActionSmall(listUpdate)
+
+            }
+            if (lisDeleteActionSmall.isNotEmpty()) {
+                for (actionSmallDelete in lisDeleteActionSmall) {
+                    presenter!!.delateActionSmall(actionSmallDelete.actionSmallId)
+                }
+            }
+            if (listActionSmallName.isNotEmpty()) {
+                val list: MutableList<ActionSmall> = ArrayList()
+                for (i in 0 until listActionSmallName.size step 1) {
+                    val actionSmall =
+                        ActionSmall(
+                            0, actionResponse!!.actionId,
+                            listActionSmallName.get(i).actionSmallName
+                        )
+                    list.add(actionSmall)
+                }
+                presenter!!.insertActionSmall(list)
+            }
         }
+    }
+
+    private fun checkAndShowActionSmall() {
+        if (editActionSmallNameOnUpdate.text.isEmpty()) {
+            textErrorUpdate.visibility = View.VISIBLE
+            textErrorUpdate.text = "Trường này chưa có thông tin"
+        } else {
+            textErrorUpdate.visibility = View.GONE
+            if(editActionSmallNameOnUpdate.text.toString().isNotEmpty()){
+                listActionSmallName.add(ActionSmallBefor(editActionSmallNameOnUpdate.text.toString()))
+                recyclerBefoInsert.visibility = View.VISIBLE
+                adapterInsert.setData(listActionSmallName)
+                recyclerBefoInsert.adapter = adapterInsert
+            }
+
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        openFragmentAction()
+    }
+    private fun openFragmentAction(){
+        (activity as MainActivity).hindNavigation(false)
+        replaceFragment(R.id.frag_main,ActionFragment(),false)
     }
 }

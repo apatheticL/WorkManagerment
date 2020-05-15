@@ -93,14 +93,12 @@ class UserActionSmallRemoteDataSource private constructor(var userService: UserS
         )
     }
 
+
     override fun deleteUserActionSmall(
-        groupId: Int,
-        profileId: Int,
-        actionSmallId: Int,
+        userActionSmallId: Int,
         callback: OnDataLoadedCallback<Boolean>
     ) {
-        userService.deleteUserActionSmall(groupId=groupId,profileId = profileId,
-            actionSmallId = actionSmallId).enqueue(object :Callback<Boolean>{
+        userService.deleteUserActionSmall(userActionSmallId=userActionSmallId).enqueue(object :Callback<Boolean>{
             override fun onFailure(call: Call<Boolean>, t: Throwable) {
                 callback.onFailed(exception = t as Exception)
             }

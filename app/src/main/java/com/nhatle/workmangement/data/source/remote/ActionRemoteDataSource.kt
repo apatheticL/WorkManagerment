@@ -49,7 +49,8 @@ class ActionRemoteDataSource private constructor(var userService: UserService) :
                 if (response.body()!!.status == 0) {
                     callback.onFailedConnect("not content")
                 }
-                response.body()?.let { callback.onSuccess() }
+                callback.onSuccess(response.body()!!.data)
+//                response.body()?.let { callback.onSuccess() }
             }
 
         })

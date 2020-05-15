@@ -14,5 +14,6 @@ data class ActionResponse (
     var createdTime:String,
     var numberDelay:Int,
     var numberActionMaked:Int,
-    var numberFinish:Int
+    var numberFinish:Int,
+    var avatar:String
     )

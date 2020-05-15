@@ -41,7 +41,7 @@ class FriendManagerFragment:BaseFragment() {
                     }
                 }
                 if (fragment != null) {
-                    replaceFragment(R.id.frag_friend,fragment,false)
+                    replaceFragment(R.id.frag_friend,fragment,true)
                 }
             }
         })

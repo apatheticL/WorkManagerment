@@ -10,37 +10,39 @@ import com.nhatle.workmangement.ui.base.BaseRecyclerViewAdapter
 import com.nhatle.workmangement.ui.base.BaseViewHolder
 import kotlinx.android.synthetic.main.item_avatar.view.*
 
-class MemberAdapter(val call: SendData):
-    BaseRecyclerViewAdapter<UserTeamResponse, MemberAdapter.UserteamHolder>() {
-    class UserteamHolder(itemView: View,val call:SendData) :BaseViewHolder<UserTeamResponse>(itemView){
+class MemberAdapter(val call: SendData) :
+    BaseRecyclerViewAdapter<UserTeamResponse, MemberAdapter.UserTeamHolder>() {
+    class UserTeamHolder(itemView: View) : BaseViewHolder<UserTeamResponse>(itemView) {
         override fun onBindData(itemData: UserTeamResponse) {
             super.onBindData(itemData)
-            cofigView(itemData,itemView)
-        }
-
-         fun registerClick(itemView: View, itemData: UserTeamResponse) {
-            itemView.setOnClickListener{
-                call.sendUserTeam(itemData)
-            }
+            cofigView(itemData, itemView)
         }
 
         private fun cofigView(itemData: UserTeamResponse, itemView: View) {
-            Glide.with(itemView.imageAvatar).load(itemData.avatar).into(itemView.imageAvatar)
+            Glide.with(itemView.imageAvatarMemberOnAction).load(itemData.avatar)
+                .placeholder(R.drawable.bavarian).into(itemView.imageAvatarMemberOnAction)
             itemView.nameUser.text = itemData.fullName
         }
     }
-    interface SendData{
-        fun sendUserTeam(data:UserTeamResponse)
+
+    interface SendData {
+        fun sendUserTeam(data: UserTeamResponse)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserteamHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserTeamHolder {
         val la =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_avatar,parent,false)
-        return UserteamHolder(la,call)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_avatar, parent, false)
+        return UserTeamHolder(la)
     }
 
-    override fun onBindViewHolder(holder: UserteamHolder, position: Int) {
+    override fun onBindViewHolder(holder: UserTeamHolder, position: Int) {
         holder.onBindData(getData()[position])
-        holder.registerClick(holder.itemView,getData()[position])
+        registerClick(holder.itemView, getData()[position])
+    }
+
+    private fun registerClick(itemView: View, itemData: UserTeamResponse) {
+        itemView.setOnClickListener {
+            call.sendUserTeam(itemData)
+        }
     }
 }

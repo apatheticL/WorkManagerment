@@ -4,7 +4,26 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <TextView
+        android:id="@+id/titleError"
+        android:textSize="@dimen/sp_18"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <LinearLayout
+        android:id="@+id/header"
+        android:background="@android:color/holo_blue_light"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize">
 
+        <ImageButton
+            android:id="@+id/buttonBack"
+            android:layout_gravity="center"
+            android:background="?selectableItemBackground"
+            android:src="@drawable/ic_keyboard_backspace_black_24dp"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"/>
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerComment"
         android:layout_width="match_parent"
@@ -16,25 +35,47 @@
         tools:listitem="@layout/item_comment"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@id/insert"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/header" />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/insert"
         android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/imageSend"
+            android:src="@drawable/bavarian"
+            android:visibility="gone"
+            android:layout_width="@dimen/dp_150"
+            android:layout_height="@dimen/dp_150"
+            app:layout_constraintBottom_toTopOf="@+id/contentComment"
+            app:layout_constraintEnd_toEndOf="@+id/contentComment"
+            app:layout_constraintStart_toStartOf="@id/contentComment"
+            app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/buttonGetImage"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:background="?selectableItemBackground"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_image_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <EditText
             android:id="@+id/contentComment"
             android:layout_width="0dp"
             android:layout_height="?actionBarSize"
-            android:layout_marginLeft="@dimen/dp_8"
             android:background="@drawable/bg_add_comment"
             android:gravity="center"
             android:hint="Viết bình luân"
+            app:layout_constraintRight_toLeftOf="@id/buttonAddComment"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/buttonAddComment"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintLeft_toRightOf="@id/buttonGetImage"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageButton
             android:id="@+id/buttonAddComment"

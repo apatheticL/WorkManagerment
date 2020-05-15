@@ -29,6 +29,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageButton
+                android:id="@+id/buttonMore"
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="@dimen/dp_32"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="?selectableItemBackground"
+                android:src="@drawable/ic_more_horiz_black_24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.897"
+                app:layout_constraintStart_toEndOf="@+id/nameMember"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/nameMember"
                 android:layout_width="wrap_content"
@@ -45,11 +59,11 @@
                 android:id="@+id/textNameAction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
                 android:layout_marginTop="@dimen/dp_16"
                 android:text="@string/textPart"
                 android:textSize="@dimen/sp_18"
                 android:textStyle="bold|italic"
-                android:layout_marginLeft="@dimen/dp_8"
                 app:layout_constraintLeft_toRightOf="@+id/imageAvatarMember"
                 app:layout_constraintTop_toBottomOf="@id/nameMember" />
 

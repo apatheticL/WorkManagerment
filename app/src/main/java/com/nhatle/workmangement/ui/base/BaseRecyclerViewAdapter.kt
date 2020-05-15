@@ -13,7 +13,7 @@ abstract class BaseRecyclerViewAdapter<T, V : BaseViewHolder<T>>() :
     }
     override fun getItemCount(): Int = items.size
 
-    protected fun getData(): ArrayList<T> {
+     fun getData(): ArrayList<T> {
         return items
     }
 

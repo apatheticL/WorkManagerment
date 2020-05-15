@@ -38,4 +38,6 @@
     <dimen name="sizeAvatarComment">56dp</dimen>
     <dimen name="dp_300">300dp</dimen>
     <dimen name="dp_4">4dp</dimen>
+    <dimen name="dp_600">600dp</dimen>
+    <dimen name="sp_45">45sp</dimen>
 </resources>

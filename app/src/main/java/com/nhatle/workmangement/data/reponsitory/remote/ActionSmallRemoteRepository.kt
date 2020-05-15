@@ -15,14 +15,22 @@ class ActionSmallRemoteRepository(private val dataSource: ActionSmallRemoteDataS
     }
 
     override fun insertActionSmall(
-        actionSmall: ActionSmall,
-        callback: OnDataLoadedCallback<ActionSmall>
+        list: List<ActionSmall>,
+        callback: OnDataLoadedCallback<Boolean>
     ) {
-        dataSource.insertActionSmall(actionSmall = actionSmall, callback = callback)
+        dataSource.insertActionSmall(list, callback = callback)
     }
 
     override fun deleteActionSmall(actionSmallId: Int, callback: OnDataLoadedCallback<Boolean>) {
         dataSource.deleteActionSmall(actionSmallId = actionSmallId, callback = callback)
+    }
+
+    override fun getAllActionSmallOnActionOfUserById(
+        actionId: Int,
+        profileId: Int,
+        callback: OnDataLoadedCallback<List<ActionSmall>>
+    ) {
+        dataSource.getAllActionSmallOnActionOfUserById(actionId, profileId, callback)
     }
 
 }

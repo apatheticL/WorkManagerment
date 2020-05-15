@@ -8,11 +8,14 @@ interface AddActionContract {
     interface View{
         fun insertActionSuccess(action:Action)
         fun insetFail(error:String)
-        fun insertActionSmallSuccess(actionSmall: ActionSmall)
+        fun insertActionSmallSuccess()
+        fun deleteFailed(string: String)
+        fun delete()
 
     }
     interface Presenter{
         fun insertAction(action:Action)
-        fun insertActionSmall(actionSmall: ActionSmall)
+        fun insertActionSmall(list: List<ActionSmall>)
+        fun deleteGroup(groupId:Int)
     }
 }

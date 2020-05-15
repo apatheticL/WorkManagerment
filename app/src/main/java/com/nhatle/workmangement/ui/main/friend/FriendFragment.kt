@@ -14,15 +14,16 @@ import kotlinx.android.synthetic.main.fragment_friend.*
 class FriendFragment : BaseFragment(), FriendContract.View {
     override val layoutResource: Int
         get() = R.layout.fragment_friend
-    private var presenter:FriendPresenter?=null
-    private val adapter:FriendAdapter by lazy{
-        FriendAdapter(object :SendDataProfile.Friend{
+    private var presenter: FriendPresenter? = null
+    private val adapter: FriendAdapter by lazy {
+        FriendAdapter(object : SendDataProfile.Friend {
             override fun sendData(data: FriendResponse) {
                 val fragment = UserProfileFragment()
                 fragment.setData(data)
             }
         })
     }
+
     override fun initData() {
 
     }
@@ -40,19 +41,22 @@ class FriendFragment : BaseFragment(), FriendContract.View {
         val userService = Common.getUserService()
         val dataSource = FriendRemoteDataSource.getInStance(userService)
         val repository = FriendRepository(dataSource)
-        presenter = FriendPresenter(this,repository)
+        presenter = FriendPresenter(this, repository)
     }
-    private fun getAllData(){
+
+    private fun getAllData() {
         presenter?.getAllFriend(CommonData.getInstance().profile!!.profileId)
     }
 
     override fun showAllFriendOfUser(listFriend: List<FriendResponse>) {
-        adapter.setData(listFriend as ArrayList<FriendResponse>)
-        configRecyclerView()
+        if (listFriend.isNotEmpty()) {
+            adapter.setData(listFriend as ArrayList<FriendResponse>)
+            configRecyclerView()
+        }
     }
 
     override fun loadFail(string: String) {
-        Toast.makeText(context,string,Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, string, Toast.LENGTH_SHORT).show()
     }
 
 }

@@ -17,6 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:title="Tìm kiếm"
+
         app:titleTextColor="@color/colorWhile">
 
         <ImageView
@@ -28,7 +29,7 @@
             android:layout_gravity="end"
             android:layout_marginRight="@dimen/dp_32"
             android:background="@drawable/button_search"
-            android:src="@drawable/ic_search_while_24dp" />
+            android:src="@drawable/ic_search_black_24dp" />
     </androidx.appcompat.widget.Toolbar>
     >
 

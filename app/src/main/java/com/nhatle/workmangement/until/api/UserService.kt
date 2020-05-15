@@ -84,8 +84,8 @@ interface UserService {
             Call<ArrayList<ActionSmall>>
 
     @POST(value = "/addActionSmall")
-    fun addActionSmall(@Body actionSmall: ActionSmall):
-            Call<BaseResponse<ActionSmall>>
+    fun addActionSmall(@Body listActionSmall: List<ActionSmall>):
+            Call<List<BaseResponse<ActionSmall>>>
 
     @POST(value = "/deleteActionSmall")
     fun deleteActionSmall(@Query("actionSmallId") actionSmallId: Int):
@@ -101,9 +101,7 @@ interface UserService {
 
     @POST(value = "/deleteUserActionSmall")
     fun deleteUserActionSmall(
-        @Query("groupId") groupId: Int,
-        @Query("profileId") profileId: Int,
-        @Query("actionSmallId") actionSmallId: Int
+        @Query("userActionSmallId") userActionSmallId: Int
     ):
             Call<Boolean>
 
@@ -119,6 +117,12 @@ interface UserService {
         @Query("senderId") senderId: Int,
         @Query("receiverId") receiverId: Int
     ): Call<Boolean>
+
+    @GET(value = "/getAllActionSmallOnActionOfUser")
+    fun getAllActionSmallOnActionOfUser(
+        @Query("actionId") actionId: Int,
+        @Query("profileId") profileId: Int
+    ) :Call<ArrayList<ActionSmall>>
 
     @GET(value = "/getAllReportOnAction")
     fun getAllReportOnAction(@Query("actionId") actionId: Int):

@@ -69,23 +69,19 @@ class UserActionReportRemoteDataSource private constructor(var userService: User
         userActionReport: UserActionReport,
         callback: OnDataLoadedCallback<UserActionReport>
     ) {
-        userService.updateReportOnAction(userActionReport=userActionReport).enqueue(
+        userService.updateReportOnAction(userActionReport).enqueue(
             object :Callback<BaseResponse<UserActionReport>>{
-                override fun onFailure(call: Call<BaseResponse<UserActionReport>>, t: Throwable) {
-                    callback.onFailed(exception = t as Exception)
-                }
+            override fun onFailure(call: Call<BaseResponse<UserActionReport>>, t: Throwable) {
+                callback.onFailed(exception = t as Exception)
+            }
 
-                override fun onResponse(
-                    call: Call<BaseResponse<UserActionReport>>,
-                    response: Response<BaseResponse<UserActionReport>>
-                ) {
-                    if (response.body()!!.status==0){
-                        callback.onFailedConnect("can not update ${response.message()}")
-                    }
-                    callback.onSuccess()
-                }
-
-            })
+            override fun onResponse(
+                call: Call<BaseResponse<UserActionReport>>,
+                response: Response<BaseResponse<UserActionReport>>
+            ) {
+                callback.onSuccess()
+            }
+        })
     }
 
     override fun deleteReport(reportId: Int, callback: OnDataLoadedCallback<Boolean>) {

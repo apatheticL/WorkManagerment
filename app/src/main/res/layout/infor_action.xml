@@ -19,6 +19,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/nameAction"
         android:textSize="@dimen/sp_24"
+        android:textColor="@color/colorBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,16 +45,6 @@
         android:textStyle="bold|italic"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/titleStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_16"
-        android:text="@string/titleTimeStart"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
     <TextView
         android:id="@+id/titleEnd"
         android:layout_width="wrap_content"
@@ -82,6 +73,16 @@
         android:textColor="@color/colorBack"
         app:layout_constraintStart_toStartOf="@+id/textDescription"
         app:layout_constraintTop_toTopOf="@+id/textView8" />
+    <TextView
+        android:id="@+id/titleStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:text="@string/titleTimeStart"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+
 
     <TextView
         android:id="@+id/timeStartAction"

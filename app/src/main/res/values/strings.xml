@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">Work Management</string>
-    <string name="tab_login">Login</string>
-    <string name="tab_register">Register</string>
-    <string name="login_title">Login</string>
-    <string name="register_title">Register</string>
+    <string name="tab_login">Đăng nhập</string>
+    <string name="tab_register">Đăng ký</string>
+    <string name="login_title">Đăng nhập</string>
+    <string name="register_title">Đăng ký</string>
     <string name="password">Password</string>
     <string name="user_name">Username</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="title_name">member</string>
     <string name="name_user"><b><i>Nguyen Van A</i></b></string>
-    <string name="sign_up"><u>Sign Up</u></string>
+    <string name="sign_up"><u>Đăng ký</u></string>
     <string name="tab_text_1">Công việc</string>
     <string name="tab_text_2">Bạn bè</string>
     <string name="tab_text_3">Tài khoản</string>
@@ -44,7 +44,7 @@
     <string name="nameAssignment">Phân công</string>
     <string name="report">Báo Cáo</string>
     <string name="contentComment">Khoảng thời gian</string>
-    <string name="email">Emal</string>
+    <string name="email">Email</string>
     <string name="phone">Phone Number</string>
     <string name="address">Address</string>
     <string name="fullName">Full Name</string>

@@ -1,7 +1,9 @@
 package com.nhatle.workmangement.ui
 
 import android.content.Intent
+import android.net.Uri
 import android.view.View
+import android.webkit.MimeTypeMap
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.nhatle.workmangement.R
@@ -10,11 +12,17 @@ import com.nhatle.workmangement.ui.main.action.ActionFragment
 import com.nhatle.workmangement.ui.main.friend.FriendManagerFragment
 import com.nhatle.workmangement.ui.main.profile.UserProfileFragment
 import com.nhatle.workmangement.ui.start.StartActivity
+import com.nhatle.workmangement.until.CommonData
+import com.nhatle.workmangement.until.ShareUntil
+import com.nhatle.workmangement.until.SocketManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
     override val layoutResource: Int = R.layout.activity_main
     override fun initComponent() {
+        if(CommonData.getInstance().profile!=null){
+            SocketManager.getInstance().connect()
+        }
         initNavigationButton()
 
     }
@@ -38,7 +46,7 @@ class MainActivity : BaseActivity() {
                 }
             }
             if (fragment != null) {
-                replaceFragment(R.id.frag_main, fragment, false)
+                replaceFragment(R.id.frag_main, fragment, true)
             }
             true
         }
@@ -46,13 +54,16 @@ class MainActivity : BaseActivity() {
     }
 
     private fun openFragmentAction() {
-        replaceFragment(R.id.frag_main, ActionFragment(), false)
+        replaceFragment(R.id.frag_main, ActionFragment(), true)
     }
 
     fun logout() {
+        ShareUntil.clearProfile(context = this)
         var intent =
             Intent(this, StartActivity::class.java)
                 .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        SocketManager.getInstance().disconnect()
+        this.finish()
         startActivity(intent)
     }
     fun hindNavigation(check:Boolean){
@@ -68,5 +79,16 @@ class MainActivity : BaseActivity() {
         }
 
     }
+    fun getFileException(uri: Uri): String? {
+        val content = contentResolver
+        val mime = MimeTypeMap.getSingleton()
+        return mime.getExtensionFromMimeType(content.getType(uri))
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        SocketManager.getInstance().disconnect()
+    }
+
 
 }

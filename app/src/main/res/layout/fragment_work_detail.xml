@@ -17,18 +17,43 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/header"
+                android:background="@android:color/holo_blue_light"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize">
+
+                <ImageButton
+                    android:id="@+id/buttonBack"
+                    android:layout_gravity="center"
+                    android:background="?selectableItemBackground"
+                    android:src="@drawable/ic_keyboard_backspace_black_24dp"
+                    android:layout_width="@dimen/dp_48"
+                    android:layout_height="@dimen/dp_48"/>
+                <TextView
+                    android:id="@+id/tile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?actionBarSize"
+                    android:gravity="center"
+                    android:text="Thông tin hoạt đông"
+                    android:textColor="@color/colorWhile"
+                    android:textSize="@dimen/sp_18"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/textNameAction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="@string/nameAction"
                 android:textSize="@dimen/sp_24"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.076"
+                app:layout_constraintHorizontal_bias="0.163"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/header" />
 
             <TextView
                 android:id="@+id/textView4"

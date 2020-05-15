@@ -13,11 +13,12 @@ import kotlinx.android.synthetic.main.item_work.view.*
 
 class ActionAdapter(private val call: SendData) :
     RecyclerView.Adapter<ActionAdapter.ActionHolder>() {
-    private var list :ArrayList<ActionResponse>?=null
+    private var list: ArrayList<ActionResponse>? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActionHolder {
         val layout = LayoutInflater.from(parent.context).inflate(R.layout.item_work, parent, false)
         return ActionHolder(layout)
     }
+
     override fun getItemCount(): Int {
         return list!!.size
     }
@@ -25,7 +26,7 @@ class ActionAdapter(private val call: SendData) :
     override fun onBindViewHolder(holder: ActionHolder, position: Int) {
         holder.onBindData(list!!.get(position))
         listenerButton(holder.itemView.buttonManager, list!![position])
-        itemViewClick(holder.itemView,list!![position],position)
+        itemViewClick(holder.itemView, list!![position], position)
     }
 
     private fun listenerButton(buttonManager: ImageButton, actionResponse: ActionResponse) {
@@ -40,12 +41,14 @@ class ActionAdapter(private val call: SendData) :
         position: Int
     ) {
         itemView.setOnClickListener {
-            call.sendData(actionResponse,position = position)
+            call.sendData(actionResponse, position = position)
         }
     }
+
     fun setData(list: ArrayList<ActionResponse>) {
         this.list = list
     }
+
     class ActionHolder(itemView: View) :
         BaseViewHolder<ActionResponse>(itemView) {
         override fun onBindData(itemData: ActionResponse) {
@@ -55,6 +58,7 @@ class ActionAdapter(private val call: SendData) :
             val all = itemData.numberActionMaked
             showSeekBar(itemView.seekBarStatus, current, all)
         }
+
         private fun showSeekBar(
             current1: SeekBar,
             current: Int,
@@ -76,12 +80,13 @@ class ActionAdapter(private val call: SendData) :
             itemData1.statusDelay.text = itemData.numberDelay.toString()
             itemData1.nameGroup.text = itemData.groupName
             itemData1.nameCreator.text = itemData.nameCreator
+            itemData1.descriptionAction.text = itemData.description
         }
     }
 
     interface SendData {
         fun sendData(actionResponse: ActionResponse, position: Int)
-        fun showMenu(buttonManager: ImageButton,data:ActionResponse)
+        fun showMenu(buttonManager: ImageButton, data: ActionResponse)
     }
 }
 

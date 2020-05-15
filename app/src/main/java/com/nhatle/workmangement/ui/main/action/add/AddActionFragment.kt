@@ -1,7 +1,6 @@
 package com.nhatle.workmangement.ui.main.action.add
 
 import android.app.DatePickerDialog
-import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -12,14 +11,15 @@ import com.nhatle.workmangement.data.model.ActionSmall
 import com.nhatle.workmangement.data.model.Team
 import com.nhatle.workmangement.data.reponsitory.remote.ActionRemoteRepository
 import com.nhatle.workmangement.data.reponsitory.remote.ActionSmallRemoteRepository
+import com.nhatle.workmangement.data.reponsitory.remote.TeamRemoteRepository
 import com.nhatle.workmangement.data.source.remote.ActionRemoteDataSource
 import com.nhatle.workmangement.data.source.remote.ActionSmallRemoteDataSource
+import com.nhatle.workmangement.data.source.remote.TeamRemoteDataSource
 import com.nhatle.workmangement.data.until.ActionSmallBefor
 import com.nhatle.workmangement.ui.MainActivity
 import com.nhatle.workmangement.ui.base.BaseFragment
 import com.nhatle.workmangement.ui.main.action.ActionFragment
 import com.nhatle.workmangement.ui.main.action.add.actionSmall.AddUserActionSmallFragment
-import com.nhatle.workmangement.ui.main.image.ImageFragment
 import com.nhatle.workmangement.ui.main.team.AddGroupFragment
 import com.nhatle.workmangement.until.Common
 import com.nhatle.workmangement.until.CommonData
@@ -43,42 +43,25 @@ class AddActionFragment : BaseFragment(), AddActionContract.View, View.OnClickLi
             .placeholder(R.drawable.bavarian)
             .into(image_avatar)
         textNameUserCreate.text = CommonData.getInstance().profile!!.fullName
-        if (group==null){
+        if (group == null) {
             nameGroup.visibility = View.GONE
         }
         nameGroup.text = group?.groupName
         registerListener()
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString("action_name", nameWork.text.toString())
-        outState.putString("time_start", texttimeStartAdd.text.toString())
-        outState.putString("time_end", texttimEndAdd.text.toString())
-        outState.putParcelableArrayList("list", listActionSmallName)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        if (savedInstanceState != null) {
-            @SuppressWarnings("unchecked")
-            listActionSmallName =
-                savedInstanceState.getParcelableArrayList<ActionSmallBefor>("list")!!
-            nameWork.setText(savedInstanceState.getString("action_name"))
-            texttimeStartAdd.text = (savedInstanceState.getString("time_start"))
-            texttimEndAdd.text = (savedInstanceState.getString("time_end"))
-        }
-    }
-
     private fun initPresenter() {
         val userService = Common.getUserService()
         val actionDataSource = ActionRemoteDataSource.getInstance(userService)
         val actionSmallDataSource = ActionSmallRemoteDataSource.getInstance(userService)
+        val teamDataSource = TeamRemoteDataSource.getInstance(userService)
+        val teamRepository = TeamRemoteRepository(teamDataSource)
         val actionRepository = ActionRemoteRepository(actionDataSource)
         val actionSmallRepository = ActionSmallRemoteRepository(actionSmallDataSource)
         presenter = AddActionPresenter(
             this, actionRepository,
-            actionSmallRepository
+            actionSmallRepository,
+            teamRepository
         )
     }
 
@@ -98,21 +81,34 @@ class AddActionFragment : BaseFragment(), AddActionContract.View, View.OnClickLi
 
     override fun insertActionSuccess(action: Action) {
         this.action = action
-        for (i in 0..listActionSmallName.size step 1) {
+        val list: MutableList<ActionSmall> = ArrayList()
+        for (i in 0 until listActionSmallName.size step 1) {
             val actionSmall =
                 ActionSmall(0, action.actionId, listActionSmallName.get(i).actionSmallName)
-            presenter!!.insertActionSmall(actionSmall)
+            list.add(actionSmall)
         }
+        presenter!!.insertActionSmall(list)
     }
 
     override fun insetFail(error: String) {
 
     }
 
-    override fun insertActionSmallSuccess(actionSmall: ActionSmall) {
-        val fragment = AddUserActionSmallFragment()
-        fragment.sendActionId(actionSmall.actionId, group!!.groupId)
-        replaceFragment(R.id.frag_main, AddUserActionSmallFragment(), false)
+    override fun insertActionSmallSuccess() {
+        (activity as MainActivity).hindNavigation(true)
+        replaceFragment(
+            R.id.frag_image,
+            AddUserActionSmallFragment(action!!.actionId, action!!.groupId),
+            true
+        )
+    }
+
+    override fun deleteFailed(string: String) {
+        Toast.makeText(context, string, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun delete() {
+        Toast.makeText(context, "susses", Toast.LENGTH_SHORT).show()
     }
 
     override fun onClick(v: View) {
@@ -127,40 +123,47 @@ class AddActionFragment : BaseFragment(), AddActionContract.View, View.OnClickLi
             }
             R.id.buttonAddMember -> {
                 (activity as MainActivity).hindNavigation(true)
-                replaceFragment(R.id.frag_image, AddGroupFragment(),true)
+                replaceFragment(R.id.frag_image, AddGroupFragment(), true)
                 activity?.let { Common.hideKeyBoard(it) }
             }
             R.id.buttonSaveAdd -> {
 
                 checkAndShowActionSmall()
                 activity?.let { Common.hideKeyBoard(it) }
+                editActionSmallNameOnAdd.setText("")
             }
             R.id.buttonCancelAddWork -> {
+                (activity as MainActivity).hindNavigation(false)
                 replaceFragment(R.id.frag_main, ActionFragment(), true)
                 activity?.let { Common.hideKeyBoard(it) }
+                if (group != null) {
+                    presenter!!.deleteGroup(group!!.groupId)
+                }
             }
             R.id.buttonAddWork -> {
-                if (group != null) {
-                    if (nameWork.text.isEmpty() || texttimeStartAdd.text.isEmpty() || texttimEndAdd.text.isEmpty()) {
-                        Toast.makeText(context, "không hợp lê", Toast.LENGTH_SHORT).show()
-                    }
-                    insertAction()
-                    activity?.let { Common.hideKeyBoard(it) }
+
+                if (nameWork.text.isEmpty() || texttimeStartAdd.text.isEmpty() || texttimEndAdd.text.isEmpty()) {
+                    Toast.makeText(context, "không hợp lê", Toast.LENGTH_SHORT).show()
                 }
-                Toast.makeText(context,"Ban cần tạo nhóm thực hiện",Toast.LENGTH_SHORT).show()
+                insertAction()
+                activity?.let { Common.hideKeyBoard(it) }
+//                Toast.makeText(context,"Ban cần tạo nhóm thực hiện",Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun insertAction() {
-        val name = nameWork.text.toString()
-        val timeStart = texttimeStartAdd.text.toString()
-        val timeEnd = texttimEndAdd.text.toString()
-        val action = Action(
-            0, name, CommonData.getInstance().profile!!.profileId,
-            group!!.groupId, timeStart, timeEnd, null, "Chua hoan thanh", null
-        )
-        presenter?.insertAction(action)
+        if (nameWork.text.isNotEmpty() && descriptionWork.text.isNotEmpty()) {
+            val name = nameWork.text.toString()
+            val timeStart = texttimeStartAdd.text.toString()
+            val timeEnd = texttimEndAdd.text.toString()
+            val discription = descriptionWork.text.toString()
+            val action = Action(
+                0, name, CommonData.getInstance().profile!!.profileId,
+                group!!.groupId, timeStart, timeEnd, null, "Chua hoan thanh", discription
+            )
+            presenter?.insertAction(action)
+        }
     }
 
     private fun checkAndShowActionSmall() {
@@ -168,11 +171,13 @@ class AddActionFragment : BaseFragment(), AddActionContract.View, View.OnClickLi
             textError.visibility = View.VISIBLE
             textError.text = "Trường này chưa có thông tin"
         }
-        listActionSmallName.add(ActionSmallBefor(editActionSmallNameOnAdd.text.toString()))
-        recyclerListActionSmallForAdd.visibility = View.VISIBLE
+        if (editActionSmallNameOnAdd.text.isNotEmpty()) {
+            listActionSmallName.add(ActionSmallBefor(editActionSmallNameOnAdd.text.toString()))
+            recyclerListActionSmallForAdd.visibility = View.VISIBLE
 
-        adapter.setData(listActionSmallName)
-        recyclerListActionSmallForAdd.adapter = adapter
+            adapter.setData(listActionSmallName)
+            recyclerListActionSmallForAdd.adapter = adapter
+        }
     }
 
     private fun showDatetimeDialog(textView: TextView) {

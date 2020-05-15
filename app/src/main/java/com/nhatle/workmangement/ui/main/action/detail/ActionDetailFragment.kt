@@ -1,28 +1,26 @@
 package com.nhatle.workmangement.ui.main.action.detail
 
 import android.view.View
-import android.widget.Button
 import com.nhatle.workmangement.R
-import com.nhatle.workmangement.data.model.response.ActionResponse
 import com.nhatle.workmangement.data.model.response.UserTeamResponse
 import com.nhatle.workmangement.data.reponsitory.remote.ActionRemoteRepository
 import com.nhatle.workmangement.data.source.remote.ActionRemoteDataSource
 import com.nhatle.workmangement.ui.MainActivity
 import com.nhatle.workmangement.ui.base.BaseFragment
-import com.nhatle.workmangement.ui.main.action.report.UserActionReportFragment
-import com.nhatle.workmangement.ui.main.action.small.UserActionSmallFragment
+import com.nhatle.workmangement.ui.main.action.ActionFragment
+import com.nhatle.workmangement.ui.main.report.UserActionReportFragment
+import com.nhatle.workmangement.ui.main.user_action_small.UserActionSmallManagerFragment
 import com.nhatle.workmangement.until.Common
+import com.nhatle.workmangement.until.CommonAction
+import com.nhatle.workmangement.until.Deferent
 import kotlinx.android.synthetic.main.custom_infor_work.*
 import kotlinx.android.synthetic.main.fragment_work_detail.*
-import kotlinx.android.synthetic.main.fragment_work_detail.textNameAction
-import kotlinx.android.synthetic.main.item_my_action_small.*
 
 class ActionDetailFragment : BaseFragment(), ActionDetailContract.View, View.OnClickListener {
-
+    private var numberMember: Int = -1
     override val layoutResource: Int = R.layout.fragment_work_detail
-    private var actionResponse :ActionResponse?=null
-    private val adapter: ListMemberAdapter by lazy{
-         ListMemberAdapter(object : ListMemberAdapter.SendProfile {
+    private val adapter: ListMemberAdapter by lazy {
+        ListMemberAdapter(object : ListMemberAdapter.SendProfile {
             override fun sendProfileId(profileId: Int) {
                 // go profile fragment
             }
@@ -32,7 +30,6 @@ class ActionDetailFragment : BaseFragment(), ActionDetailContract.View, View.OnC
     private var presenter: ActionDetailPresenter? = null
     override fun initData() {
         configView()
-        initAdapter()
         registerListener()
     }
 
@@ -41,15 +38,18 @@ class ActionDetailFragment : BaseFragment(), ActionDetailContract.View, View.OnC
         val dataSource = ActionRemoteDataSource.getInstance(userService)
         val repository = ActionRemoteRepository(dataSource = dataSource)
         presenter = ActionDetailPresenter(this, repository)
-        presenter!!.getAllMemberOnGroup(actionResponse!!.groupId, actionResponse!!.actionId)
+        presenter!!.getAllMemberOnGroup(
+            CommonAction.getInstance().action!!.groupId,
+            CommonAction.getInstance().action!!.actionId
+        )
     }
 
     private fun configView() {
-        textNameAction.text = actionResponse?.actionName
-        textDescription.text = actionResponse?.description
-        nameCreator.text = actionResponse?.nameCreator
-        timeStartAction.text = actionResponse?.timeStart
-        timeEndAction.text = actionResponse?.timeEnd
+        textNameAction.text = CommonAction.getInstance().action!!.actionName
+        textDescription.text = CommonAction.getInstance().action!!.description
+        nameCreator.text = CommonAction.getInstance().action!!.nameCreator
+        timeStartAction.text = CommonAction.getInstance().action!!.timeStart
+        timeEndAction.text = CommonAction.getInstance().action!!.timeEnd
     }
 
 
@@ -61,20 +61,19 @@ class ActionDetailFragment : BaseFragment(), ActionDetailContract.View, View.OnC
     private fun registerListener() {
         butonGoActionReport.setOnClickListener(this)
         buttonGoActionSmall.setOnClickListener(this)
+        buttonBack.setOnClickListener(this)
     }
 
     private fun initAdapter() {
-
         recyclerListMember.adapter = adapter
-
-    }
-
-    fun sendData(actionResponse: ActionResponse) {
-        this.actionResponse = actionResponse
     }
 
     override fun showAllMember(list: ArrayList<UserTeamResponse>) {
-        adapter.setData(list)
+        if (list.isNotEmpty()) {
+            adapter.setData(list)
+            initAdapter()
+            this.numberMember = list.size
+        }
     }
 
     override fun onFailed(string: String) {
@@ -85,7 +84,8 @@ class ActionDetailFragment : BaseFragment(), ActionDetailContract.View, View.OnC
         when (v.id) {
             R.id.buttonGoActionSmall -> {
                 (activity as MainActivity).hindNavigation(true)
-                val fragment = UserActionSmallFragment(actionResponse!!.actionId)
+                Deferent.setNumberMember(numberMember)
+                val fragment = UserActionSmallManagerFragment()
                 replaceFragment(R.id.frag_image, fragment, true)
 
             }
@@ -93,11 +93,15 @@ class ActionDetailFragment : BaseFragment(), ActionDetailContract.View, View.OnC
                 (activity as MainActivity).hindNavigation(true)
                 replaceFragment(
                     R.id.frag_image,
-                    UserActionReportFragment(actionResponse!!.actionId),
-                    true
+                    UserActionReportFragment(),
+                    false
                 )
+            }
+            R.id.buttonBack -> {
+                (activity as MainActivity).hindNavigation(false)
+                val fragment = ActionFragment()
+                replaceFragment(R.id.frag_main, fragment, false)
             }
         }
     }
-
 }

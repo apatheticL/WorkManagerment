@@ -8,16 +8,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <TextView
             android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center_horizontal|center_vertical"
             android:text="Sửa Báo Cáo"
             android:textColor="@color/colorWhile"
             android:textSize="@dimen/sp_24"
-            android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_width="match_parent"
-            android:background="@android:color/holo_blue_dark"
-            android:layout_height="?actionBarSize"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/circleAvatarUserRe"
             android:layout_width="?actionBarSize"
@@ -34,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_16"
-            android:layout_marginTop="@dimen/dp_32"
+            android:layout_marginTop="@dimen/dp_16"
             android:text="Trạng thái"
             android:textStyle="italic|bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -95,6 +97,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/textIssuaWork"
             app:layout_constraintStart_toStartOf="@+id/textWorkNext"
             app:layout_constraintTop_toTopOf="@+id/textIssuaWork" />
+
         <EditText
             android:id="@+id/editUpdateWorkNext"
             android:layout_width="match_parent"
@@ -129,11 +132,11 @@
             android:id="@+id/textView28"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorBack"
-            android:layout_marginTop="@dimen/dp_32"
+            android:layout_marginTop="@dimen/dp_16"
             android:text="Công việc tiếp theo"
+            android:textColor="@color/colorBack"
             app:layout_constraintStart_toStartOf="@+id/textView27"
-            app:layout_constraintTop_toBottomOf="@+id/radioUpdateButtonFinnish" />
+            app:layout_constraintTop_toBottomOf="@+id/radio" />
 
         <TextView
             android:id="@+id/textDateCreateReport"
@@ -149,53 +152,60 @@
 
             android:id="@+id/textFullnameCreateRe"
             android:layout_width="wrap_content"
-            android:textColor="@color/colorBack"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-
             android:layout_marginLeft="32dp"
+
             android:text="Nguyen van AN"
+            android:textColor="@color/colorBack"
             android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/circleAvatarUserRe"
             app:layout_constraintTop_toTopOf="@+id/circleAvatarUserRe" />
-
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/radioUpdateButtonFinnish"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:focusable="auto"
-            android:text="Hoàn thành"
-            app:layout_constraintEnd_toStartOf="@+id/radioUpdateButtonNoneFinish"
-            app:layout_constraintHorizontal_bias="0.5"
+        <RadioGroup
+            android:id="@+id/radio"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView27" />
-
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/radioUpdateButtonNoneFinish"
+            app:layout_constraintTop_toBottomOf="@id/textView27"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Chưa hoàn thành"
-            android:checked="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/radioUpdateButtonFinnish"
-            app:layout_constraintTop_toTopOf="@+id/radioUpdateButtonFinnish" />
+            android:layout_marginTop="@dimen/dp_16"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/radioUpdateButtonFinnish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="auto"
+                android:text="Hoàn thành"
+                 />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/radioUpdateButtonNoneFinish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:layout_marginLeft="@dimen/dp_16"
+                android:text="Chưa hoàn thành"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/radioUpdateButtonFinnish"
+                app:layout_constraintTop_toTopOf="@+id/radioUpdateButtonFinnish" />
+
+        </RadioGroup>
 
         <TextView
             android:id="@+id/titleOne"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Chỉnh sửa thông tin"
-            android:layout_marginTop="@dimen/dp_16"
             android:layout_marginLeft="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_16"
             android:layout_marginRight="@dimen/dp_8"
-            android:gravity="center_horizontal"
-            android:textStyle="italic|bold"
-            android:textSize="@dimen/sp_18"
             android:background="@color/colorWhile"
+            android:gravity="center_horizontal"
+            android:text="Chỉnh sửa thông tin"
+            android:textSize="@dimen/sp_18"
+            android:textStyle="italic|bold"
             app:layout_constraintTop_toBottomOf="@id/textIssuaWork"
             tools:layout_editor_absoluteX="16dp" />
 
@@ -204,10 +214,10 @@
             android:layout_width="wrap_content"
 
             android:layout_height="wrap_content"
-            android:textColor="@color/colorBack"
             android:layout_marginLeft="@dimen/dp_32"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="@dimen/dp_16"
             android:text="Trạng thái công việc"
+            android:textColor="@color/colorBack"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleOne" />
 
@@ -215,9 +225,9 @@
             android:id="@+id/textView30"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorBack"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="@dimen/dp_16"
             android:text="Vấn đề khúc mắc"
+            android:textColor="@color/colorBack"
             app:layout_constraintStart_toStartOf="@+id/textView28"
             app:layout_constraintTop_toBottomOf="@+id/editUpdateWorkNext" />
 
@@ -225,7 +235,7 @@
             android:id="@+id/buttonUpdateReport"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="@dimen/dp_32"
             android:background="@drawable/button_save"
             android:text="Lưu lại"
             android:textColor="@color/colorWhile"
@@ -245,5 +255,15 @@
             app:layout_constraintStart_toEndOf="@+id/buttonUpdateReport"
             app:layout_constraintTop_toTopOf="@+id/buttonUpdateReport"
             app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

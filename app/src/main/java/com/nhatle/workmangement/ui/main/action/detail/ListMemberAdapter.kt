@@ -20,10 +20,10 @@ class ListMemberAdapter(val callback: SendProfile) :
         }
 
         private fun configView(itemView: View, itemData: UserTeamResponse) {
-            Glide.with(itemView.imageAvatar).load(itemData.avatar)
+            Glide.with(itemView.imageAvatarMemberOnAction).load(itemData.avatar)
                 .error(R.drawable.bavarian)
                 .placeholder(R.drawable.bavarian)
-                .into(itemView.imageAvatar)
+                .into(itemView.imageAvatarMemberOnAction)
             itemView.nameUser.text = itemData.fullName
         }
     }

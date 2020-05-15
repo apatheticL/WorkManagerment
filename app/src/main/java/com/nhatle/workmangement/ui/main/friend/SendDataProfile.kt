@@ -15,5 +15,6 @@ interface SendDataProfile {
         fun sendDataToAdd(data: UserProfile)
         fun sendDataToDeleteAdd(position:Int,data: UserProfile)
         fun deleteItem(position: Int)
+        fun showNotification(string: String)
     }
 }
