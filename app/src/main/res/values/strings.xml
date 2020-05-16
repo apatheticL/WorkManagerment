@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Work Management</string>
+    <string name="tab_login">Đăng nhập</string>
+    <string name="tab_register">Đăng ký</string>
+    <string name="login_title">Đăng nhập</string>
+    <string name="register_title">Đăng ký</string>
+    <string name="password">Password</string>
+    <string name="user_name">Username</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="title_name">member</string>
+    <string name="name_user"><b><i>Nguyen Van A</i></b></string>
+    <string name="sign_up"><u>Đăng ký</u></string>
+    <string name="tab_text_1">Công việc</string>
+    <string name="tab_text_2">Bạn bè</string>
+    <string name="tab_text_3">Tài khoản</string>
+
+    <string name="tab_list_friend">Bạn bè</string>
+    <string name="tab_list_receiver_friend">Lời mời kết bạn</string>
+    <string name="tab_list_suggestions_friend">Gợi ý kết bạn</string>
+    <string name="myActionCreated">My Action</string>
+    <string name="statusAction">Hoàn thành</string>
+    <string name="nameAction">Bài tập lớn Android</string>
+    <string name="titleTimeStart">"Ngày BD: "</string>
+    <string name="textStatust">2/3</string>
+    <string name="titleStatus">Hoàn thành</string>
+    <string name="timeStart">20/12/2020</string>
+    <string name="titleTimeEnd">Ngày KT</string>
+    <string name="textStatustDelay">12</string>
+    <string name="titleStatusDelay">Quá hạn</string>
+    <string name="textError">can not connect</string>
+    <string name="titleDescription">Mô tả : </string>
+    <string name="textDecription">Mô Tả</string>
+    <string name="titleCreator">Người lập : </string>
+    <string name="nameCreator">Nhật Lệ</string>
+    <string name="textPart">Phân tích hệ thống</string>
+    <string name="titleActionSmall">Danh sách báo cáo </string>
+    <string name="titleAction">Chưa có dữ liệu</string>
+    <string name="addActionSmall">Thêm list hoạt động</string>
+    <string name="titleActionSmallName">Tên hoạt động con</string>
+    <string name="buttonAdd">Thêm</string>
+    <string name="buttonCancel">Hủy</string>
+    <string name="titleAddUserActionSmall">Giao nhiệm vụ</string>
+    <string name="nameReport">Báo Cáo </string>
+    <string name="nameAssignment">Phân công</string>
+    <string name="report">Báo Cáo</string>
+    <string name="contentComment">Khoảng thời gian</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone Number</string>
+    <string name="address">Address</string>
+    <string name="fullName">Full Name</string>
+
+    <string-array name="planets_array">
+        <item>Member</item>
+        <item>Venus</item>
+
+    </string-array>
+</resources>

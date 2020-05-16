@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "715896750725",
+    "firebase_url": "https://workmangement.firebaseio.com",
+    "project_id": "workmangement",
+    "storage_bucket": "workmangement.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715896750725:android:fc40f5fda6f23aafe8dfec",
+        "android_client_info": {
+          "package_name": "com.nhatle.workmangement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715896750725-fgumm9rd5veivj3r0ing6753k1b32elf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nhatle.workmangement",
+            "certificate_hash": "38b1b5b300ccf49f9637be1210cb1092b10ee445"
+          }
+        },
+        {
+          "client_id": "715896750725-cavlm21osfkefg99e59pvjesgjog8325.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGiybu6-lTJJS6sKIEox9c0BOd33STbbw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715896750725-cavlm21osfkefg99e59pvjesgjog8325.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
