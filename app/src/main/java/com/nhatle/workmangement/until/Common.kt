@@ -28,12 +28,5 @@ object Common {
         }
     }
 
-    fun showKeyBoard(activity: Activity) {
-        val imm: InputMethodManager =
-            activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        val view = activity.currentFocus
-        if (view != null) {
-            imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
-        }
-    }
+
 }

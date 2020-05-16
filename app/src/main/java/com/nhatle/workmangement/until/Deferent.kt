@@ -1,6 +1,6 @@
 package com.nhatle.workmangement.until
 
-const val ADDRESS = "http://192.168.0.102"
+const val ADDRESS = "http://192.168.43.84"
 const val BASE_URL = "$ADDRESS:8080"
 const val URL_SOCKET = "$ADDRESS:3306"
 const val LOCATION_URI = "avatars"

@@ -3,10 +3,7 @@ package com.nhatle.workmangement.until.api
 import com.nhatle.workmangement.data.model.*
 import com.nhatle.workmangement.data.model.response.*
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface UserService {
 
@@ -20,7 +17,7 @@ interface UserService {
         @Body register: RegisterResponse?
     ): Call<BaseResponse<UserProfile>>
 
-    @POST(value = "/updateProfile")
+    @PUT(value = "/updateProfile")
     fun updateProfile(
         @Body profile: UserProfile?
     ): Call<BaseResponse<UserProfile>>
@@ -36,7 +33,7 @@ interface UserService {
     fun getAllNotFriend(@Query("idUser") idUser: Int):
             Call<ArrayList<UserProfile>>
 
-    @POST(value = "/acceptedFriend")
+    @PUT(value = "/acceptedFriend")
     fun acceptedFriend(@Body invitationFriend: InvitationFriend): Call<Boolean>
 
     @GET(value = "/getAllUserSenderFriend")
@@ -54,10 +51,10 @@ interface UserService {
     @POST(value = "/addWork")
     fun addWork(@Body action: Action): Call<BaseResponse<Action>>
 
-    @POST(value = "/updateWork")
+    @PUT(value = "/updateWork")
     fun updateWork(@Body action: Action): Call<BaseResponse<Action>>
 
-    @POST(value = "/deleteWork")
+    @DELETE(value = "/deleteWork")
     fun deleteWork(@Query("idW") idW: Int, @Query("profileId") profileId: Int): Call<Boolean>
 
     @GET(value = "/getAllMemberOnActionInGroup")
@@ -67,7 +64,7 @@ interface UserService {
     ):
             Call<ArrayList<UserTeamResponse>>
 
-    @POST(value = "/deleteGroup")
+    @DELETE(value = "/deleteGroup")
     fun deleteGroup(@Query("groupId") groupId: Int): Call<Boolean>
 
     @POST(value = "/addGroup")
@@ -76,7 +73,7 @@ interface UserService {
     @POST(value = "/addMemberForGroup")
     fun addMemberForGroup(@Body listUserTeam: List<UserTeam>): Call<List<BaseResponse<UserTeam>>>
 
-    @POST(value = "/deleteMemberOnGroup")
+    @DELETE(value = "/deleteMemberOnGroup")
     fun deleteMemberOnGroup(@Body userTeam: UserTeam): Call<Boolean>
 
     @GET(value = "/getAllActionSmallByAction")
@@ -87,7 +84,7 @@ interface UserService {
     fun addActionSmall(@Body listActionSmall: List<ActionSmall>):
             Call<List<BaseResponse<ActionSmall>>>
 
-    @POST(value = "/deleteActionSmall")
+    @DELETE(value = "/deleteActionSmall")
     fun deleteActionSmall(@Query("actionSmallId") actionSmallId: Int):
             Call<Boolean>
 
@@ -99,20 +96,20 @@ interface UserService {
     fun addUserActionSmall(@Body userActionSmall: UserActionSmall):
             Call<BaseResponse<UserActionSmall>>
 
-    @POST(value = "/deleteUserActionSmall")
+    @DELETE(value = "/deleteUserActionSmall")
     fun deleteUserActionSmall(
         @Query("userActionSmallId") userActionSmallId: Int
     ):
             Call<Boolean>
 
-    @POST(value = "/updateUserActionSmall")
+    @PUT(value = "/updateUserActionSmall")
     fun updateUserActionSmall(@Body userActionSmall: UserActionSmall):
             Call<BaseResponse<UserActionSmall>>
 
-    @POST(value = "/deleteInvitationFriend")
+    @DELETE(value = "/deleteInvitationFriend")
     fun deleteInvitationFriend(@Query("friendId") friendId: Int): Call<Boolean>
 
-    @POST(value = "/cancelInvitationFriend")
+    @DELETE(value = "/cancelInvitationFriend")
     fun cancelInvitationFriend(
         @Query("senderId") senderId: Int,
         @Query("receiverId") receiverId: Int
@@ -132,11 +129,11 @@ interface UserService {
     fun addReportOnAction(@Body userActionReport: UserActionReport):
             Call<BaseResponse<UserActionReport>>
 
-    @POST(value = "/updateReportOnAction")
+    @PUT(value = "/updateReportOnAction")
     fun updateReportOnAction(@Body userActionReport: UserActionReport):
             Call<BaseResponse<UserActionReport>>
 
-    @POST(value = "/deleteReportOnAction")
+    @DELETE(value = "/deleteReportOnAction")
     fun deleteReportOnAction(@Query("reportId") reportId: Int):
             Call<Boolean>
 
@@ -144,13 +141,13 @@ interface UserService {
     fun sendComment(@Body comment: Comment):
             Call<BaseResponse<Comment>>
 
-    @POST(value = "/updateStatusWork")
+    @PUT(value = "/updateStatusWork")
     fun updateStatusWork(
         @Query("id") id: Int
         , @Query("status") status: String
     ): Call<Boolean>
 
-    @POST(value = "/deleteCommentOnAction")
+    @DELETE(value = "/deleteCommentOnAction")
     fun deleteCommentOnAction(
         @Query("commentId") commentId: Int,
         @Query("profileId") profileId: Int

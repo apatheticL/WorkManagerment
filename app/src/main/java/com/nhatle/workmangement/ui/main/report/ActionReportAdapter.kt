@@ -49,17 +49,32 @@ class ActionReportAdapter(val call: ReportManager) :
     }
 
     interface ReportManager {
-        fun sendDataToButton(itemData: UserActionReportResponse, buttonMenu: ImageButton)
+        fun sendDataToButton(
+            itemData: UserActionReportResponse,
+            buttonMenu: ImageButton,
+            position: Int
+        )
     }
 
     override fun onBindViewHolder(holder: ActionReportHolder, position: Int) {
         holder.onBindData(getData()[position])
-        registerListener(holder.itemView.buttonMenu,getData()[position])
+        registerListener(holder.itemView.buttonMenu,getData()[position],position)
     }
-    private fun registerListener(buttonMenu: ImageButton, itemData: UserActionReportResponse) {
+    private fun registerListener(
+        buttonMenu: ImageButton,
+        itemData: UserActionReportResponse,
+        position: Int
+    ) {
        buttonMenu.setOnClickListener{
-           call.sendDataToButton(itemData, buttonMenu)
+           call.sendDataToButton(itemData, buttonMenu,position)
        }
 
     }
+
+    fun delete(position: Int) {
+        getData().removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position,getData().size)
+    }
+
 }

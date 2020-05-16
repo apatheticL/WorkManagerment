@@ -1,8 +1,10 @@
 package com.nhatle.workmangement.ui.main.action.update
 
 import android.app.DatePickerDialog
+import android.view.KeyEvent
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.nhatle.workmangement.R
 import com.nhatle.workmangement.data.model.Action
@@ -20,7 +22,7 @@ import com.nhatle.workmangement.ui.main.action.add.ListActionSmallBeforAddAdapte
 import com.nhatle.workmangement.until.Common
 import com.nhatle.workmangement.until.CommonAction
 import com.nhatle.workmangement.until.CommonData
-import kotlinx.android.synthetic.main.fragment_add_acion_small.*
+import com.nhatle.workmangement.until.convertStringToDate
 import kotlinx.android.synthetic.main.fragment_update_action_small.*
 import kotlinx.android.synthetic.main.fragment_update_work.*
 import java.text.SimpleDateFormat
@@ -28,8 +30,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class UpdateActionFragment : BaseFragment(), UpdateActionContract.View, View.OnClickListener {
-    override val layoutResource: Int
-        get() = R.layout.fragment_update_work
+    override val layoutResource: Int = R.layout.fragment_update_work
     private var actionResponse: ActionResponse? = null
     private var checkItemClick = false
     private var presenter: UpdateActionPresenter? = null
@@ -100,17 +101,19 @@ class UpdateActionFragment : BaseFragment(), UpdateActionContract.View, View.OnC
         nameCreatorAction.text = CommonData.getInstance().profile!!.fullName
         editDescription.setText(actionResponse!!.description)
         nameWork.setText(actionResponse!!.actionName)
-        texttimEndUpdate.text = actionResponse!!.timeEnd
+        timeStartAction.text = actionResponse!!.timeStart
     }
 
     override fun getAllActionSmall(list: List<ActionSmall>) {
-            adapter.setData(list as ArrayList<ActionSmall>)
-            recyclerListActionSmallForUpdate.adapter = adapter
+        adapter.setData(list as ArrayList<ActionSmall>)
+        recyclerListActionSmallForUpdate.adapter = adapter
     }
+
     override fun updateSuccess() {
         (activity as MainActivity).hindNavigation(false)
         replaceFragment(R.id.frag_main, ActionFragment(), true)
     }
+
     override fun updateActionSmallSuccess() {
         openFragmentAction()
     }
@@ -142,9 +145,11 @@ class UpdateActionFragment : BaseFragment(), UpdateActionContract.View, View.OnC
                 showDatetimeDialog(texttimEndUpdate)
             }
             R.id.buttonSaveUpdate -> {
+
                 if (!checkItemClick) {
                     checkAndShowActionSmall()
                 }
+                editActionSmallNameOnUpdate.text = null
             }
         }
     }
@@ -155,9 +160,19 @@ class UpdateActionFragment : BaseFragment(), UpdateActionContract.View, View.OnC
         val datePickerDialog =
             DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
                 calendar.set(Calendar.YEAR, year)
-                calendar.set(Calendar.MONTH, month)
+                calendar.set(Calendar.MONTH + 1, month)
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                textView.text = fmDateAndTime.format(calendar.time)
+                if (convertStringToDate(actionResponse!!.timeStart) < calendar.time) {
+                    textView.text = fmDateAndTime.format(calendar.time)
+                }
+                if (convertStringToDate(actionResponse!!.timeStart) > calendar.time) {
+                    textView.text =null
+                        Toast.makeText(
+                        context,
+                        "Thoi gian ket thuc phai lon hon" + actionResponse!!.timeStart,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         activity?.let {
             DatePickerDialog(
@@ -167,6 +182,7 @@ class UpdateActionFragment : BaseFragment(), UpdateActionContract.View, View.OnC
             ).show()
         }
     }
+
 
     private fun updateWork() {
         if (editDescription.text.toString().isNotEmpty() || nameWork.text.toString().isNotEmpty()) {
@@ -214,7 +230,7 @@ class UpdateActionFragment : BaseFragment(), UpdateActionContract.View, View.OnC
             textErrorUpdate.text = "Trường này chưa có thông tin"
         } else {
             textErrorUpdate.visibility = View.GONE
-            if(editActionSmallNameOnUpdate.text.toString().isNotEmpty()){
+            if (editActionSmallNameOnUpdate.text.toString().isNotEmpty()) {
                 listActionSmallName.add(ActionSmallBefor(editActionSmallNameOnUpdate.text.toString()))
                 recyclerBefoInsert.visibility = View.VISIBLE
                 adapterInsert.setData(listActionSmallName)
@@ -228,8 +244,25 @@ class UpdateActionFragment : BaseFragment(), UpdateActionContract.View, View.OnC
         super.onDestroyView()
         openFragmentAction()
     }
-    private fun openFragmentAction(){
+
+    private fun openFragmentAction() {
         (activity as MainActivity).hindNavigation(false)
-        replaceFragment(R.id.frag_main,ActionFragment(),false)
+        replaceFragment(R.id.frag_main, ActionFragment(), false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        view!!.isFocusableInTouchMode = true
+        view!!.requestFocus()
+        view!!.setOnKeyListener(object : View.OnKeyListener {
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
+                if (event!!.action == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    (activity as MainActivity).hindNavigation(false)
+                    replaceFragment(R.id.frag_main, ActionFragment(), false)
+                }
+                return false
+            }
+
+        })
     }
 }

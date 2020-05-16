@@ -3,6 +3,7 @@ package com.nhatle.workmangement.ui.main.action
 import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
 import com.nhatle.workmangement.R
 import com.nhatle.workmangement.data.model.response.ActionResponse
 import com.nhatle.workmangement.data.reponsitory.remote.ActionRemoteRepository
@@ -23,6 +24,7 @@ import kotlinx.android.synthetic.main.fragment_work.*
 class ActionFragment : BaseFragment(), ActionContract.View {
     override val layoutResource: Int = R.layout.fragment_work
     private var presenter: ActionPresenter? = null
+    private var recyclerView: RecyclerView?=null
     private val adapter: ActionAdapter by lazy {
         ActionAdapter(object : ActionAdapter.SendData {
             override fun sendData(actionResponse: ActionResponse, position: Int) {
@@ -47,6 +49,7 @@ class ActionFragment : BaseFragment(), ActionContract.View {
     }
 
     override fun initComponents() {
+        recyclerView=recyclerViewWork
         initPresenter()
         handlerGetAllAction()
     }
@@ -54,12 +57,12 @@ class ActionFragment : BaseFragment(), ActionContract.View {
     private fun registerListener() {
         buttonAddWork.setOnClickListener {
             (activity as MainActivity).hindNavigation(true)
-            replaceFragment(R.id.frag_image, AddActionFragment(), true)
+            replaceFragment(R.id.frag_main, AddActionFragment(), true)
         }
     }
 
     private fun initAdapter() {
-        recyclerViewWork.adapter = adapter
+        recyclerView!!.adapter = adapter
     }
 
     private fun initPresenter() {
@@ -97,7 +100,7 @@ class ActionFragment : BaseFragment(), ActionContract.View {
         val fragment = ActionDetailFragment()
         CommonAction.getInstance().action = actionResponse
         replaceFragment(
-            R.id.frag_image,
+            R.id.frag_main,
             fragment, true
         )
     }
@@ -112,7 +115,7 @@ class ActionFragment : BaseFragment(), ActionContract.View {
 
                     (activity as MainActivity).hindNavigation(true)
                     replaceFragment(
-                        R.id.frag_image,
+                        R.id.frag_main,
                         CommentFragment(), true
                     )
                 }
@@ -137,7 +140,7 @@ class ActionFragment : BaseFragment(), ActionContract.View {
                         val fragment = UpdateActionFragment()
                         CommonAction.getInstance().action = data
                         fragment.sendData(data)
-                        replaceFragment(R.id.frag_image, fragment, false)
+                        replaceFragment(R.id.frag_main, fragment, false)
                     }
                     else {
                         Toast.makeText(

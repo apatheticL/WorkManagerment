@@ -49,11 +49,10 @@
         android:id="@+id/textNameUserCreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="@dimen/dp_32"
+        android:layout_marginLeft="@dimen/dp_32"
+        android:layout_marginTop="@dimen/dp_24"
         android:text="Nguyen Văn An"
-        app:fontFamily="@font/archivo_narrow_bold"
         app:layout_constraintStart_toEndOf="@+id/image_avatar"
         app:layout_constraintTop_toBottomOf="@+id/toolBar" />
 
@@ -72,7 +71,7 @@
         android:layout_marginTop="@dimen/dp_8"
         app:layout_constraintTop_toBottomOf="@+id/titleNameWork" />
     <TextView
-        android:id="@+id/titleDiscription"
+        android:id="@+id/titleDis"
         android:text="Mô tả :"
         android:textColor="@color/colorBack"
         android:layout_marginTop="@dimen/dp_4"
@@ -102,7 +101,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="@dimen/dp_4"
-        app:layout_constraintTop_toBottomOf="@+id/titleDiscription" />
+        app:layout_constraintTop_toBottomOf="@+id/titleDis" />
     <TextView
         android:id="@+id/nameGroup"
         android:layout_width="wrap_content"

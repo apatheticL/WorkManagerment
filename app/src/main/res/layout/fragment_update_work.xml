@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_32"
                 android:layout_marginTop="@dimen/dp_16"
-                android:text="Mô tả: "
+                android:text="Mô tả"
                 android:textColor="@color/colorBack"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nameWork" />
@@ -108,7 +108,6 @@
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="@dimen/dp_16"
                 android:text="Nguyen Văn An"
-                app:fontFamily="@font/archivo_narrow_bold"
                 app:layout_constraintStart_toEndOf="@+id/image_avatar"
                 app:layout_constraintTop_toTopOf="@+id/image_avatar" />
 
@@ -132,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_16"
-                android:text="Ngày kết thúc"
+                android:text="Ngày KT"
                 android:textColor="@color/colorBack"
                 app:layout_constraintStart_toStartOf="@+id/titleStart"
                 app:layout_constraintTop_toBottomOf="@+id/titleStart" />

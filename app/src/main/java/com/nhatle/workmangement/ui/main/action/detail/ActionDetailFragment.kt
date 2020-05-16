@@ -1,5 +1,6 @@
 package com.nhatle.workmangement.ui.main.action.detail
 
+import android.view.KeyEvent
 import android.view.View
 import com.nhatle.workmangement.R
 import com.nhatle.workmangement.data.model.response.UserTeamResponse
@@ -86,13 +87,13 @@ class ActionDetailFragment : BaseFragment(), ActionDetailContract.View, View.OnC
                 (activity as MainActivity).hindNavigation(true)
                 Deferent.setNumberMember(numberMember)
                 val fragment = UserActionSmallManagerFragment()
-                replaceFragment(R.id.frag_image, fragment, true)
+                replaceFragment(R.id.frag_main, fragment, true)
 
             }
             R.id.butonGoActionReport -> {
                 (activity as MainActivity).hindNavigation(true)
                 replaceFragment(
-                    R.id.frag_image,
+                    R.id.frag_main,
                     UserActionReportFragment(),
                     false
                 )
@@ -103,5 +104,21 @@ class ActionDetailFragment : BaseFragment(), ActionDetailContract.View, View.OnC
                 replaceFragment(R.id.frag_main, fragment, false)
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        view!!.isFocusableInTouchMode = true
+        view!!.requestFocus()
+        view!!.setOnKeyListener(object : View.OnKeyListener {
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
+                if (event!!.action==KeyEvent.ACTION_UP&& keyCode==KeyEvent.KEYCODE_BACK){
+                    (activity as MainActivity).hindNavigation(false)
+                    replaceFragment(R.id.frag_main,ActionFragment(),false)
+                }
+                return false
+            }
+
+        })
     }
 }

@@ -88,7 +88,7 @@ class AddGroupFragment : BaseFragment(), AddGroupContract.View, View.OnClickList
         val fragment = AddActionFragment()
         fragment.sendGroupId(group!!)
         (activity as MainActivity).hindNavigation(true)
-        replaceFragment(R.id.frag_image, fragment, true)
+        replaceFragment(R.id.frag_main, fragment, true)
 
     }
 
@@ -105,7 +105,7 @@ class AddGroupFragment : BaseFragment(), AddGroupContract.View, View.OnClickList
                 activity?.let { Common.hideKeyBoard(it) }
                 showDialog()
                 (activity as MainActivity).hindNavigation(true)
-                replaceFragment(R.id.frag_image, AddActionFragment(), true)
+                replaceFragment(R.id.frag_main, AddActionFragment(), true)
             }
         }
     }

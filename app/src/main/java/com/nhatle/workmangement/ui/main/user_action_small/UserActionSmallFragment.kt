@@ -92,23 +92,27 @@ class UserActionSmallFragment() : BaseFragment(),
             buttonGoAddUserActionSmall.setOnClickListener {
                 (activity as MainActivity).hindNavigation(true)
                 replaceFragment(
-                    R.id.frag_image, AddUserActionSmallFragment(
+                    R.id.frag_main, AddUserActionSmallFragment(
                         CommonAction.getInstance().action!!.actionId,
-                        CommonAction.getInstance().action!!.groupId
+                        CommonAction.getInstance().action!!.groupId,
+                        CommonAction.getInstance().action!!.timeEnd,
+                        CommonAction.getInstance().action!!.timeStart
                     ), true
                 )
             }
         } else if (CommonAction.getInstance().action!!.creatorId == CommonData.getInstance().profile!!.profileId &&
-            check && Deferent.getNumber() > number-1
+            check && Deferent.getNumber() > number - 1
         ) {
             addActionSmall.visibility = View.VISIBLE
             recyclerListUserMakeActionSmall.visibility = View.VISIBLE
             buttonGoAddUserActionSmall.setOnClickListener {
                 (activity as MainActivity).hindNavigation(true)
                 replaceFragment(
-                    R.id.frag_image, AddUserActionSmallFragment(
+                    R.id.frag_main, AddUserActionSmallFragment(
                         CommonAction.getInstance().action!!.actionId,
-                        CommonAction.getInstance().action!!.groupId
+                        CommonAction.getInstance().action!!.groupId,
+                        CommonAction.getInstance().action!!.timeEnd,
+                        CommonAction.getInstance().action!!.timeStart
                     ), true
                 )
             }

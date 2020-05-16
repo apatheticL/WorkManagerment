@@ -1,5 +1,6 @@
 package com.nhatle.workmangement.ui.main.report.add
 
+import android.view.KeyEvent
 import android.view.View
 import android.widget.AdapterView
 import android.widget.RadioGroup
@@ -15,6 +16,8 @@ import com.nhatle.workmangement.data.source.remote.UserActionReportRemoteDataSou
 import com.nhatle.workmangement.ui.MainActivity
 import com.nhatle.workmangement.ui.base.BaseFragment
 import com.nhatle.workmangement.ui.main.report.UserActionReportFragment
+import com.nhatle.workmangement.ui.main.user_action_small.UserActionSmallManagerFragment
+import com.nhatle.workmangement.ui.main.user_action_small.user.MyActionSmallFragment
 import com.nhatle.workmangement.until.Common
 import com.nhatle.workmangement.until.CommonAction
 import com.nhatle.workmangement.until.CommonData
@@ -147,5 +150,20 @@ class AddReportFragment : BaseFragment(), View.OnClickListener, AddActionReportC
         (activity as MainActivity).hindNavigation(false)
         replaceFragment(R.id.frag_main, UserActionReportFragment(), true)
 
+    }
+    override fun onResume() {
+        super.onResume()
+        view!!.isFocusableInTouchMode = true
+        view!!.requestFocus()
+        view!!.setOnKeyListener(object : View.OnKeyListener {
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
+                if (event!!.action== KeyEvent.ACTION_UP&& keyCode== KeyEvent.KEYCODE_BACK){
+                    (activity as MainActivity).hindNavigation(false)
+                    replaceFragment(R.id.frag_main,UserActionSmallManagerFragment(),false)
+                }
+                return false
+            }
+
+        })
     }
 }

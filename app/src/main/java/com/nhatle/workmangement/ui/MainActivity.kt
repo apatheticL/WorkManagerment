@@ -17,6 +17,7 @@ import com.nhatle.workmangement.until.ShareUntil
 import com.nhatle.workmangement.until.SocketManager
 import kotlinx.android.synthetic.main.activity_main.*
 
+
 class MainActivity : BaseActivity() {
     override val layoutResource: Int = R.layout.activity_main
     override fun initComponent() {
@@ -68,14 +69,10 @@ class MainActivity : BaseActivity() {
     }
     fun hindNavigation(check:Boolean){
         if(check){
-            frag_main.visibility = View.GONE
             bottomNavigationView.visibility = View.GONE
-            frag_image.visibility = View.VISIBLE
         }
         else{
-            frag_main.visibility = View.VISIBLE
             bottomNavigationView.visibility = View.VISIBLE
-            frag_image.visibility = View.GONE
         }
 
     }
@@ -89,6 +86,10 @@ class MainActivity : BaseActivity() {
         super.onDestroy()
         SocketManager.getInstance().disconnect()
     }
+//    override fun onBackPressed() {
+//        hindNavigation(false)
+//        replaceFragment(R.id.frag_main,ActionFragment(),false)
+//    }
 
 
 }

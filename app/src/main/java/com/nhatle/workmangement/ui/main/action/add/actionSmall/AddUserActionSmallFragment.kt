@@ -20,17 +20,22 @@ import com.nhatle.workmangement.ui.base.BaseFragment
 import com.nhatle.workmangement.ui.main.action.ActionFragment
 import com.nhatle.workmangement.ui.main.action.add.actionSmall.dialog.CustomDialog
 import com.nhatle.workmangement.ui.main.action.add.actionSmall.dialog.SendUserTeam
-import com.nhatle.workmangement.ui.main.user_action_small.UserActionSmallManagerFragment
-import com.nhatle.workmangement.until.Common
-import com.nhatle.workmangement.until.CommonAction
+import com.nhatle.workmangement.until.*
 import kotlinx.android.synthetic.main.fragment_add_user_action_small.*
 import kotlinx.android.synthetic.main.item_add_user_action_small.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AddUserActionSmallFragment(val actionId: Int, val groupId: Int) : BaseFragment(),
+class AddUserActionSmallFragment(
+    val actionId: Int,
+    val groupId: Int,
+    val timeEnd: String,
+    val timeStart: String
+) :
+    BaseFragment(),
     AddUserActionSmallContract.View,
     View.OnClickListener {
+    private var timeStartClick = false
     override val layoutResource: Int
         get() = R.layout.fragment_add_user_action_small
     private val adapter: ActionSmallAdapter by lazy {
@@ -116,9 +121,11 @@ class AddUserActionSmallFragment(val actionId: Int, val groupId: Int) : BaseFrag
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.buttonAddStartDate -> {
+                timeStartClick = true
                 showDatetimeDialog(texttimeStartAdd)
             }
             R.id.buttonAddDateEnd -> {
+                timeStartClick = false
                 showDatetimeDialog(texttimEndAdd)
             }
             R.id.buttonAddUser -> {
@@ -133,8 +140,8 @@ class AddUserActionSmallFragment(val actionId: Int, val groupId: Int) : BaseFrag
             }
             R.id.buttonCancelAddUserActionSmall -> {
 
-                    (activity as MainActivity).hindNavigation(false)
-                    replaceFragment(R.id.frag_main, ActionFragment(), false)
+                (activity as MainActivity).hindNavigation(false)
+                replaceFragment(R.id.frag_main, ActionFragment(), false)
 
             }
             R.id.buttonBack -> {
@@ -192,7 +199,56 @@ class AddUserActionSmallFragment(val actionId: Int, val groupId: Int) : BaseFrag
                 calendar.set(Calendar.YEAR, year)
                 calendar.set(Calendar.MONTH, month)
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                textView.text = fmDateAndTime.format(calendar.time)
+                if (!timeStartClick) {
+                    if (checkTimeEndDone(calendar.time, texttimeStartAdd)) {
+                        if (checkTimeEndActionSmallToDone(
+                                calendar.time,
+                                convertStringToDate(timeEnd)
+                            )
+                        ) {
+                            textView.text = fmDateAndTime.format(calendar.time)
+                        }
+                        if (!checkTimeEndActionSmallToDone(
+                                calendar.time,
+                                convertStringToDate(timeEnd)
+                            )
+                        ) {
+                            textView.text = null
+                            Toast.makeText(
+                                context,
+                                "Thoi gian ket thuc phai trong khoang thoi gian lam viec la $timeEnd",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                    if (!checkTimeEndDone(calendar.time, texttimeStartAdd)) {
+                        textView.text = null
+                        Toast.makeText(
+                            context,
+                            "Thoi gian ket thuc khong hop le",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+                if (timeStartClick) {
+                    if(checkTimeStartActionSmallDone(calendar.time,
+                            convertStringToDate(timeStart),
+                            convertStringToDate(timeEnd)))
+                    {
+                        textView.text = fmDateAndTime.format(calendar.time)
+                    }
+                    if(!checkTimeStartActionSmallDone(calendar.time,
+                            convertStringToDate(timeStart),
+                            convertStringToDate(timeEnd)))
+                    {
+                        textView.text =null
+                        Toast.makeText(
+                            context,
+                            "Thoi gian bat dau phai trong khoang tu $timeStart den $timeEnd",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
             }
         activity?.let {
             DatePickerDialog(

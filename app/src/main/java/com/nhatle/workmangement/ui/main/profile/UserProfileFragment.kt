@@ -89,7 +89,7 @@ class UserProfileFragment : BaseFragment(), UserProfileContract.View, View.OnCli
             } else {
                 val fragment = UpdateProfileFragment()
                 (activity as MainActivity).hindNavigation(true)
-                replaceFragment(R.id.frag_image, fragment, false)
+                replaceFragment(R.id.frag_main, fragment, false)
             }
             true
         }

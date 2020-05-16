@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -194,5 +195,20 @@ class CommentFragment() : BaseFragment(), CommentContract.View {
         presenter.getAllComment(CommonAction.getInstance().action!!.actionId)
         contentComment.setText("")
         imageSend.visibility = View.GONE
+    }
+    override fun onResume() {
+        super.onResume()
+        view!!.isFocusableInTouchMode = true
+        view!!.requestFocus()
+        view!!.setOnKeyListener(object : View.OnKeyListener {
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
+                if (event!!.action== KeyEvent.ACTION_UP&& keyCode== KeyEvent.KEYCODE_BACK){
+                    (activity as MainActivity).hindNavigation(false)
+                    replaceFragment(R.id.frag_main,ActionFragment(),false)
+                }
+                return false
+            }
+
+        })
     }
 }

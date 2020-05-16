@@ -1,10 +1,14 @@
 package com.nhatle.workmangement.ui.main.user_action_small
 
+import android.view.KeyEvent
+import android.view.View
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
 import com.nhatle.workmangement.R
 import com.nhatle.workmangement.ui.MainActivity
 import com.nhatle.workmangement.ui.base.BaseFragment
+import com.nhatle.workmangement.ui.main.action.ActionFragment
+import com.nhatle.workmangement.ui.main.action.detail.ActionDetailFragment
 import com.nhatle.workmangement.ui.main.user_action_small.user.MyActionSmallFragment
 import kotlinx.android.synthetic.main.fragment_user_action_small_manager.*
 import kotlin.properties.Delegates
@@ -48,5 +52,20 @@ class UserActionSmallManagerFragment:BaseFragment() {
     override fun initComponents() {
         (activity as MainActivity).hindNavigation(true)
         addFragment(R.id.frag_user_action_small,UserActionSmallFragment(),false)
+    }
+    override fun onResume() {
+        super.onResume()
+        view!!.isFocusableInTouchMode = true
+        view!!.requestFocus()
+        view!!.setOnKeyListener(object : View.OnKeyListener {
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
+                if (event!!.action== KeyEvent.ACTION_UP&& keyCode== KeyEvent.KEYCODE_BACK){
+                    (activity as MainActivity).hindNavigation(false)
+                    replaceFragment(R.id.frag_main, ActionDetailFragment(),false)
+                }
+                return false
+            }
+
+        })
     }
 }

@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/marginEnd"
         android:layout_marginRight="@dimen/marginEnd"
-        android:layout_marginBottom="@dimen/marginBottom"
+        android:layout_marginBottom="?actionBarSize"
         android:clickable="true"
         android:src="@drawable/add"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -1,6 +1,7 @@
 package com.nhatle.workmangement.ui.main.action.add
 
 import android.app.DatePickerDialog
+import android.view.KeyEvent
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -23,6 +24,7 @@ import com.nhatle.workmangement.ui.main.action.add.actionSmall.AddUserActionSmal
 import com.nhatle.workmangement.ui.main.team.AddGroupFragment
 import com.nhatle.workmangement.until.Common
 import com.nhatle.workmangement.until.CommonData
+import com.nhatle.workmangement.until.checkTimeEndDone
 import kotlinx.android.synthetic.main.custom_add_action.*
 import kotlinx.android.synthetic.main.fragment_add_acion_small.*
 import kotlinx.android.synthetic.main.fragment_add_work.*
@@ -36,6 +38,7 @@ class AddActionFragment : BaseFragment(), AddActionContract.View, View.OnClickLi
     private var listActionSmallName: ArrayList<ActionSmallBefor> = ArrayList()
     private var action: Action? = null
     private var group: Team? = null
+    private var timeStartClick = false
     private val adapter: ListActionSmallBeforAddAdapter = ListActionSmallBeforAddAdapter()
     override fun initData() {
         Glide.with(image_avatar)
@@ -97,8 +100,13 @@ class AddActionFragment : BaseFragment(), AddActionContract.View, View.OnClickLi
     override fun insertActionSmallSuccess() {
         (activity as MainActivity).hindNavigation(true)
         replaceFragment(
-            R.id.frag_image,
-            AddUserActionSmallFragment(action!!.actionId, action!!.groupId),
+            R.id.frag_main,
+            AddUserActionSmallFragment(
+                action!!.actionId,
+                action!!.groupId,
+                action!!.timeEnd,
+                action!!.timeStart!!
+            ),
             true
         )
     }
@@ -114,16 +122,18 @@ class AddActionFragment : BaseFragment(), AddActionContract.View, View.OnClickLi
     override fun onClick(v: View) {
         when (v.id) {
             R.id.buttonAddStartDate -> {
+                timeStartClick = true
                 showDatetimeDialog(texttimeStartAdd)
                 activity?.let { Common.hideKeyBoard(it) }
             }
             R.id.buttonAddDateEnd -> {
+                timeStartClick = false
                 showDatetimeDialog(texttimEndAdd)
                 activity?.let { Common.hideKeyBoard(it) }
             }
             R.id.buttonAddMember -> {
                 (activity as MainActivity).hindNavigation(true)
-                replaceFragment(R.id.frag_image, AddGroupFragment(), true)
+                replaceFragment(R.id.frag_main, AddGroupFragment(), true)
                 activity?.let { Common.hideKeyBoard(it) }
             }
             R.id.buttonSaveAdd -> {
@@ -180,7 +190,9 @@ class AddActionFragment : BaseFragment(), AddActionContract.View, View.OnClickLi
         }
     }
 
-    private fun showDatetimeDialog(textView: TextView) {
+    private fun showDatetimeDialog(
+        textView: TextView
+    ) {
         val fmDateAndTime = SimpleDateFormat("yyyy-MM-dd")
         val calendar = Calendar.getInstance()
         val datePickerDialog =
@@ -188,7 +200,22 @@ class AddActionFragment : BaseFragment(), AddActionContract.View, View.OnClickLi
                 calendar.set(Calendar.YEAR, year)
                 calendar.set(Calendar.MONTH, month)
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                textView.text = fmDateAndTime.format(calendar.time)
+                if (!timeStartClick) {
+                    if (checkTimeEndDone(calendar.time, texttimeStartAdd)) {
+                        textView.text = fmDateAndTime.format(calendar.time)
+                    }
+                    if (!checkTimeEndDone(calendar.time, texttimeStartAdd)) {
+                        textView.text = null
+                        Toast.makeText(
+                            context,
+                            "Thoi gian ket thuc khong hop le",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+                if (timeStartClick) {
+                    textView.text = fmDateAndTime.format(calendar.time)
+                }
             }
         activity?.let {
             DatePickerDialog(
@@ -199,7 +226,24 @@ class AddActionFragment : BaseFragment(), AddActionContract.View, View.OnClickLi
         }
     }
 
+
     fun sendGroupId(groupId: Team) {
         this.group = groupId
+    }
+
+    override fun onResume() {
+        super.onResume()
+        view!!.isFocusableInTouchMode = true
+        view!!.requestFocus()
+        view!!.setOnKeyListener(object : View.OnKeyListener {
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
+                if (event!!.action == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    (activity as MainActivity).hindNavigation(false)
+                    replaceFragment(R.id.frag_main, ActionFragment(), false)
+                }
+                return false
+            }
+
+        })
     }
 }

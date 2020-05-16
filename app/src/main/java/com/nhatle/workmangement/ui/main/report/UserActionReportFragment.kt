@@ -1,8 +1,11 @@
 package com.nhatle.workmangement.ui.main.report
 
+import android.view.KeyEvent
+import android.view.View
 import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nhatle.workmangement.R
 import com.nhatle.workmangement.data.model.response.UserActionReportResponse
@@ -18,18 +21,25 @@ import kotlinx.android.synthetic.main.fragment_report.*
 
 class UserActionReportFragment : BaseFragment(), UserActionReportContract.View {
     override val layoutResource: Int = R.layout.fragment_report
+    private var position:Int=-1
     private var presenter: UserActionReportPresenter? = null
+    private var recyclerView:RecyclerView?=null
     private val adapter: ActionReportAdapter by lazy {
         ActionReportAdapter(object : ActionReportAdapter.ReportManager {
             override fun sendDataToButton(
                 itemData: UserActionReportResponse,
-                buttonMenu: ImageButton
+                buttonMenu: ImageButton,
+                position: Int
             ) {
-                configMenu(itemData, buttonMenu)
+                configMenu(itemData, buttonMenu,position)
             }
         })
     }
-
+    override fun initComponents() {
+        recyclerView = recyclerReport
+        initPresenter()
+        configView()
+    }
     override fun initData() {
         registerListenter()
     }
@@ -37,7 +47,7 @@ class UserActionReportFragment : BaseFragment(), UserActionReportContract.View {
     private fun registerListenter() {
         buttonBack.setOnClickListener {
             (activity as MainActivity).hindNavigation(true)
-            replaceFragment(R.id.frag_image, ActionDetailFragment(), false)
+            replaceFragment(R.id.frag_main, ActionDetailFragment(), false)
         }
     }
 
@@ -50,10 +60,7 @@ class UserActionReportFragment : BaseFragment(), UserActionReportContract.View {
 
     }
 
-    override fun initComponents() {
-        initPresenter()
-        configView()
-    }
+
 
     private fun configView() {
         Glide.with(avatarUserCreate)
@@ -61,21 +68,22 @@ class UserActionReportFragment : BaseFragment(), UserActionReportContract.View {
             .placeholder(R.drawable.bavarian).into(avatarUserCreate)
     }
 
-    private fun initRecyclerView() {
-        recyclerReport.adapter = adapter
-    }
-
-    private fun configMenu(itemData: UserActionReportResponse, buttonMenu: ImageButton) {
+    private fun configMenu(
+        itemData: UserActionReportResponse,
+        buttonMenu: ImageButton,
+        position: Int
+    ) {
         val popupMenu = PopupMenu(activity, buttonMenu)
         popupMenu.menuInflater.inflate(R.menu.menu_report, popupMenu.menu)
         popupMenu.setOnMenuItemClickListener {
             if (it.itemId == R.id.actionDelete) {
                 presenter!!.deleteUserActionReport(itemData.reportId)
+                this.position = position
             }
             if (it.itemId == R.id.actionUpdate) {
                 (activity as MainActivity).hindNavigation(true)
                 replaceFragment(
-                    R.id.frag_image,
+                    R.id.frag_main,
                     UpdateActionUserReportFragment(
                         itemData
                     ), false
@@ -89,17 +97,31 @@ class UserActionReportFragment : BaseFragment(), UserActionReportContract.View {
     override fun loadAllActionReport(listAction: List<UserActionReportResponse>) {
         if (listAction.isNotEmpty()) {
             adapter.setData(listAction as ArrayList<UserActionReportResponse>)
-            initRecyclerView()
+            recyclerView!!.adapter = adapter
         }
     }
 
     override fun reloadData() {
-        presenter!!.getAllUserActionRemoteByAction(CommonAction.getInstance().action!!.actionId)
+        adapter.delete(position)
         adapter.notifyDataSetChanged()
     }
 
     override fun loadFailed(error: String) {
         Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
     }
+    override fun onResume() {
+        super.onResume()
+        view!!.isFocusableInTouchMode = true
+        view!!.requestFocus()
+        view!!.setOnKeyListener(object : View.OnKeyListener {
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
+                if (event!!.action== KeyEvent.ACTION_UP&& keyCode== KeyEvent.KEYCODE_BACK){
+                    (activity as MainActivity).hindNavigation(false)
+                    replaceFragment(R.id.frag_main,ActionDetailFragment(),false)
+                }
+                return false
+            }
 
+        })
+    }
 }

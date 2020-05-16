@@ -3,6 +3,7 @@ package com.nhatle.workmangement.ui.main.profile.update
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
+import android.view.KeyEvent
 import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -181,5 +182,20 @@ class UpdateProfileFragment : BaseFragment(), UpdateUserProfileContract.View, Vi
 
         })
         uploadFile.upLoad(name)
+    }
+    override fun onResume() {
+        super.onResume()
+        view!!.isFocusableInTouchMode = true
+        view!!.requestFocus()
+        view!!.setOnKeyListener(object : View.OnKeyListener {
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
+                if (event!!.action== KeyEvent.ACTION_UP&& keyCode== KeyEvent.KEYCODE_BACK){
+                    (activity as MainActivity).hindNavigation(false)
+                    replaceFragment(R.id.frag_main,UserProfileFragment(),false)
+                }
+                return false
+            }
+
+        })
     }
 }

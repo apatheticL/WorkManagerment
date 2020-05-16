@@ -53,10 +53,10 @@ class UpdateActionUserReportFragment(val itemData: UserActionReportResponse) : B
             override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
                 when (checkedId) {
                     R.id.radioUpdateButtonFinnish -> {
-                        status = radioUpdateButtonFinnish.text.toString()
+                        status = "hoan thanh"
                     }
                     R.id.radioUpdateButtonNoneFinish -> {
-                        status = radioUpdateButtonNoneFinish.text.toString()
+                        status = "chua hoan thanh"
                     }
                 }
             }
@@ -90,7 +90,7 @@ class UpdateActionUserReportFragment(val itemData: UserActionReportResponse) : B
 
     override fun updateSuccess() {
         (activity as MainActivity).hindNavigation(true)
-        replaceFragment(R.id.frag_image, UserActionReportFragment(), false)
+        replaceFragment(R.id.frag_main, UserActionReportFragment(), false)
     }
 
     override fun updateFail(error: String) {
@@ -106,7 +106,7 @@ class UpdateActionUserReportFragment(val itemData: UserActionReportResponse) : B
             R.id.buttonCancelReport -> {
                 (activity as MainActivity).hindNavigation(true)
                 replaceFragment(
-                    R.id.frag_image,
+                    R.id.frag_main,
                     UserActionReportFragment(), false
                 )
             }
@@ -116,6 +116,6 @@ class UpdateActionUserReportFragment(val itemData: UserActionReportResponse) : B
     override fun onDestroyView() {
         super.onDestroyView()
         (activity as MainActivity).hindNavigation(true)
-        replaceFragment(R.id.frag_image,UserActionReportFragment(),false)
+        replaceFragment(R.id.frag_main,UserActionReportFragment(),false)
     }
 }
