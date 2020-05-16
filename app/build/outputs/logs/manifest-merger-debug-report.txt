@@ -1,0 +1,288 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:2:1-28:12
+INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:2:1-28:12
+INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:2:1-28:12
+INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:2:1-28:12
+MERGED from [androidx.multidex:multidex:2.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/87b8d1cad3d1c8640f5f81bda431dd72/multidex-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.material:material:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/8e2989aba5bb33106453e344a5ad2ac8/material-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/cffcb14bc50954fa646513b4be989c6b/appcompat-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core-ktx:1.2.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/cbfd1da392fc44c7c6ee9702ee1d6544/jetified-core-ktx-1.2.0/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /home/nhatle/.gradle/caches/transforms-2/files-2.1/dc5653df51271f52f93d2006d9a5e208/constraintlayout-1.1.3/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.firebase:firebase-storage:16.0.4] /home/nhatle/.gradle/caches/transforms-2/files-2.1/c539d3af7c0b493f3e136845e56772a1/jetified-firebase-storage-16.0.4/AndroidManifest.xml:15:1-26:12
+MERGED from [com.google.firebase:firebase-database:16.0.4] /home/nhatle/.gradle/caches/transforms-2/files-2.1/ddae0b02bff71c48ab4fd0873db31dd7/jetified-firebase-database-16.0.4/AndroidManifest.xml:15:1-25:12
+MERGED from [de.hdodenhof:circleimageview:3.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/2e3539968f1252b9dad08015735fe95e/jetified-circleimageview-3.0.1/AndroidManifest.xml:2:1-11:12
+MERGED from [com.github.bumptech.glide:glide:4.11.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/ba42152277e92e3c67682da39cfd71dd/jetified-glide-4.11.0/AndroidManifest.xml:2:1-12:12
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/c3d3dbc878f96de1821069d6d0865926/recyclerview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94481d1de9a1ceefc30c4b2969e8e773/jetified-play-services-base-16.0.1/AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.firebase:firebase-common:16.0.3] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94e52c60fdcbbcf71b78f9eaf3edb0bb/jetified-firebase-common-16.0.3/AndroidManifest.xml:2:1-17:12
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/198b95a42ffc3895a052629b0b12db4d/jetified-play-services-tasks-16.0.1/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-database-collection:16.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/f6a4a2d1dea9f26e864e94547039e570/jetified-firebase-database-collection-16.0.0/AndroidManifest.xml:2:1-8:12
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/dd75f0e7a2a5f06590421ebdd3e400f3/jetified-play-services-basement-16.0.1/AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/35b43c8e74aa32f7750167d83aa50c23/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/5b9e0d961a43463cd36d3d0b0970a663/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/36396b1fbdb1103bb32efd2dde513e3d/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/4d8023f440c56671264c8dbdb102bee1/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/62322ffe89d73f1df797536e80d541cb/jetified-appcompat-resources-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/a77d9e58918bf2750030aac69a1dfcf6/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/c478f80bd4ad567536aefc8101976968/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.transition:transition:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/bff26f8bf9ff63f2d7195c364e6c34a4/transition-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/dccbc333189bbf941b741953e1a3f9ff/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/81dab606d6381131d30445e6b293ca11/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/6d4496b2f19da8b1ecaba0e3e9d542c0/jetified-activity-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/9c082bcf1e9f4f8b85c88ff0468da4d5/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/be19bec525e29f89b7d3e89508f45a37/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/339f1dc8c1bde9b456157112e0f4b7e8/coordinatorlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/21084036f77004bec3de64060098e600/slidingpanelayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/0b07a0826db5af8a2fda1f92fd2e3873/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/b26138f390284d58f90b88610f6f34c1/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/b418af96d99ec3ee6beea4913d2436ab/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media:media:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/e6c5426b859b3c6d1a7ec370a24f0e7e/media-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.2.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/509b9013c19d2fd80c30f8ef574e433a/core-1.2.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.cardview:cardview:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/8b0350031a72ce16202033f17dd471e1/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/3e9d0a0f95d4736de4de1e21f122263d/jetified-gifdecoder-4.11.0/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/ace58725a593ebc3d8ac9a955443d5c1/exifinterface-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/e4bd9b193777687523303943a4029054/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/ef0bf9d4d2483129dffd4f48b9ce7edf/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/464eb4e2a3cad5a639b9f1a3f0b48840/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/0a265440987cc4e75053c9445cd2e39a/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/3b5d9efd4ea7fd3d66d424fb0fea7c4a/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/a0ace06f047d4842a6f5373e82da3162/lifecycle-runtime-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/aa1d5930a25664aa7646c6cfc994bd91/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/f6a4feae18ec354dcbc77e0557069d6b/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/3f1ca0d4ddb8ff95c5d75eeb561077d3/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/308c366dec3536d2c325d08e36113e5e/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/b7f5752aa0acc6fff842c787e096bc60/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:2:1-28:12
+INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:2:1-28:12
+INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:2:1-28:12
+	package
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:3:5-39
+		INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml
+		INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:2:1-28:12
+		INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:2:1-28:12
+		INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:4:5-78
+MERGED from [com.google.firebase:firebase-storage:16.0.4] /home/nhatle/.gradle/caches/transforms-2/files-2.1/c539d3af7c0b493f3e136845e56772a1/jetified-firebase-storage-16.0.4/AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-storage:16.0.4] /home/nhatle/.gradle/caches/transforms-2/files-2.1/c539d3af7c0b493f3e136845e56772a1/jetified-firebase-storage-16.0.4/AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-database:16.0.4] /home/nhatle/.gradle/caches/transforms-2/files-2.1/ddae0b02bff71c48ab4fd0873db31dd7/jetified-firebase-database-16.0.4/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-database:16.0.4] /home/nhatle/.gradle/caches/transforms-2/files-2.1/ddae0b02bff71c48ab4fd0873db31dd7/jetified-firebase-database-16.0.4/AndroidManifest.xml:22:5-79
+	android:name
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:4:22-76
+uses-permission#android.permission.INTERNET
+ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:5:5-7:53
+MERGED from [com.google.firebase:firebase-storage:16.0.4] /home/nhatle/.gradle/caches/transforms-2/files-2.1/c539d3af7c0b493f3e136845e56772a1/jetified-firebase-storage-16.0.4/AndroidManifest.xml:24:5-67
+MERGED from [com.google.firebase:firebase-storage:16.0.4] /home/nhatle/.gradle/caches/transforms-2/files-2.1/c539d3af7c0b493f3e136845e56772a1/jetified-firebase-storage-16.0.4/AndroidManifest.xml:24:5-67
+MERGED from [com.google.firebase:firebase-database:16.0.4] /home/nhatle/.gradle/caches/transforms-2/files-2.1/ddae0b02bff71c48ab4fd0873db31dd7/jetified-firebase-database-16.0.4/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-database:16.0.4] /home/nhatle/.gradle/caches/transforms-2/files-2.1/ddae0b02bff71c48ab4fd0873db31dd7/jetified-firebase-database-16.0.4/AndroidManifest.xml:23:5-67
+	android:targetSandboxVersion
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:5:22-54
+	android:name
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:7:9-51
+application
+ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:9:5-26:19
+MERGED from [com.google.android.material:material:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/8e2989aba5bb33106453e344a5ad2ac8/material-1.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/8e2989aba5bb33106453e344a5ad2ac8/material-1.0.0/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /home/nhatle/.gradle/caches/transforms-2/files-2.1/dc5653df51271f52f93d2006d9a5e208/constraintlayout-1.1.3/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /home/nhatle/.gradle/caches/transforms-2/files-2.1/dc5653df51271f52f93d2006d9a5e208/constraintlayout-1.1.3/AndroidManifest.xml:9:5-20
+MERGED from [de.hdodenhof:circleimageview:3.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/2e3539968f1252b9dad08015735fe95e/jetified-circleimageview-3.0.1/AndroidManifest.xml:9:5-20
+MERGED from [de.hdodenhof:circleimageview:3.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/2e3539968f1252b9dad08015735fe95e/jetified-circleimageview-3.0.1/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:glide:4.11.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/ba42152277e92e3c67682da39cfd71dd/jetified-glide-4.11.0/AndroidManifest.xml:10:5-20
+MERGED from [com.github.bumptech.glide:glide:4.11.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/ba42152277e92e3c67682da39cfd71dd/jetified-glide-4.11.0/AndroidManifest.xml:10:5-20
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94481d1de9a1ceefc30c4b2969e8e773/jetified-play-services-base-16.0.1/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94481d1de9a1ceefc30c4b2969e8e773/jetified-play-services-base-16.0.1/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.firebase:firebase-common:16.0.3] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94e52c60fdcbbcf71b78f9eaf3edb0bb/jetified-firebase-common-16.0.3/AndroidManifest.xml:9:5-15:19
+MERGED from [com.google.firebase:firebase-common:16.0.3] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94e52c60fdcbbcf71b78f9eaf3edb0bb/jetified-firebase-common-16.0.3/AndroidManifest.xml:9:5-15:19
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/198b95a42ffc3895a052629b0b12db4d/jetified-play-services-tasks-16.0.1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/198b95a42ffc3895a052629b0b12db4d/jetified-play-services-tasks-16.0.1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/dd75f0e7a2a5f06590421ebdd3e400f3/jetified-play-services-basement-16.0.1/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/dd75f0e7a2a5f06590421ebdd3e400f3/jetified-play-services-basement-16.0.1/AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.core:core:1.2.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/509b9013c19d2fd80c30f8ef574e433a/core-1.2.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.2.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/509b9013c19d2fd80c30f8ef574e433a/core-1.2.0/AndroidManifest.xml:24:5-89
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/3e9d0a0f95d4736de4de1e21f122263d/jetified-gifdecoder-4.11.0/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/3e9d0a0f95d4736de4de1e21f122263d/jetified-gifdecoder-4.11.0/AndroidManifest.xml:9:5-20
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/e4bd9b193777687523303943a4029054/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/e4bd9b193777687523303943a4029054/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.2.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/509b9013c19d2fd80c30f8ef574e433a/core-1.2.0/AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:14:9-35
+	android:label
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:12:9-41
+	android:roundIcon
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:13:9-43
+	android:icon
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:11:9-38
+	android:allowBackup
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:10:9-35
+	android:theme
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:16:9-40
+	android:usesCleartextTraffic
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:15:9-44
+activity#com.nhatle.workmangement.ui.SflatActivity
+ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:17:9-23:20
+	android:name
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:17:19-51
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:18:13-22:29
+action#android.intent.action.MAIN
+ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:19:17-69
+	android:name
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:19:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:21:17-77
+	android:name
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:21:27-74
+activity#com.nhatle.workmangement.ui.start.StartActivity
+ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:24:9-59
+	android:name
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:24:19-57
+activity#com.nhatle.workmangement.ui.MainActivity
+ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:25:9-52
+	android:name
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml:25:19-50
+uses-sdk
+INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml
+INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml
+MERGED from [androidx.multidex:multidex:2.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/87b8d1cad3d1c8640f5f81bda431dd72/multidex-2.0.0/AndroidManifest.xml:20:5-43
+MERGED from [androidx.multidex:multidex:2.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/87b8d1cad3d1c8640f5f81bda431dd72/multidex-2.0.0/AndroidManifest.xml:20:5-43
+MERGED from [com.google.android.material:material:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/8e2989aba5bb33106453e344a5ad2ac8/material-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/8e2989aba5bb33106453e344a5ad2ac8/material-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/cffcb14bc50954fa646513b4be989c6b/appcompat-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/cffcb14bc50954fa646513b4be989c6b/appcompat-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-ktx:1.2.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/cbfd1da392fc44c7c6ee9702ee1d6544/jetified-core-ktx-1.2.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.2.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/cbfd1da392fc44c7c6ee9702ee1d6544/jetified-core-ktx-1.2.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /home/nhatle/.gradle/caches/transforms-2/files-2.1/dc5653df51271f52f93d2006d9a5e208/constraintlayout-1.1.3/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /home/nhatle/.gradle/caches/transforms-2/files-2.1/dc5653df51271f52f93d2006d9a5e208/constraintlayout-1.1.3/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-storage:16.0.4] /home/nhatle/.gradle/caches/transforms-2/files-2.1/c539d3af7c0b493f3e136845e56772a1/jetified-firebase-storage-16.0.4/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-storage:16.0.4] /home/nhatle/.gradle/caches/transforms-2/files-2.1/c539d3af7c0b493f3e136845e56772a1/jetified-firebase-storage-16.0.4/AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-database:16.0.4] /home/nhatle/.gradle/caches/transforms-2/files-2.1/ddae0b02bff71c48ab4fd0873db31dd7/jetified-firebase-database-16.0.4/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.firebase:firebase-database:16.0.4] /home/nhatle/.gradle/caches/transforms-2/files-2.1/ddae0b02bff71c48ab4fd0873db31dd7/jetified-firebase-database-16.0.4/AndroidManifest.xml:18:5-20:41
+MERGED from [de.hdodenhof:circleimageview:3.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/2e3539968f1252b9dad08015735fe95e/jetified-circleimageview-3.0.1/AndroidManifest.xml:5:5-7:41
+MERGED from [de.hdodenhof:circleimageview:3.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/2e3539968f1252b9dad08015735fe95e/jetified-circleimageview-3.0.1/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:glide:4.11.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/ba42152277e92e3c67682da39cfd71dd/jetified-glide-4.11.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:glide:4.11.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/ba42152277e92e3c67682da39cfd71dd/jetified-glide-4.11.0/AndroidManifest.xml:6:5-8:41
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/c3d3dbc878f96de1821069d6d0865926/recyclerview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/c3d3dbc878f96de1821069d6d0865926/recyclerview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94481d1de9a1ceefc30c4b2969e8e773/jetified-play-services-base-16.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94481d1de9a1ceefc30c4b2969e8e773/jetified-play-services-base-16.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-common:16.0.3] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94e52c60fdcbbcf71b78f9eaf3edb0bb/jetified-firebase-common-16.0.3/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-common:16.0.3] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94e52c60fdcbbcf71b78f9eaf3edb0bb/jetified-firebase-common-16.0.3/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/198b95a42ffc3895a052629b0b12db4d/jetified-play-services-tasks-16.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/198b95a42ffc3895a052629b0b12db4d/jetified-play-services-tasks-16.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-database-collection:16.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/f6a4a2d1dea9f26e864e94547039e570/jetified-firebase-database-collection-16.0.0/AndroidManifest.xml:6:5-44
+MERGED from [com.google.firebase:firebase-database-collection:16.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/f6a4a2d1dea9f26e864e94547039e570/jetified-firebase-database-collection-16.0.0/AndroidManifest.xml:6:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/dd75f0e7a2a5f06590421ebdd3e400f3/jetified-play-services-basement-16.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/dd75f0e7a2a5f06590421ebdd3e400f3/jetified-play-services-basement-16.0.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/35b43c8e74aa32f7750167d83aa50c23/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/35b43c8e74aa32f7750167d83aa50c23/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/5b9e0d961a43463cd36d3d0b0970a663/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/5b9e0d961a43463cd36d3d0b0970a663/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/36396b1fbdb1103bb32efd2dde513e3d/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/36396b1fbdb1103bb32efd2dde513e3d/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/4d8023f440c56671264c8dbdb102bee1/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/4d8023f440c56671264c8dbdb102bee1/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/62322ffe89d73f1df797536e80d541cb/jetified-appcompat-resources-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/62322ffe89d73f1df797536e80d541cb/jetified-appcompat-resources-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/a77d9e58918bf2750030aac69a1dfcf6/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/a77d9e58918bf2750030aac69a1dfcf6/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/c478f80bd4ad567536aefc8101976968/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/c478f80bd4ad567536aefc8101976968/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/bff26f8bf9ff63f2d7195c364e6c34a4/transition-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/bff26f8bf9ff63f2d7195c364e6c34a4/transition-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/dccbc333189bbf941b741953e1a3f9ff/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/dccbc333189bbf941b741953e1a3f9ff/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/81dab606d6381131d30445e6b293ca11/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/81dab606d6381131d30445e6b293ca11/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/6d4496b2f19da8b1ecaba0e3e9d542c0/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/6d4496b2f19da8b1ecaba0e3e9d542c0/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/9c082bcf1e9f4f8b85c88ff0468da4d5/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/9c082bcf1e9f4f8b85c88ff0468da4d5/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/be19bec525e29f89b7d3e89508f45a37/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/be19bec525e29f89b7d3e89508f45a37/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/339f1dc8c1bde9b456157112e0f4b7e8/coordinatorlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/339f1dc8c1bde9b456157112e0f4b7e8/coordinatorlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/21084036f77004bec3de64060098e600/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/21084036f77004bec3de64060098e600/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/0b07a0826db5af8a2fda1f92fd2e3873/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/0b07a0826db5af8a2fda1f92fd2e3873/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/b26138f390284d58f90b88610f6f34c1/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/b26138f390284d58f90b88610f6f34c1/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/b418af96d99ec3ee6beea4913d2436ab/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/b418af96d99ec3ee6beea4913d2436ab/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/e6c5426b859b3c6d1a7ec370a24f0e7e/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/e6c5426b859b3c6d1a7ec370a24f0e7e/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.2.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/509b9013c19d2fd80c30f8ef574e433a/core-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.2.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/509b9013c19d2fd80c30f8ef574e433a/core-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cardview:cardview:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/8b0350031a72ce16202033f17dd471e1/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/8b0350031a72ce16202033f17dd471e1/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/3e9d0a0f95d4736de4de1e21f122263d/jetified-gifdecoder-4.11.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/3e9d0a0f95d4736de4de1e21f122263d/jetified-gifdecoder-4.11.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/ace58725a593ebc3d8ac9a955443d5c1/exifinterface-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/ace58725a593ebc3d8ac9a955443d5c1/exifinterface-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/e4bd9b193777687523303943a4029054/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/e4bd9b193777687523303943a4029054/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/ef0bf9d4d2483129dffd4f48b9ce7edf/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/ef0bf9d4d2483129dffd4f48b9ce7edf/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/464eb4e2a3cad5a639b9f1a3f0b48840/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/464eb4e2a3cad5a639b9f1a3f0b48840/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/0a265440987cc4e75053c9445cd2e39a/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/0a265440987cc4e75053c9445cd2e39a/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/3b5d9efd4ea7fd3d66d424fb0fea7c4a/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/3b5d9efd4ea7fd3d66d424fb0fea7c4a/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/a0ace06f047d4842a6f5373e82da3162/lifecycle-runtime-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/a0ace06f047d4842a6f5373e82da3162/lifecycle-runtime-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/aa1d5930a25664aa7646c6cfc994bd91/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/aa1d5930a25664aa7646c6cfc994bd91/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/f6a4feae18ec354dcbc77e0557069d6b/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/f6a4feae18ec354dcbc77e0557069d6b/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/3f1ca0d4ddb8ff95c5d75eeb561077d3/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/3f1ca0d4ddb8ff95c5d75eeb561077d3/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/308c366dec3536d2c325d08e36113e5e/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/308c366dec3536d2c325d08e36113e5e/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/b7f5752aa0acc6fff842c787e096bc60/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/nhatle/.gradle/caches/transforms-2/files-2.1/b7f5752aa0acc6fff842c787e096bc60/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml
+INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml
+		INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml
+		ADDED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml
+		INJECTED from /home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/AndroidManifest.xml
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94481d1de9a1ceefc30c4b2969e8e773/jetified-play-services-base-16.0.1/AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94481d1de9a1ceefc30c4b2969e8e773/jetified-play-services-base-16.0.1/AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94481d1de9a1ceefc30c4b2969e8e773/jetified-play-services-base-16.0.1/AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94481d1de9a1ceefc30c4b2969e8e773/jetified-play-services-base-16.0.1/AndroidManifest.xml:24:13-79
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:16.0.3] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94e52c60fdcbbcf71b78f9eaf3edb0bb/jetified-firebase-common-16.0.3/AndroidManifest.xml:10:9-14:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:16.0.3] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94e52c60fdcbbcf71b78f9eaf3edb0bb/jetified-firebase-common-16.0.3/AndroidManifest.xml:12:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:16.0.3] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94e52c60fdcbbcf71b78f9eaf3edb0bb/jetified-firebase-common-16.0.3/AndroidManifest.xml:13:13-37
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:16.0.3] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94e52c60fdcbbcf71b78f9eaf3edb0bb/jetified-firebase-common-16.0.3/AndroidManifest.xml:14:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:16.0.3] /home/nhatle/.gradle/caches/transforms-2/files-2.1/94e52c60fdcbbcf71b78f9eaf3edb0bb/jetified-firebase-common-16.0.3/AndroidManifest.xml:11:13-77
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/dd75f0e7a2a5f06590421ebdd3e400f3/jetified-play-services-basement-16.0.1/AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/dd75f0e7a2a5f06590421ebdd3e400f3/jetified-play-services-basement-16.0.1/AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:16.0.1] /home/nhatle/.gradle/caches/transforms-2/files-2.1/dd75f0e7a2a5f06590421ebdd3e400f3/jetified-play-services-basement-16.0.1/AndroidManifest.xml:24:13-58
