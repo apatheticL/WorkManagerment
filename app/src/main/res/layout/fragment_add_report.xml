@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Tạo Báo Cáo"
+            android:textColor="@color/colorWhile"
+            android:textSize="@dimen/sp_24"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleAvatarUserRe"
+            android:layout_width="?actionBarSize"
+            android:layout_height="?actionBarSize"
+            android:layout_marginStart="@dimen/dp_48"
+            android:layout_marginLeft="@dimen/dp_48"
+            android:layout_marginTop="@dimen/dp_16"
+            android:src="@drawable/bavarian"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title" />
+
+
+        <TextView
+            android:id="@+id/addActionSmallName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hoạt động tiếp theo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView28"
+            app:layout_constraintTop_toTopOf="@+id/textView28" />
+
+
+        <Spinner
+            android:id="@+id/listActionSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView28"
+            app:layout_constraintTop_toBottomOf="@+id/textView28"
+            tools:listitem="@layout/item_action_small_of_user" />
+
+        <EditText
+            android:id="@+id/editAddWorkIssue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:hint="Vấn đề khúc mắc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView30" />
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:text="Công việc tiếp theo"
+            android:textColor="@color/colorBack"
+            app:layout_constraintStart_toStartOf="@+id/textView27"
+            app:layout_constraintTop_toBottomOf="@+id/groupStatus" />
+
+        <TextView
+            android:id="@+id/textDateCreateReport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20-1-2020"
+            android:textColor="@color/colorBack"
+            app:layout_constraintBottom_toBottomOf="@+id/circleAvatarUserRe"
+            app:layout_constraintStart_toStartOf="@+id/textFullnameCreateRe"
+            app:layout_constraintTop_toBottomOf="@+id/textFullnameCreateRe" />
+
+        <TextView
+
+            android:id="@+id/textFullnameCreateRe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+
+            android:text="Nguyen van AN"
+            android:textColor="@color/colorBack"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/circleAvatarUserRe"
+            app:layout_constraintTop_toTopOf="@+id/circleAvatarUserRe" />
+
+        <RadioGroup
+            android:id="@+id/groupStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginLeft="@dimen/dp_32"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView27">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/radioUpdateButtonFinnish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="auto"
+                android:text="Hoàn thành"
+
+                app:layout_constraintHorizontal_bias="0.5" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/radioUpdateButtonNoneFinish"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="@dimen/dp_32"
+                android:layout_height="wrap_content"
+                android:text="Chưa hoàn thành"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_32"
+            android:layout_marginTop="36dp"
+            android:text="Trạng thái công việc"
+            android:textColor="@color/colorBack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/circleAvatarUserRe" />
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Vấn đề khúc mắc"
+            android:textColor="@color/colorBack"
+            app:layout_constraintStart_toStartOf="@+id/textView28"
+            app:layout_constraintTop_toBottomOf="@+id/listActionSmall" />
+
+        <Button
+            android:id="@+id/buttonAddReport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:background="@drawable/button_save"
+            android:text="Lưu lại"
+            android:textColor="@color/colorWhile"
+            app:layout_constraintEnd_toStartOf="@+id/buttonCancelReport"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editAddWorkIssue" />
+
+        <Button
+            android:id="@+id/buttonCancelReport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_cancle"
+            android:text="Hủy"
+            android:textColor="@color/colorWhile"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonAddReport"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buttonAddReport"
+            app:layout_constraintTop_toTopOf="@+id/buttonAddReport"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

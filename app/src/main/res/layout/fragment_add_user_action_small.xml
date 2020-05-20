@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhile">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/titleUserAction"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center"
+                android:textSize="@dimen/sp_18"
+                app:layout_constraintTop_toTopOf="parent"
+
+                app:titleTextColor="@color/colorWhile">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/buttonBack"
+                        android:layout_gravity="center"
+                        android:layout_width="23dp"
+                        android:layout_height="28dp"
+                        android:gravity="center_horizontal"
+                        android:background="@drawable/button_search"
+                        android:src="@drawable/ic_keyboard_backspace_black_24dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/titleUserAction"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:layout_marginLeft="@dimen/dp_48"
+                        android:layout_gravity="center"
+                        android:text="Giao nhiem vu"
+                        android:textSize="@dimen/sp_24"
+                        android:textColor="@color/colorWhile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_8"
+                android:text="Chọn nhiệm vụ"
+                app:layout_constraintTop_toBottomOf="@id/titleUserAction" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerActionSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title"
+                app:layout_constraintVertical_bias="0.0"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_action_small" />
+
+            <TextView
+                android:id="@+id/titleOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:gravity="center"
+                android:text="Phân công Công việc"
+                android:textColor="@color/colorBack"
+                android:textSize="@dimen/sp_18"
+                app:layout_constraintTop_toBottomOf="@id/recyclerActionSmall" />
+
+            <include
+                android:id="@+id/includeAddUserActionSmall"
+                layout="@layout/item_add_user_action_small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                app:layout_constraintTop_toBottomOf="@id/titleOne" />
+
+            <Button
+                android:id="@+id/buttonAddUserActionSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@drawable/button_save"
+                android:text="Lưu"
+                android:textColor="@color/colorWhile"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/buttonCancelAddUserActionSmall"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/includeAddUserActionSmall" />
+
+            <Button
+                android:id="@+id/buttonCancelAddUserActionSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cancel"
+                android:text="Hủy "
+                android:textColor="@color/colorWhile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/buttonAddUserActionSmall"
+                app:layout_constraintTop_toTopOf="@+id/buttonAddUserActionSmall" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

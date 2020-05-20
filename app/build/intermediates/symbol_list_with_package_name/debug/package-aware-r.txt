@@ -1360,6 +1360,7 @@ id buttonUpdateWork
 id buttoncancle
 id cancel_action
 id cardView
+id cardViewItemWork
 id center
 id center_horizontal
 id center_vertical
@@ -1473,6 +1474,7 @@ id info
 id insert
 id invisible
 id italic
+id itemActionSmall
 id item_touch_helper_previous_elevation
 id labeled
 id largeLabel
@@ -1524,6 +1526,8 @@ id percent
 id phone
 id pin
 id progressBar
+id progressBarSendComment
+id progressBarUpdate
 id progress_circular
 id progress_horizontal
 id radio
@@ -1613,6 +1617,10 @@ id textDateCreateReport
 id textDateReport
 id textDescription
 id textError
+id textErrorAction
+id textErrorFriend
+id textErrorSenderFriend
+id textErrorSuggestionFriend
 id textErrorUpdate
 id textFullnameCreateRe
 id textFullnameRe
@@ -1627,6 +1635,7 @@ id textRegister
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
+id textStatusReport
 id textTileNextWork
 id textTitle
 id textView

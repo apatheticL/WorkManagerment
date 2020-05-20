@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/actionWork"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Công Việc"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/actionFriend"
+        android:icon="@drawable/ic_supervisor_account_black_24dp"
+        android:title="Bạn Bè"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/actionProfile"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="Tài Khoản"
+        app:showAsAction="always" />
+</menu>

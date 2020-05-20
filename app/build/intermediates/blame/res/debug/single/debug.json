@@ -368,16 +368,16 @@
         "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/generated/res/pngs/debug/drawable-ldpi/ic_comment_black_24dp.png"
     },
     {
-        "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_enhanced_encryption_black_24dp.png.flat",
-        "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/generated/res/pngs/debug/drawable-mdpi/ic_enhanced_encryption_black_24dp.png"
-    },
-    {
         "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_search_black_24dp.png.flat",
         "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/generated/res/pngs/debug/drawable-mdpi/ic_search_black_24dp.png"
     },
     {
         "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_search_black_24dp.png.flat",
         "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_search_black_24dp.png"
+    },
+    {
+        "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_enhanced_encryption_black_24dp.png.flat",
+        "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/generated/res/pngs/debug/drawable-mdpi/ic_enhanced_encryption_black_24dp.png"
     },
     {
         "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_menu_black_24dp.png.flat",
@@ -480,12 +480,12 @@
         "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/res/drawable/team.png"
     },
     {
-        "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable_bg_avatar.xml.flat",
-        "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/res/drawable/bg_avatar.xml"
-    },
-    {
         "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_keyboard_backspace_black_24dp.png.flat",
         "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/generated/res/pngs/debug/drawable-mdpi/ic_keyboard_backspace_black_24dp.png"
+    },
+    {
+        "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable_bg_avatar.xml.flat",
+        "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/res/drawable/bg_avatar.xml"
     },
     {
         "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_group_add_black_24dp.png.flat",
@@ -1052,24 +1052,24 @@
         "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/res/layout/fragment_friend_manager.xml"
     },
     {
+        "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_ic_keyboard_backspace_black_24dp.xml.flat",
+        "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_keyboard_backspace_black_24dp.xml"
+    },
+    {
         "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_launcher_background.png.flat",
         "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_launcher_background.png"
     },
     {
-        "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable_cancel.xml.flat",
-        "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/res/drawable/cancel.xml"
-    },
-    {
-        "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_ic_keyboard_backspace_black_24dp.xml.flat",
-        "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_keyboard_backspace_black_24dp.xml"
+        "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_notifications_none_black_24dp.png.flat",
+        "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_notifications_none_black_24dp.png"
     },
     {
         "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/layout_custom_add_user_action_small.xml.flat",
         "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/res/layout/custom_add_user_action_small.xml"
     },
     {
-        "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_notifications_none_black_24dp.png.flat",
-        "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_notifications_none_black_24dp.png"
+        "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable_cancel.xml.flat",
+        "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/src/main/res/drawable/cancel.xml"
     },
     {
         "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_check_black_24dp.png.flat",
@@ -1132,12 +1132,12 @@
         "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_account_circle_black_24dp.png"
     },
     {
-        "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_home_black_24dp.png.flat",
-        "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_home_black_24dp.png"
-    },
-    {
         "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_ic_image_black_24dp.xml.flat",
         "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_image_black_24dp.xml"
+    },
+    {
+        "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_home_black_24dp.png.flat",
+        "source": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_home_black_24dp.png"
     },
     {
         "merged": "/home/nhatle/AndroidStudioProjects/Project1/WorkMangement/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_playlist_play_black_24dp.png.flat",
